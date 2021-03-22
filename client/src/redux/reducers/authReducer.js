@@ -17,6 +17,15 @@ import {
     PASSWORD_EDIT_UPLOADING_REQUEST,
     PASSWORD_EDIT_UPLOADING_SUCCESS,
     PASSWORD_EDIT_UPLOADING_FAILURE,
+    MEMBER_WARN_REQUEST,
+    MEMBER_WARN_SUCCESS,
+    MEMBER_WARN_FAILURE,
+    MEMBER_WARNLIST_REQUEST,
+    MEMBER_WARNLIST_SUCCESS,
+    MEMBER_WARNLIST_FAILURE,
+    MEMBER_REMOVEWARNMEMBER_REQUEST,
+    MEMBER_REMOVEWARNMEMBER_SUCCESS,
+    MEMBER_REMOVEWARNMEMBER_FAILURE,
 } from '../types';
 
 const initialState = {
@@ -32,6 +41,11 @@ const initialState = {
     previousMatchMsg: '',
     editsuccess: false,
     warnlistDetail: '',
+    removeWarnMember: '',
+    totalItems: '',
+    memberlist: '',
+    totalPages: '',
+    currentPage: '',
 };
 
 const authReducer = (state = initialState, action) => {
@@ -55,6 +69,7 @@ const authReducer = (state = initialState, action) => {
                 userId: action.payload.user.id,
                 userRole: action.payload.user.role,
                 errorMsg: '',
+                warnlistDetail: '',
             };
 
         case REGISTER_FAILURE:
@@ -143,6 +158,72 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 errorMsg: 'Clear Error Fail',
                 previousMatchMsg: 'Clear Error Fail',
+            };
+
+        case MEMBER_WARN_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+            };
+        case MEMBER_WARN_SUCCESS:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    cart: action.payload,
+                },
+            };
+        case MEMBER_WARN_FAILURE:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    cart: '',
+                },
+            };
+
+        case MEMBER_WARNLIST_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+            };
+        case MEMBER_WARNLIST_SUCCESS:
+            return {
+                ...state,
+                totalItems: action.payload.totalItems,
+                warnlistDetail: action.payload.warndata,
+                totalPages: action.payload.totalPages,
+                currentPage: action.payload.currentPage,
+            };
+        case MEMBER_WARNLIST_FAILURE:
+            return {
+                ...state,
+                totalItems: '',
+                warnlistDetail: '',
+                totalPages: '',
+                currentPage: '',
+            };
+
+        case MEMBER_REMOVEWARNMEMBER_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+            };
+        case MEMBER_REMOVEWARNMEMBER_SUCCESS:
+            return {
+                ...state,
+                warnlistDetail: action.payload.listInfo,
+                user: {
+                    ...state.user,
+                    cart: action.payload.cart,
+                },
+                removeWarnMember: true,
+            };
+        case MEMBER_REMOVEWARNMEMBER_FAILURE:
+            return {
+                ...state,
+                warnlistDetail:"",
+                removeWarnMember: false,
             };
 
         default:
