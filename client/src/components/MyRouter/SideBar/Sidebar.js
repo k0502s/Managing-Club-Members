@@ -9,11 +9,11 @@ import Login from '../../../components/auth/Login';
 
 const SideBar = ({ isOpen, toggle }) => {
     const { isAuthenticated, warnlistDetail, user } = useSelector((state) => state.auth);
-    const [usercart, setusercart] = useState('');
+    // const [usercart, setusercart] = useState('');
 
-    useEffect(() => {
-        setusercart(user.cart);
-    }, [user]);
+    // useEffect(() => {
+    //     setusercart(user.cart);
+    // }, [user]);
 
     const guestLink = <div></div>;
 
@@ -40,7 +40,8 @@ const SideBar = ({ isOpen, toggle }) => {
             <NavItem>
                 <NavLink tag={Link} to={'/warnlist'}>
                     <FontAwesomeIcon icon={faPaperPlane} className="mr-2" />
-                    WARN MEMBER LIST <Badge color="secondary">{usercart.length}</Badge>
+                    WARN MEMBER LIST 
+                    {/* <Badge color="secondary">{usercart.length}</Badge> */}
                 </NavLink>
             </NavItem>
             <NavItem>
