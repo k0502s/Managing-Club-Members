@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Pagination from '@material-ui/lab/Pagination';
-import Contact from './Section/Contact'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import Contact from './Section/Contact';
 import { MEMBER_INQUIRIES_REQUEST, MEMBER_REMOVE_INQUIRIES_REQUEST } from '../../redux/types';
-import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table } from 'reactstrap';
+import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table, CardHeader, CardBody } from 'reactstrap';
 
 const MemberInquiries = () => {
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
-    const [pageSize, setPageSize] = useState(3);
-    const pageSizes = [3, 6];
+    const [pageSize, setPageSize] = useState(5);
+    const pageSizes = [5, 10];
     const { inquiriesdata, totalPages } = useSelector((state) => state.member);
 
     const getRequestParams = (page, pageSize) => {
@@ -26,7 +28,7 @@ const MemberInquiries = () => {
         return params;
     };
 
-    const retrieveTutorials = () => {
+    const retrieve = () => {
         const params = getRequestParams(page, pageSize);
 
         dispatch({
@@ -35,7 +37,7 @@ const MemberInquiries = () => {
         });
     };
 
-    useEffect(retrieveTutorials, [page, pageSize]);
+    useEffect(retrieve, [page, pageSize]);
 
     const handlePageChange = (event, value) => {
         setPage(value);
@@ -51,50 +53,73 @@ const MemberInquiries = () => {
             type: MEMBER_REMOVE_INQUIRIES_REQUEST,
             payload: id,
         });
-        retrieveTutorials();
+        retrieve();
+    };
+
+    const retrieveDB = () => {
+        retrieve();
     };
 
     return (
-        <div>
-            회원 문의
-            <Table>
-                <thead>
-                    <tr>
-                        <th style={{ textAlign: 'center' }}>회원 이름</th>
-                        <th style={{ textAlign: 'center' }}>연락 이메일</th>
-                        <th style={{ textAlign: 'center' }}>문의 내용</th>
-                        <th style={{ textAlign: 'center' }}>삭제</th>
-                    </tr>
-                </thead>
-                {inquiriesdata &&
-                    inquiriesdata.map((inquiries, index) => (
-                        <tbody key={index}>
-                            <tr>
-                                <th scope="row" style={{ width: '10%', fontWeight: 'bold', textAlign: 'center' }}>
-                                    {inquiries.name}
-                                </th>
-                                <td style={{ width: '15%', color: 'black', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>{inquiries.email}</td>
-                                <td style={{ width: '25%' }}>{inquiries.opinion}</td>
-                                <td style={{ width: '10%', textAlign: 'center' }}>
-                                    <Button onClick={() => removeFromInquiries(inquiries._id)}>삭제</Button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    ))}
-            </Table>
-            <div className="mt-3">
-                <h7 style={{ marginLeft: 250 }}>Page: </h7>
-                <select onChange={handlePageSizeChange} value={pageSize}>
-                    {pageSizes.map((size) => (
-                        <option key={size} value={size}>
-                            {size}
-                        </option>
-                    ))}
-                </select>
-                <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
-            </div>
-            <Contact />
-        </div>
+        <Row>
+            <Col md={8} sm={4}>
+                <h2 style={{ textAlign: 'center' }}>회원 문의 리스트</h2>
+                <Col md={{ offset: 10 }}>
+                    <Button onClick={retrieveDB} id='btn-reload'>
+                        <FontAwesomeIcon id="icon" icon={faRedo} /> Reload
+                    </Button>
+                </Col>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th style={{ textAlign: 'center' }}>회원 이름</th>
+                            <th style={{ textAlign: 'center' }}>연락 이메일</th>
+                            <th style={{ textAlign: 'center' }}>문의 내용</th>
+                            <th style={{ textAlign: 'center' }}>삭제</th>
+                        </tr>
+                    </thead>
+                    {inquiriesdata &&
+                        inquiriesdata.map((inquiries, index) => (
+                            <tbody key={index}>
+                                <tr>
+                                    <th style={{ width: '10%', fontWeight: 'bold', textAlign: 'center' }}>{inquiries.name}</th>
+                                    <td style={{ width: '15%', color: 'black', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>{inquiries.email}</td>
+                                    <td style={{ width: '25%' }}>{inquiries.opinion}</td>
+                                    <td style={{ width: '10%', textAlign: 'center' }}>
+                                        <Button onClick={() => removeFromInquiries(inquiries._id)}>삭제</Button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        ))}
+                </Table>
+                <Col md={{ offset: 4 }} className="mt-3">
+                    <h7 style={{ marginLeft: 250 }}>Page: </h7>
+                    <select onChange={handlePageSizeChange} value={pageSize}>
+                        {pageSizes.map((size) => (
+                            <option key={size} value={size}>
+                                {size}
+                            </option>
+                        ))}
+                    </select>
+                </Col>
+                <Col md={{ offset: 5 }} xs={{ offset: 4 }}>
+                    <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
+                </Col>
+            </Col>
+            <Col sm={4}>
+                <Card>
+                    <CardHeader>
+                        <strong>이메일 전송</strong>
+                    </CardHeader>
+                    <Card body>
+                        <CardText>※ 문의 사항에 대한 답을 연락 이메일로 보낼 수 있습니다.</CardText>
+                    </Card>
+                    <CardBody>
+                        <Contact />
+                    </CardBody>
+                </Card>
+            </Col>
+        </Row>
     );
 };
 

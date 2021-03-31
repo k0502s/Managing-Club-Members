@@ -80,3 +80,18 @@ textarea {
         margin-bottom: 0.25rem;
     }
 }
+
+/////reload button
+#btn-reload {
+    margin-bottom: 10px;
+    border-radius: 7px;
+}
+#btn-reload #icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.4s ease-in-out;
+    padding-top: 2px;
+}
+#btn-reload:hover #icon {
+    transform: rotate(360deg) scale(1.2);
+}
