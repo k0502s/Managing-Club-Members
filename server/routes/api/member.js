@@ -37,39 +37,16 @@ router.post('/image', uploadS3.single('file'), function (req, res, next) {
     res.json({ success: true, filePath: req.file.location, fileName: req.file.originalname });
 });
 
-// var storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, 'uploads/')
-//     },
-//     filename: function (req, file, cb) {
-//       cb(null, `${Date.now()}_${file.originalname}`)
-//     }
-//   })
-
-//   var upload = multer({ storage: storage }).single("file")
-
-// router.post('/image', (req, res) => {
-
-//     //가져온 이미지를 저장을 해주면 된다.
-//     upload(req, res, err => {
-//         if(err){
-//             return req.json({success: false, err})
-//         }
-//         return res.json({success: true, filePath:res.req.file.path , fileName:res.req.file.filename})
-//     })
-
-// })
-
 router.post('/', async (req, res) => {
     try {
-        //받아온 정보들을 DB에 넣어준다.
         const member = new Member(req.body);
 
         await member.save(() => {
             res.status(200).json({ success: true });
         });
     } catch (e) {
-        res.status(400).json({ success: false, err });
+        console.log(e);
+        return res.status(400).send(err);
     }
 });
 
@@ -82,8 +59,8 @@ const getPagination = (page, size) => {
 
 router.get('/', async (req, res) => {
     try {
-        const { page, size, title } = req.query;
-        var condition = title ? { title: { $regex: new RegExp(title), $options: 'i' } } : {};
+        const { page, size, name } = req.query;
+        var condition = name ? { name: { $regex: new RegExp(name), $options: 'i' } } : {};
 
         const { limit, offset } = getPagination(page, size);
 
@@ -91,37 +68,28 @@ router.get('/', async (req, res) => {
             console.log(data);
             res.send({
                 totalItems: data.totalDocs,
-                memberdata: data.docs,
+                memberdata: data.docs.reverse(),
                 totalPages: data.totalPages,
                 currentPage: data.page - 1,
             });
         });
     } catch (e) {
-        res.status(500).send({
-            message: err.message || 'Some error occurred while retrieving tutorials.',
-        });
+        console.log(e);
+        return res.status(400).send(err);
     }
 });
 
 router.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
-
         await Member.findByIdAndRemove(id, { useFindAndModify: false }).then((data) => {
-            if (!data) {
-                res.status(404).send({
-                    success: false,
-                });
-            } else {
-                res.send({
-                    success: true,
-                });
-            }
+            res.send({
+                success: true,
+            });
         });
     } catch (e) {
-        res.status(500).send({
-            success: false,
-        });
+        console.log(e);
+        return res.status(400).send(err);
     }
 });
 
@@ -130,34 +98,24 @@ router.get('/:id', async (req, res) => {
         const id = req.params.id;
 
         await Member.findById(id).then((data) => {
-            if (!data) res.status(404).send({ message: 'Not found id ' + id });
-            else res.send(data);
+            if (!data) res.status(404).send({ message: 'Not found id ' });
+            res.send(data);
         });
     } catch (e) {
-        res.status(500).send({ message: 'Error' });
+        console.log(e);
+        return res.status(400).send(err);
     }
 });
 
 router.put('/:id', async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).send({
-                message: 'Data to update can not be empty!',
-            });
-        }
         const id = req.params.id;
-
         await Member.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then((data) => {
-            if (!data) {
-                res.status(404).send({
-                    message: `Cannot update id=${id}.`,
-                });
-            } else res.send({ message: 'updated successfully.' });
+            res.send({ message: 'updated successfully.' });
         });
     } catch (e) {
-        res.status(500).send({
-            message: 'Error updating id=' + id,
-        });
+        console.log(e);
+        return res.status(400).send(err);
     }
 });
 

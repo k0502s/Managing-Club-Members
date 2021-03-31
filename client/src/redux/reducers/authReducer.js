@@ -14,9 +14,6 @@ import {
     REGISTER_REQUEST,
     REGISTER_SUCCESS,
     REGISTER_FAILURE,
-    PASSWORD_EDIT_UPLOADING_REQUEST,
-    PASSWORD_EDIT_UPLOADING_SUCCESS,
-    PASSWORD_EDIT_UPLOADING_FAILURE,
     MEMBER_WARN_REQUEST,
     MEMBER_WARN_SUCCESS,
     MEMBER_WARN_FAILURE,
@@ -120,28 +117,6 @@ const authReducer = (state = initialState, action) => {
                 isAuthenticated: false,
                 isLoading: false,
                 userRole: '',
-            };
-        case PASSWORD_EDIT_UPLOADING_REQUEST:
-            return {
-                ...state,
-                isLoading: true,
-            };
-        case PASSWORD_EDIT_UPLOADING_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-                successMsg: action.payload.data.success_msg,
-                errorMsg: '',
-                previousMsg: '',
-                editsuccess: true,
-            };
-        case PASSWORD_EDIT_UPLOADING_FAILURE:
-            return {
-                ...state,
-                isLoading: false,
-                successMsg: '',
-                errorMsg: action.payload.data.fail_msg,
-                previousMatchMsg: action.payload.data.match_msg,
             };
         case CLEAR_ERROR_REQUEST:
             return {

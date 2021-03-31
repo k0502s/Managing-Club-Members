@@ -49,10 +49,10 @@ const WarnCardBlock = (props) => {
                 <td>
                     <img style={{ width: '70px' }} alt="product" src={renderCartImage(warnlist.images)} />
                 </td>
-                <td>{warnlist.title}</td>
-                <td>{sex[warnlist.continents]}</td>
+                <td>{warnlist.name}</td>
+                <td>{sex[warnlist.sex]}</td>
                 <td>{warnlist.quantity}</td>
-                <td>{warnlist.price}</td>
+                <td>{warnlist.age}</td>
                 <td>
                     <button onClick={() => removeFromlist(warnlist._id)}>Remove</button>
                 </td>
