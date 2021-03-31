@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Pagination from '@material-ui/lab/Pagination';
+import Contact from './Section/Contact'
 import { MEMBER_INQUIRIES_REQUEST, MEMBER_REMOVE_INQUIRIES_REQUEST } from '../../redux/types';
 import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table } from 'reactstrap';
 
@@ -60,7 +61,7 @@ const MemberInquiries = () => {
                 <thead>
                     <tr>
                         <th style={{ textAlign: 'center' }}>회원 이름</th>
-                        <th style={{ textAlign: 'center' }}>이메일</th>
+                        <th style={{ textAlign: 'center' }}>연락 이메일</th>
                         <th style={{ textAlign: 'center' }}>문의 내용</th>
                         <th style={{ textAlign: 'center' }}>삭제</th>
                     </tr>
@@ -92,6 +93,7 @@ const MemberInquiries = () => {
                 </select>
                 <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
             </div>
+            <Contact />
         </div>
     );
 };
