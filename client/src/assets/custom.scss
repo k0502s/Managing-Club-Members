@@ -67,7 +67,8 @@ a:focus {
 
 html {
     width: 100vw;
-    overflow-x: hiddem;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 textarea {
