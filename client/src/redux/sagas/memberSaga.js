@@ -17,6 +17,9 @@ import {
     MEMBER_UPDATELIST_REQUEST,
     MEMBER_UPDATELIST_SUCCESS,
     MEMBER_UPDATELIST_FAILURE,
+    MEMBER_INQUIRIES_REQUEST,
+    MEMBER_INQUIRIES_SUCCESS,
+    MEMBER_INQUIRIES_FAILURE
 } from '../types';
 
 // uploading
@@ -161,6 +164,35 @@ function* watchMemberDelete() {
     yield takeEvery(MEMBER_DELETE_REQUEST, memberDelete);
 }
 
+
+
+// Member inqirie
+
+const memberinqiriesAPI = (memberData) => {
+    console.log(memberData, 'inqiries')
+    return axios.get('api/inquiries/', memberData);
+};
+
+function* memberInqiries(action) {
+    try {
+        const result = yield call(memberinqiriesAPI, action.payload);
+        console.log(result);
+        yield put({
+            type: MEMBER_INQUIRIES_SUCCESS,
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: MEMBER_INQUIRIES_FAILURE,
+            payload: e.response,
+        });
+    }
+}
+
+function* watchMemberInqiries() {
+    yield takeEvery(MEMBER_INQUIRIES_REQUEST, memberInqiries);
+}
+
 export default function* memberSaga() {
-    yield all([fork(watchMenberUpload), fork(watchMemberList), fork(watchMemberDelete), fork(watchMemberSingleList), fork(watchMemberUpdate)]);
+    yield all([fork(watchMenberUpload), fork(watchMemberList), fork(watchMemberDelete), fork(watchMemberSingleList), fork(watchMemberUpdate), fork(watchMemberInqiries)]);
 }

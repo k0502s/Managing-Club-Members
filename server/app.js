@@ -9,6 +9,7 @@ import cors from 'cors';
 import userRoutes from './routes/api/user.js';
 import authRoutes from './routes/api/auth.js';
 import memberRoutes from './routes/api/member.js';
+import inquiriesRoutes from './routes/api/inquiries.js';
 
 import morgan from 'morgan';
 
@@ -37,5 +38,6 @@ app.get('/');
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/member', memberRoutes);
+app.use('/api/inquiries', inquiriesRoutes);
 
 export default app;

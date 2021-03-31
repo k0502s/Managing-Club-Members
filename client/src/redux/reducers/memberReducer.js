@@ -14,6 +14,9 @@ import {
     MEMBER_UPDATELIST_REQUEST,
     MEMBER_UPDATELIST_SUCCESS,
     MEMBER_UPDATELIST_FAILURE,
+    MEMBER_INQUIRIES_REQUEST,
+    MEMBER_INQUIRIES_SUCCESS,
+    MEMBER_INQUIRIES_FAILURE,
 } from '../types';
 
 const initialState = {
@@ -21,7 +24,9 @@ const initialState = {
     success: '',
     totalItems: '',
     memberlist: '',
+    inquiriesdata: '',
     singlememberlist: '',
+    singlememberimage: '',
     updatelist: '',
     totalPages: '',
     currentPage: '',
@@ -72,7 +77,29 @@ const memberReducer = (state = initialState, action) => {
                 totalPages: '',
                 currentPage: '',
             };
-
+        case MEMBER_INQUIRIES_REQUEST:
+            return {
+                ...state,
+                errorMsg: '',
+                isLoading: true,
+            };
+        case MEMBER_INQUIRIES_SUCCESS:
+            return {
+                ...state,
+                totalItems: action.payload.totalItems,
+                inquiriesdata: action.payload.inquiriesdata,
+                totalPages: action.payload.totalPages,
+                currentPage: action.payload.currentPage,
+            };
+        case MEMBER_INQUIRIES_FAILURE:
+            return {
+                ...state,
+                errorMsg: 'error',
+                totalItems: '',
+                inquiriesdata: '',
+                totalPages: '',
+                currentPage: '',
+            };
         case MEMBER_DELETE_REQUEST:
             return {
                 ...state,
@@ -101,12 +128,14 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 singlememberlist: action.payload,
+                singlememberimage: action.payload.images,
             };
         case MEMBER_SINGLELIST_FAILURE:
             return {
                 ...state,
                 errorMsg: 'error',
                 singlememberlist: action.payload.message,
+                singlememberimage: '',
             };
 
         case MEMBER_UPDATELIST_REQUEST:
