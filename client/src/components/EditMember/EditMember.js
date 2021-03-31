@@ -103,9 +103,9 @@ const EditMember = (props) => {
                 <h2>회원 정보 수정</h2>
             </div>
             <FileUpload refreshFunction={updateImages} removefile={removefile} />
-            <Col md={{ offset: 4 }} style={{ display: 'flex', width: '350px', height: '240px', overflow: 'scroll' }}>
+            <Col md={{ offset: 4 }} style={{ display: 'flex', width: '300px', height: '240px', borderRadius:'55%', border: '1px solid lightgray'}}>
                 {Images.map((image, index) => (
-                    <img key={index} style={{ minWidth: '300px', width: '300px', height: '240px' }} src={`${image}`} />
+                    <img key={index} style={{ minWidth: '300px', width: '300px', height: '240px',borderRadius:'55%', border: '1px solid lightgray'}} src={`${image}`} />
                 ))}
             </Col>
             <Form onSubmit={submitHandler} name="myform">
