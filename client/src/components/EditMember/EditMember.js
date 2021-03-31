@@ -68,7 +68,7 @@ const EditMember = (props) => {
         if (sexinput === '') {
             return alert('성별 정보를 입력해야 합니다.');
         }
-        if (!Images) {
+        if (Images.length === 0) {
             return alert('프로필 사진을 입력해야 합니다.');
         }
 

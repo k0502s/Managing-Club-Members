@@ -31,7 +31,7 @@ const EditMember = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-
+        console.log(Images, 'img')
         const nameinput = document.myform.name.value;
         const camerainput = document.myform.camera.value;
         const ageinput = document.myform.age.value;
@@ -48,7 +48,7 @@ const EditMember = (props) => {
         if (sexinput === '') {
             return alert('성별 정보를 입력해야 합니다.');
         }
-        if (!Images) {
+        if (Images.length === 0) {
             return alert('프로필 사진을 입력해야 합니다.');
         }
 
