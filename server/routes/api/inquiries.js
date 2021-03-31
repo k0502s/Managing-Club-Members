@@ -7,7 +7,6 @@ const router = express.Router();
 //             inquiries
 //=================================
 
-
 const getPagination = (page, size) => {
     const limit = size ? +size : 3;
     const offset = page ? page * limit : 0;
@@ -17,11 +16,11 @@ const getPagination = (page, size) => {
 
 router.get('/', async (req, res) => {
     try {
-        console.log(req.query)
+        console.log(req.query);
         const { page, size } = req.query;
-        
-        const { limit, offset } = getPagination(page, size);
 
+        const { limit, offset } = getPagination(page, size);
+        const chatalldata = await Chat.find();
         await Chat.paginate({}, { offset, limit }).then((data) => {
             console.log(data);
             res.send({
@@ -29,6 +28,7 @@ router.get('/', async (req, res) => {
                 inquiriesdata: data.docs.reverse(),
                 totalPages: data.totalPages,
                 currentPage: data.page - 1,
+                chatalldata: chatalldata
             });
         });
     } catch (e) {
@@ -36,7 +36,6 @@ router.get('/', async (req, res) => {
         return res.status(400).send(err);
     }
 });
-
 
 router.delete('/:id', async (req, res) => {
     try {
@@ -51,6 +50,5 @@ router.delete('/:id', async (req, res) => {
         return res.status(400).send(err);
     }
 });
-
 
 export default router;

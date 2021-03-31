@@ -25,6 +25,7 @@ const initialState = {
     totalItems: '',
     memberlist: '',
     inquiriesdata: '',
+    chatalldata: '',
     singlememberlist: '',
     singlememberimage: '',
     updatelist: '',
@@ -90,6 +91,7 @@ const memberReducer = (state = initialState, action) => {
                 inquiriesdata: action.payload.inquiriesdata,
                 totalPages: action.payload.totalPages,
                 currentPage: action.payload.currentPage,
+                chatalldata: action.payload.chatalldata
             };
         case MEMBER_INQUIRIES_FAILURE:
             return {
@@ -99,6 +101,7 @@ const memberReducer = (state = initialState, action) => {
                 inquiriesdata: '',
                 totalPages: '',
                 currentPage: '',
+                chatalldata: ''
             };
         case MEMBER_DELETE_REQUEST:
             return {
