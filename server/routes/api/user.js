@@ -204,7 +204,7 @@ router.get('/warnlist_by_id', (req, res) => {
     //이제 여러개 상품 id을 이용하여 여러 개 삼품 가져올 수 있게됨
     const condition = { _id: { $in: warnmemberIds } };
     //productIds을 이용해서 DB에서 productId와 같은 상품의 정보를 가져온다. //id값이 여러개 들어 있는 배열을 못넣어서 $in을 사용함
-    Member.paginate(condition, { offset, limit }).then((warnmember) => {
+    Member.paginate(condition, { offset, limit, sort: { createdAt: -1 } }).then((warnmember) => {
         // console.log(warnmember);
         res.status(200).send({
             totalItems: warnmember.totalDocs,

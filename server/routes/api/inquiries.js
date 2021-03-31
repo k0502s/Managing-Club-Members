@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 
         const { limit, offset } = getPagination(page, size);
         const chatalldata = await Chat.find();
-        await Chat.paginate({}, { offset, limit }).then((data) => {
+        await Chat.paginate({}, { offset, limit, sort: { createdAt: -1 } }).then((data) => {
             console.log(data);
             res.send({
                 totalItems: data.totalDocs,
