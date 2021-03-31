@@ -103,9 +103,6 @@ const MemberList = (props) => {
     };
 
     const renderImage = (images) => {
-        if (images === []) {
-            return `${process.env.REACT_APP_BASIC_IMAGE_URL}`;
-        }
         if (images.length > 0) {
             let image = images[0];
             return `${image}`;

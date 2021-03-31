@@ -13,7 +13,7 @@ const WarnCardBlock = (props) => {
     const [ShowEmpty, setShowEmpty] = useState("");
     const { warnlistDetail } = useSelector((state) => state.auth);
 
-    //이미지를 한개만 가져오기 위함이다.
+
     const renderCartImage = (images) => {
         if (images.length > 0) {
             let image = images[0];
@@ -80,7 +80,6 @@ const WarnCardBlock = (props) => {
             ) : (
                 <div>데이터가 없습니다.</div>
             )}
-            {/* <Empty description={false} image={Empty.PRESENTED_IMAGE_SIMPLE}/> */}
         </div>
     );
 };

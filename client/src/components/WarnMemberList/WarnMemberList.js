@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MEMBER_WARNLIST_REQUEST } from '../../redux/types';
 import WarnCardBlock from './Section/WarnCardBlock';
 import Pagination from '@material-ui/lab/Pagination';
-
+import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table, CardHeader, CardBody } from 'reactstrap';
 
 const WarnMemberList = (props) => {
     const dispatch = useDispatch();
@@ -61,12 +61,12 @@ const WarnMemberList = (props) => {
     };
 
     return (
-        <div style={{ width: '85%', margin: '3rem auto' }}>
-            <h1>WARN MEMBER LIST</h1>
-
-            <div>
+        <Row style={{ width: '85%', margin: '3rem auto' }}>
+            <Col>
+                <h1>WARN MEMBER LIST</h1>
                 <WarnCardBlock warnlists={warnlistDetail} />
-                <div className="mt-3">
+
+                <Col md={{ offset: 4 }} className="mt-3">
                     <h7 style={{ marginLeft: 250 }}>Page: </h7>
                     <select onChange={handlePageSizeChange} value={pageSize}>
                         {pageSizes.map((size) => (
@@ -75,10 +75,12 @@ const WarnMemberList = (props) => {
                             </option>
                         ))}
                     </select>
+                </Col>
+                <Col md={{ offset: 5 }} xs={{ offset: 4 }}>
                     <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
-                </div>
-            </div>
-        </div>
+                </Col>
+            </Col>
+        </Row>
     );
 };
 

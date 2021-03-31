@@ -21,7 +21,7 @@ const MemberSchema = new mongoose.Schema(
         },
         images: {
             type: Array,
-            default: [],
+            default: ["https://source.unsplash.com/random/301x201"],
         },
         sex: {
             type: Number,
