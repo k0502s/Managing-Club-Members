@@ -117,7 +117,6 @@ const memberReducer = (state = initialState, action) => {
                 errorMsg: 'error',
                 deletesuccess: action.payload.success,
             };
-
         case MEMBER_SINGLELIST_REQUEST:
             return {
                 ...state,

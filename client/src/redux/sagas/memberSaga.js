@@ -19,7 +19,10 @@ import {
     MEMBER_UPDATELIST_FAILURE,
     MEMBER_INQUIRIES_REQUEST,
     MEMBER_INQUIRIES_SUCCESS,
-    MEMBER_INQUIRIES_FAILURE
+    MEMBER_INQUIRIES_FAILURE,
+    MEMBER_REMOVE_INQUIRIES_REQUEST,
+    MEMBER_REMOVE_INQUIRIES_SUCCESS,
+    MEMBER_REMOVE_INQUIRIES_FAILURE,
 } from '../types';
 
 // uploading
@@ -137,7 +140,6 @@ function* watchMemberUpdate() {
     yield takeEvery(MEMBER_UPDATELIST_REQUEST, memberUpdate);
 }
 
-
 // Member delete
 
 const memberdeleteAPI = (memberData) => {
@@ -164,12 +166,10 @@ function* watchMemberDelete() {
     yield takeEvery(MEMBER_DELETE_REQUEST, memberDelete);
 }
 
-
-
 // Member inqirie
 
 const memberinqiriesAPI = (memberData) => {
-    console.log(memberData, 'inqiries')
+    console.log(memberData, 'inqiries');
     return axios.get('api/inquiries/', memberData);
 };
 
@@ -193,6 +193,40 @@ function* watchMemberInqiries() {
     yield takeEvery(MEMBER_INQUIRIES_REQUEST, memberInqiries);
 }
 
+// Delete Member Inqiries
+
+const deletememberinqiriesAPI = (memberData) => {
+    return axios.delete(`api/inquiries/${memberData}`);
+};
+
+function* Deletememberinqiries(action) {
+    try {
+        const result = yield call(deletememberinqiriesAPI, action.payload);
+        console.log(result);
+        yield put({
+            type: MEMBER_REMOVE_INQUIRIES_SUCCESS,
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: MEMBER_REMOVE_INQUIRIES_FAILURE,
+            payload: e.response,
+        });
+    }
+}
+
+function* watchDeleteMemberInqiries() {
+    yield takeEvery(MEMBER_REMOVE_INQUIRIES_REQUEST, Deletememberinqiries);
+}
+
 export default function* memberSaga() {
-    yield all([fork(watchMenberUpload), fork(watchMemberList), fork(watchMemberDelete), fork(watchMemberSingleList), fork(watchMemberUpdate), fork(watchMemberInqiries)]);
+    yield all([
+        fork(watchMenberUpload),
+        fork(watchMemberList),
+        fork(watchMemberDelete),
+        fork(watchMemberSingleList),
+        fork(watchMemberUpdate),
+        fork(watchMemberInqiries),
+        fork(watchDeleteMemberInqiries),
+    ]);
 }

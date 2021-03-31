@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MEMBER_WARNLIST_REQUEST } from '../../redux/types';
 import WarnCardBlock from './Section/WarnCardBlock';
 import Pagination from '@material-ui/lab/Pagination';
-// import { Empty, Result } from 'antd';
+
 
 const WarnMemberList = (props) => {
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const WarnMemberList = (props) => {
 
     useEffect(() => {
         const params = getRequestParams(page, pageSize);
-        let warnLists = []; //여기에 여러 상품 id 값을 받는다.
+        let warnLists = [];
 
         //리덕스 User state안에 cart 안에 상품이 들어있는지 확인
         if (user && user.cart)
@@ -40,19 +40,16 @@ const WarnMemberList = (props) => {
                 const body = {
                     warnListsId: warnLists,
                     list: user.cart,
-                    page:  params.page,
-                    size: params.size
+                    page: params.page,
+                    size: params.size,
                 };
 
                 dispatch({
                     type: MEMBER_WARNLIST_REQUEST,
                     payload: body,
                 });
-
-                //    dispatch(getCartItems(warnLists, user.cart))
-                //    .then(response => {calculateTotal(response.payload)})
             }
-    }, [user, page, pageSize]); //useEffect가 처음 실행될때 userData가 없으므로 추가해주었다.
+    }, [user, page, pageSize]);
 
     const handlePageChange = (event, value) => {
         setPage(value);
@@ -81,32 +78,6 @@ const WarnMemberList = (props) => {
                     <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
                 </div>
             </div>
-
-            {/* {ShowTotal ?
-             <div style={{marginTop: '3rem'}}>
-             <h2>Total Amount: ${Total}</h2>
-             </div>
-             : 
-             ShowSuccess ?
-             <Result
-                status="success"
-                title="구매 완료"
-            />
-             :
-             //<ReactFragment><ReactFragment/>를 간단하게 하면 <></> 할 수 있다. 
-             //리액트는 JSX를 사용하기에 항상 렌더링부분을 감싸줘야한다
-             <>
-             <br />
-             <Empty description={false} image={Empty.PRESENTED_IMAGE_SIMPLE}/>
-             </>
-            }
-            {ShowTotal &&
-            <Paypal 
-            total={Total}
-            onSuccess={transactionSuccess}
-            />
-            }
-             */}
         </div>
     );
 };
