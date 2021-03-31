@@ -8,14 +8,14 @@ const MemberSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
         },
-        title: {
+        name: {
             type: String,
             maxlength: 50,
         },
-        description: {
+        camera: {
             type: String,
         },
-        price: {
+        age: {
             type: Number,
             default: 0,
         },
@@ -23,14 +23,9 @@ const MemberSchema = new mongoose.Schema(
             type: Array,
             default: [],
         },
-        continents: {
+        sex: {
             type: Number,
             default: 1,
-        },
-        sold: {
-            type: Number,
-            maxlength: 100,
-            default: 0,
         },
         views: {
             type: Number,
@@ -40,16 +35,6 @@ const MemberSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-// //서치 기능을 위해 DB모델에서 따로 설정
-// productSchema.index({
-//     title:'text',
-//     description:'text'
-// },{
-//     weights:{
-//         title: 5, //title 값이 더 크다는 의미는 검색시 타이틀을 더 우선시 한다는 의미.
-//         description: 1
-//     }
-// })
 
 MemberSchema.plugin(mongoosePaginate);
 

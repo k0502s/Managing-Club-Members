@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, Input } from 'reactstrap';
+import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
+import FileUpload from '../utils/FileUpload';
 import { useDispatch, useSelector } from 'react-redux';
 import { MEMBER_SINGLELIST_REQUEST, MEMBER_UPDATELIST_REQUEST } from '../../redux/types';
-import { Link } from 'react-router-dom';
 
-const Continents = [
+const Sex = [
     { key: 1, value: '남' },
     { key: 2, value: '여' },
 ];
 
 const EditMember = (props) => {
     const [form, setValues] = useState({
-        title: '',
-        description: '',
-        price: '',
-        images: [],
+        name: '',
+        camera: '',
+        age: '',
+        sex: '',
     });
-    const [Continent, setContinent] = useState(0);
     const [Images, setImages] = useState([]);
     const dispatch = useDispatch();
 
     const { user } = useSelector((state) => state.auth);
-    const { singlememberlist } = useSelector((state) => state.member);
+    const { singlememberlist, singlememberimage } = useSelector((state) => state.member);
 
     const getMemberList = (id) => {
         dispatch({
@@ -36,15 +35,12 @@ const EditMember = (props) => {
 
     useEffect(() => {
         setValues({
-            title: singlememberlist.title,
-            description: singlememberlist.description,
-            price: singlememberlist.price,
+            name: singlememberlist.name,
+            camera: singlememberlist.camera,
+            age: singlememberlist.age,
         });
-    }, [singlememberlist.title, singlememberlist.description, singlememberlist.price, singlememberlist.continent]);
-
-    useEffect(() => {
-        setImages([singlememberlist.images]);
-    }, [singlememberlist.images]);
+        setImages([...singlememberimage]);
+    }, [singlememberlist.name, singlememberlist.camera, singlememberlist.age]);
 
     const onChange = (e) => {
         setValues({
@@ -52,46 +48,40 @@ const EditMember = (props) => {
             [e.target.name]: e.target.value,
         });
     };
-    const continentChangeHandler = (e) => {
-        setContinent(e.currentTarget.value);
-    };
-
-    const updateImages = (newImages) => {
-        setImages(newImages);
-    };
 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        const name = document.myform.title.value;
-        const camera = document.myform.description.value;
-        const age = document.myform.price.value;
-        const sex = document.myform.sex.value;
-        if (name === '') {
+        const nameinput = document.myform.name.value;
+        const camerainput = document.myform.camera.value;
+        const ageinput = document.myform.age.value;
+        const sexinput = document.myform.sex.value;
+        if (nameinput === '') {
             return alert('이름 정보를 입력해야 합니다.');
         }
-        if (camera === '') {
+        if (camerainput === '') {
             return alert('카메라 기종 정보를 입력해야 합니다.');
         }
-        if (age === '') {
+        if (ageinput === '') {
             return alert('나이 정보를 입력해야 합니다.');
         }
-        if (sex === '') {
+        if (sexinput === '') {
             return alert('성별 정보를 입력해야 합니다.');
         }
         if (!Images) {
             return alert('프로필 사진을 입력해야 합니다.');
         }
 
-        const { title, description, price } = form;
-        //서버에 채운 값들을 request을 보낸다.
+        const { name, camera, age, sex } = form;
+
         const body = {
             id: singlememberlist._id,
-            writer: user._id, //로그인된 사람의 ID
-            title: title,
-            description: description,
-            price: price,
-            continents: Continent,
+            writer: user._id,
+            name: name,
+            camera: camera,
+            age: age,
+            sex: sex,
+            images: Images,
         };
 
         dispatch({
@@ -99,35 +89,38 @@ const EditMember = (props) => {
             payload: body,
         });
     };
+    const updateImages = (newImages) => {
+        setImages([...Images, newImages]);
+    };
+
+    const removefile = () => {
+        setImages([]);
+    };
 
     return (
         <div style={{ maxWidth: '700px', margin: '2rem auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
                 <h2>회원 정보 수정</h2>
             </div>
+            <FileUpload refreshFunction={updateImages} removefile={removefile} />
+            <Col md={{ offset: 4 }} style={{ display: 'flex', width: '350px', height: '240px', overflow: 'scroll' }}>
+                {Images.map((image, index) => (
+                    <img key={index} style={{ minWidth: '300px', width: '300px', height: '240px' }} src={`${image}`} />
+                ))}
+            </Col>
             <Form onSubmit={submitHandler} name="myform">
-                <div>
-                    <img
-                        style={{ minWidth: '250px', width: '250px', height: '240px', border: '1px solid lightgray', borderRadius: '200px' }}
-                        src={`${Images}`}
-                        //   http://localhost:5000/
-                    />
-                    <Link to={'/editprofile/' + singlememberlist._id} className="m-3 btn-sm btn-danger">
-                        Profile Edit
-                    </Link>
-                </div>
                 <label>이름</label>
-                <Input onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="title" defaultValue={singlememberlist.title} />
+                <Input onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="name" defaultValue={singlememberlist.name} />
                 <br />
                 <label>카메라 기종</label>
-                <Input onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="description" defaultValue={singlememberlist.description} />
+                <Input onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="camera" defaultValue={singlememberlist.camera} />
                 <br />
                 <label>나이</label>
-                <Input type="number" name="price" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} defaultValue={singlememberlist.price} />
+                <Input type="number" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="age" defaultValue={singlememberlist.age} />
                 <br />
-                <select onChange={continentChangeHandler} value={Continent} name="sex">
+                <select onChange={onChange} value={form.sex} name="sex">
                     <option value="">성별을 선택해주세요</option>
-                    {Continents.map((item) => (
+                    {Sex.map((item) => (
                         <option key={item.key} value={item.key}>
                             {item.value}
                         </option>

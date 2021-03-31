@@ -1,105 +1,105 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, Input } from 'reactstrap';
+import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import FileUpload from '../utils/FileUpload';
 import { useDispatch, useSelector } from 'react-redux';
 import { MEMBER_UPLOADING_REQUEST } from '../../redux/types';
 
-const Continents = [
+
+const Sex = [
     { key: 1, value: '남' },
     { key: 2, value: '여' },
 ];
 
-const AddMemberPage = (props) => {
-    const [Title, setTitle] = useState('');
-    const [Description, setDescription] = useState('');
-    const [Price, setPrice] = useState('');
-    const [Continent, setContinent] = useState(0);
-    const [Images, setImages] = useState([]);
+const EditMember = (props) => {
     const dispatch = useDispatch();
+    const [form, setValues] = useState({
+        name: '',
+        camera: '',
+        age: '',
+        sex: '',
+    });
 
+    const [Images, setImages] = useState([]);
     const { user } = useSelector((state) => state.auth);
 
-    const titleChangeHandler = (e) => {
-        setTitle(e.currentTarget.value);
-    };
-
-    const descriptionChangeHandler = (e) => {
-        setDescription(e.currentTarget.value);
-    };
-
-    const priceChangeHandler = (e) => {
-        setPrice(e.currentTarget.value);
-    };
-
-    const continentChangeHandler = (e) => {
-        setContinent(e.currentTarget.value);
-    };
-
-    const updateImages = (newImages) => {
-        setImages(newImages);
+    const onChange = (e) => {
+        setValues({
+            ...form,
+            [e.target.name]: e.target.value,
+        });
     };
 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        const name = document.myform.title.value;
-        const camera = document.myform.description.value;
-        const age = document.myform.price.value;
-        const sex = document.myform.sex.value;
-        // if(name==="" || camera==="" || age==="" || sex===""){
-        //     return alert("빈 칸에 정보를 입력해야 합니다.")
-        // }
-        if (name === '') {
+        const nameinput = document.myform.name.value;
+        const camerainput = document.myform.camera.value;
+        const ageinput = document.myform.age.value;
+        const sexinput = document.myform.sex.value;
+        if (nameinput === '') {
             return alert('이름 정보를 입력해야 합니다.');
         }
-        if (camera === '') {
+        if (camerainput === '') {
             return alert('카메라 기종 정보를 입력해야 합니다.');
         }
-        if (age === '') {
+        if (ageinput === '') {
             return alert('나이 정보를 입력해야 합니다.');
         }
-        if (sex === '') {
+        if (sexinput === '') {
             return alert('성별 정보를 입력해야 합니다.');
         }
-        if (Images === []) {
+        if (!Images) {
             return alert('프로필 사진을 입력해야 합니다.');
         }
 
-        //서버에 채운 값들을 request을 보낸다.
+        const { name, camera, age, sex } = form;
+
         const body = {
-            writer: user._id, //로그인된 사람의 ID
-            title: Title,
-            description: Description,
-            price: Price,
+            writer: user._id,
+            name: name,
+            camera: camera,
+            age: age,
+            sex: sex,
             images: Images,
-            continents: Continent,
         };
+
         dispatch({
             type: MEMBER_UPLOADING_REQUEST,
             payload: body,
         });
     };
+    const updateImages = (newImages) => {
+        setImages([...Images, newImages]);
+    };
+
+    const removefile = () => {
+        setImages([]);
+    };
 
     return (
         <div style={{ maxWidth: '700px', margin: '2rem auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-                <h2>회원 추가하기</h2>
+                <h2>회원 추가</h2>
             </div>
+            <FileUpload refreshFunction={updateImages} removefile={removefile} />
+            <Col md={{ offset: 4 }} style={{ width: '300px', height: '240px', borderRadius:'55%', border: '1px solid lightgray'}}>
+                {Images.map((image, index) => (
+                    <img key={index} style={{ minWidth: '300px', width: '300px', height: '240px',  borderRadius:'55%', border: '1px solid lightgray' }} src={`${image}`} />
+                ))}
+            </Col>
             <Form onSubmit={submitHandler} name="myform">
-                {/* DropZone   */}
-                <FileUpload refreshFunction={updateImages} />
                 <label>이름</label>
-                <Input onChange={titleChangeHandler} value={Title} name="title" />
+                <Input onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} value={form.name} name="name" />
                 <br />
                 <label>카메라 기종</label>
-                <Input onChange={descriptionChangeHandler} value={Description} name="description" />
+                <Input onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} value={form.camera} name="camera" />
                 <br />
                 <label>나이</label>
-                <Input type="number" onChange={priceChangeHandler} value={Price} name="price" />
+                <Input type="number" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} value={form.age} name="age" />
                 <br />
-                <select onChange={continentChangeHandler} value={Continent} name="sex">
+                <select onChange={onChange} value={form.sex} name="sex">
                     <option value="">성별을 선택해주세요</option>
-                    {Continents.map((item) => (
+                    {Sex.map((item) => (
                         <option key={item.key} value={item.key}>
                             {item.value}
                         </option>
@@ -113,4 +113,4 @@ const AddMemberPage = (props) => {
     );
 };
 
-export default AddMemberPage;
+export default EditMember;
