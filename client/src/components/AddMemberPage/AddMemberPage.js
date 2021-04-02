@@ -20,7 +20,7 @@ const EditMember = (props) => {
     });
 
     const [Images, setImages] = useState([]);
-    const { user } = useSelector((state) => state.auth);
+    // const { user } = useSelector((state) => state.auth);
 
     const onChange = (e) => {
         setValues({
@@ -55,7 +55,7 @@ const EditMember = (props) => {
         const { name, camera, age, sex } = form;
 
         const body = {
-            writer: user._id,
+            // writer: user._id,
             name: name,
             camera: camera,
             age: age,
