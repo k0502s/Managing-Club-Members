@@ -1,18 +1,17 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { MEMBER_INQUIRIES_REQUEST } from '../../../redux/types';
+import { MEMBER_INQUIRIES_REQUEST } from '../../redux/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faPaperPlane, faQuestion, faImage } from '@fortawesome/free-solid-svg-icons';
 import { NavItem, NavLink, Nav, Badge } from 'reactstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import Login from '../../../components/auth/Login';
+import Login from '../Auth/Login';
 
 const SideBar = ({ isOpen, toggle }) => {
     const dispatch = useDispatch();
     const { isAuthenticated, user } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
-    
 
     useEffect(() => {
         dispatch({
@@ -52,8 +51,7 @@ const SideBar = ({ isOpen, toggle }) => {
             <NavItem>
                 <NavLink tag={Link} to={'/inquiries'}>
                     <FontAwesomeIcon icon={faQuestion} className="mr-2" />
-                    MEMBER INQIRIES
-                    {' '}<Badge color="danger">{chatalldata.length > 0 && chatalldata.length}</Badge>
+                    MEMBER INQIRIES <Badge color="danger">{chatalldata.length > 0 && chatalldata.length}</Badge>
                 </NavLink>
             </NavItem>
         </Fragment>

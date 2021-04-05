@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '@material-ui/lab/Pagination';
 import { useSelector, useDispatch } from 'react-redux';
 import WarnButton from './Section/WarnButton';
-import { MEMBER_DELETE_REQUEST, MEMBER_LIST_REQUEST } from '../../redux/types';
+import { MEMBER_DELETE_REQUEST, MEMBER_LIST_REQUEST } from '../../../redux/types';
 
 const sex = {
     1: '남',

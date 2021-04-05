@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
-import FileUpload from '../utils/FileUpload';
+import FileUpload from '../../../utils/FileUpload';
 import { useDispatch, useSelector } from 'react-redux';
-import { MEMBER_UPLOADING_REQUEST } from '../../redux/types';
+import { MEMBER_UPLOADING_REQUEST } from '../../../redux/types';
 
 
 const Sex = [

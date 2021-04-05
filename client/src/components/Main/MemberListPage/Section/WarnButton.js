@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { useDispatch } from 'react-redux';
-import { MEMBER_WARN_REQUEST } from '../../../redux/types';
+import { MEMBER_WARN_REQUEST } from '../../../../redux/types';
 
 const WarnButton = (props) => {
     const dispatch = useDispatch();

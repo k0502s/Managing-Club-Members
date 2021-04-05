@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SideBar from './SideBar/Sidebar';
+import SideBar from '../Nav/Sidebar';
 import Content from './Content/Content';
 
 const Router = () => {

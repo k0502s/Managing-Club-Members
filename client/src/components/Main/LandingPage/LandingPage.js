@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import Register from '../auth/RegisterModal';
+import Register from '../../Auth/RegisterModal';
 
 function LandingPage() {
     const { isAuthenticated } = useSelector((state) => state.auth);

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
-export const EditProtectedRoute = ({ component: Component, ...rest }) => {
+export const EditProtectedRouter = ({ component: Component, ...rest }) => {
     const { userId } = useSelector((state) => state.auth);
     const { creatorId } = useSelector((state) => state.post);
 
@@ -29,7 +29,7 @@ export const EditProtectedRoute = ({ component: Component, ...rest }) => {
     );
 };
 
-export const ProfileProtectedRoute = ({ component: Component, ...rest }) => {
+export const ProfileProtectedRouter = ({ component: Component, ...rest }) => {
     const { userName } = useSelector((state) => state.auth);
     console.log(userName);
     return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MEMBER_WARNLIST_REQUEST } from '../../redux/types';
+import { MEMBER_WARNLIST_REQUEST } from '../../../redux/types';
 import WarnCardBlock from './Section/WarnCardBlock';
 import Pagination from '@material-ui/lab/Pagination';
 import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table, CardHeader, CardBody } from 'reactstrap';
