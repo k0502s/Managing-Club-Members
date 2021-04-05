@@ -111,7 +111,9 @@ router.put('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         await Member.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then((data) => {
-            res.send({ message: 'updated successfully.' });
+            res.send({
+                success: true,
+            });
         });
     } catch (e) {
         console.log(e);

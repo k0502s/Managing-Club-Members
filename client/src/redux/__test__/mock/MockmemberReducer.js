@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { call, put, takeEvery, all, fork } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 import {
     MEMBER_UPLOADING_REQUEST,
     MEMBER_UPLOADING_SUCCESS,
@@ -17,7 +20,8 @@ import {
     MEMBER_INQUIRIES_REQUEST,
     MEMBER_INQUIRIES_SUCCESS,
     MEMBER_INQUIRIES_FAILURE,
-} from '../types';
+} from '../../types';
+import '@babel/polyfill';
 
 const initialState = {
     errorMsg: '',
@@ -32,6 +36,7 @@ const initialState = {
     totalPages: '',
     currentPage: '',
     deletesuccess: '',
+    isLoading: '',
 };
 
 const memberReducer = (state = initialState, action) => {
@@ -45,7 +50,7 @@ const memberReducer = (state = initialState, action) => {
         case MEMBER_UPLOADING_SUCCESS:
             return {
                 ...state,
-                success: action.payload.success,
+                success: true,
                 singlememberlist: '',
                 isLoading: false,
             };
@@ -53,7 +58,7 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: 'error',
-                success: action.payload.success,
+                success: false,
                 isLoading: false,
             };
 
@@ -66,10 +71,10 @@ const memberReducer = (state = initialState, action) => {
         case MEMBER_LIST_SUCCESS:
             return {
                 ...state,
-                totalItems: action.payload.totalItems,
-                memberlist: action.payload.memberdata,
-                totalPages: action.payload.totalPages,
-                currentPage: action.payload.currentPage,
+                totalItems: 1,
+                memberdata: { name: '김진석', cmaera: 'a7s2' },
+                totalPages: 1,
+                currentPage: 1,
                 isLoading: false,
             };
         case MEMBER_LIST_FAILURE:
@@ -91,11 +96,11 @@ const memberReducer = (state = initialState, action) => {
         case MEMBER_INQUIRIES_SUCCESS:
             return {
                 ...state,
-                totalItems: action.payload.totalItems,
-                inquiriesdata: action.payload.inquiriesdata,
-                totalPages: action.payload.totalPages,
-                currentPage: action.payload.currentPage,
-                chatalldata: action.payload.chatalldata,
+                totalItems: 1,
+                inquiriesdata: { name: '김진석', email: 'k0502s@naver.com', opinion: '문의사항' },
+                totalPages: 1,
+                currentPage: 1,
+                chatalldata: 1,
                 isLoading: false,
             };
         case MEMBER_INQUIRIES_FAILURE:
@@ -118,14 +123,14 @@ const memberReducer = (state = initialState, action) => {
         case MEMBER_DELETE_SUCCESS:
             return {
                 ...state,
-                deletesuccess: action.payload.success,
+                deletesuccess: true,
                 isLoading: false,
             };
         case MEMBER_DELETE_FAILURE:
             return {
                 ...state,
                 errorMsg: 'error',
-                deletesuccess: action.payload.success,
+                deletesuccess: false,
                 isLoading: false,
             };
         case MEMBER_SINGLELIST_REQUEST:
@@ -137,15 +142,15 @@ const memberReducer = (state = initialState, action) => {
         case MEMBER_SINGLELIST_SUCCESS:
             return {
                 ...state,
-                singlememberlist: action.payload,
-                singlememberimage: action.payload.images,
+                singlememberlist: { name: '김진석', cmaera: 'a7s2' },
+                singlememberimage: { images: 'testimage' },
                 isLoading: false,
             };
         case MEMBER_SINGLELIST_FAILURE:
             return {
                 ...state,
                 errorMsg: 'error',
-                singlememberlist: action.payload.message,
+                singlememberlist: false,
                 singlememberimage: '',
                 isLoading: false,
             };
@@ -160,14 +165,14 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 singlememberlist: '',
-                updatelist: action.payload.message,
+                updatelist: true,
                 isLoading: false,
             };
         case MEMBER_UPDATELIST_FAILURE:
             return {
                 ...state,
                 errorMsg: 'error',
-                updatelist: action.payload.message,
+                updatelist: false,
                 isLoading: false,
             };
 

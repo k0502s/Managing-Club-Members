@@ -23,7 +23,7 @@ import {
     MEMBER_REMOVEWARNMEMBER_REQUEST,
     MEMBER_REMOVEWARNMEMBER_SUCCESS,
     MEMBER_REMOVEWARNMEMBER_FAILURE,
-} from '../types';
+} from '../../types';
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -60,11 +60,10 @@ const authReducer = (state = initialState, action) => {
             localStorage.setItem('token', action.payload.token);
             return {
                 ...state,
-                ...action.payload,
                 isAuthenticated: true,
                 isLoading: false,
-                userId: action.payload.user.id,
-                userRole: action.payload.user.role,
+                userId: 1234,
+                userRole: 'User',
                 errorMsg: '',
                 warnlistDetail: '',
             };
@@ -75,14 +74,13 @@ const authReducer = (state = initialState, action) => {
             localStorage.removeItem('token');
             return {
                 ...state,
-                ...action.payload,
                 token: null,
                 user: null,
                 userId: null,
                 isAuthenticated: false,
                 isLoading: false,
                 userRole: null,
-                errorMsg: action.payload.data.msg,
+                errorMsg: false,
             };
         case LOGOUT_SUCCESS:
             localStorage.removeItem('token');
@@ -105,10 +103,14 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isAuthenticated: true,
                 isLoading: false,
-                user: action.payload,
-                userId: action.payload._id,
-                userName: action.payload.name,
-                userRole: action.payload.role,
+                user: {
+                    id: 1234,
+                    name: '김진석',
+                    role: 'User',
+                },
+                userId: 1234,
+                userName: '김진석',
+                userRole: 'User',
             };
         case USER_LOADING_FAILURE:
             return {
@@ -143,20 +145,28 @@ const authReducer = (state = initialState, action) => {
         case MEMBER_WARN_SUCCESS:
             return {
                 ...state,
-                isLoading: false,
                 user: {
-                    ...state.user,
-                    cart: action.payload,
+                    id: 1234,
+                    name: '김진석',
+                    role: 'User',
+                    cart: {
+                        id: 1234,
+                        quantity: 1,
+                        date: '2021.04.05',
+                    },
                 },
+                isLoading: false,
             };
         case MEMBER_WARN_FAILURE:
             return {
                 ...state,
-                isLoading: false,
                 user: {
-                    ...state.user,
+                    id: 1234,
+                    name: '김진석',
+                    role: 'User',
                     cart: '',
                 },
+                isLoading: false,
             };
 
         case MEMBER_WARNLIST_REQUEST:
@@ -167,20 +177,24 @@ const authReducer = (state = initialState, action) => {
         case MEMBER_WARNLIST_SUCCESS:
             return {
                 ...state,
+                totalItems: 1,
+                warndata: {
+                    id: 1234,
+                    name: '김진석',
+                    sex: 1,
+                },
+                totalPages: 1,
+                currentPage: 1,
                 isLoading: false,
-                totalItems: action.payload.totalItems,
-                warnlistDetail: action.payload.warndata,
-                totalPages: action.payload.totalPages,
-                currentPage: action.payload.currentPage,
             };
         case MEMBER_WARNLIST_FAILURE:
             return {
                 ...state,
-                isLoading: false,
                 totalItems: '',
                 warnlistDetail: '',
                 totalPages: '',
                 currentPage: '',
+                isLoading: false,
             };
 
         case MEMBER_REMOVEWARNMEMBER_REQUEST:
@@ -192,10 +206,20 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                warnlistDetail: action.payload.listInfo,
+                warnlistDetail: {
+                    name: '김진석',
+                    sex: 1,
+                    camera: 'a7s2',
+                },
                 user: {
-                    ...state.user,
-                    cart: action.payload.cart,
+                    id: 1234,
+                    name: '김진석',
+                    role: 'User',
+                    cart: {
+                        id: 1234,
+                        quantity: 1,
+                        date: '2021.04.05',
+                    },
                 },
                 removeWarnMember: true,
             };
@@ -203,7 +227,7 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                warnlistDetail:"",
+                warnlistDetail: '',
                 removeWarnMember: false,
             };
 

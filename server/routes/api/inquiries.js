@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
             console.log(data);
             res.send({
                 totalItems: data.totalDocs,
-                inquiriesdata: data.docs.reverse(),
+                inquiriesdata: data.docs,
                 totalPages: data.totalPages,
                 currentPage: data.page - 1,
                 chatalldata: chatalldata
