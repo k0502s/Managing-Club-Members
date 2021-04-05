@@ -36,6 +36,7 @@ router.post('/', (req, res) => {
                         name: user.name,
                         email: user.email,
                         role: user.role,
+                        cart: user.cart
                     },
                 });
             });

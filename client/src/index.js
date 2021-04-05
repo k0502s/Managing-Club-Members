@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import loadUser from './components/auth/loadUser';
+import loadUser from './components/Auth/loadUser';
 
 loadUser();
 
