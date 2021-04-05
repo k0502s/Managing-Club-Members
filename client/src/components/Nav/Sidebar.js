@@ -6,7 +6,7 @@ import { faBriefcase, faPaperPlane, faQuestion, faImage } from '@fortawesome/fre
 import { NavItem, NavLink, Nav, Badge } from 'reactstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import Login from '../Auth/Login';
+import Login from '../Authentication/Login';
 
 const SideBar = ({ isOpen, toggle }) => {
     const dispatch = useDispatch();
