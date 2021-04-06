@@ -5,7 +5,7 @@ import WarnCardBlock from './Section/WarnCardBlock';
 import Pagination from '@material-ui/lab/Pagination';
 import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table, CardHeader, CardBody } from 'reactstrap';
 
-const WarnMemberList = (props) => {
+const WarnMemberList = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const [page, setPage] = useState(1);
@@ -64,7 +64,7 @@ const WarnMemberList = (props) => {
         <Row style={{ width: '85%', margin: '3rem auto' }}>
             <Col>
                 <h1>WARN MEMBER LIST</h1>
-                <WarnCardBlock warnlists={warnlistDetail} />
+                <WarnCardBlock />
 
                 <Col md={{ offset: 4 }} className="mt-3">
                     <h7 style={{ marginLeft: 250 }}>Page: </h7>

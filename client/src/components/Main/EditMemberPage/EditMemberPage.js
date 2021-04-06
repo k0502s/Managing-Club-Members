@@ -9,7 +9,7 @@ const Sex = [
     { key: 2, value: '여' },
 ];
 
-const EditMember = (props) => {
+const EditMemberPage = (props) => {
     const [form, setValues] = useState({
         name: '',
         camera: '',
@@ -52,25 +52,25 @@ const EditMember = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        const nameinput = document.myform.name.value;
-        const camerainput = document.myform.camera.value;
-        const ageinput = document.myform.age.value;
-        const sexinput = document.myform.sex.value;
-        if (nameinput === '') {
-            return alert('이름 정보를 입력해야 합니다.');
-        }
-        if (camerainput === '') {
-            return alert('카메라 기종 정보를 입력해야 합니다.');
-        }
-        if (ageinput === '') {
-            return alert('나이 정보를 입력해야 합니다.');
-        }
-        if (sexinput === '') {
-            return alert('성별 정보를 입력해야 합니다.');
-        }
-        if (Images.length === 0) {
-            return alert('프로필 사진을 입력해야 합니다.');
-        }
+        // const nameinput = document.myform.name.value;
+        // const camerainput = document.myform.camera.value;
+        // const ageinput = document.myform.age.value;
+        // const sexinput = document.myform.sex.value;
+        // if (nameinput === '') {
+        //     return alert('이름 정보를 입력해야 합니다.');
+        // }
+        // if (camerainput === '') {
+        //     return alert('카메라 기종 정보를 입력해야 합니다.');
+        // }
+        // if (ageinput === '') {
+        //     return alert('나이 정보를 입력해야 합니다.');
+        // }
+        // if (sexinput === '') {
+        //     return alert('성별 정보를 입력해야 합니다.');
+        // }
+        // if (Images.length === 0) {
+        //     return alert('프로필 사진을 입력해야 합니다.');
+        // }
 
         const { name, camera, age, sex } = form;
 
@@ -105,28 +105,28 @@ const EditMember = (props) => {
             <FileUpload refreshFunction={updateImages} removefile={removefile} />
             <Col md={{ offset: 4 }} style={{ display: 'flex', width: '300px', height: '240px', borderRadius:'55%', border: '1px solid lightgray'}}>
                 {Images.map((image, index) => (
-                    <img key={index} style={{ minWidth: '300px', width: '300px', height: '240px',borderRadius:'55%', border: '1px solid lightgray'}} src={`${image}`} />
+                    <img key={index} style={{ minWidth: '300px', width: '300px', height: '240px',borderRadius:'55%', border: '1px solid lightgray'}} src={`${image}`} data-testid="add-image"/>
                 ))}
             </Col>
-            <Form onSubmit={submitHandler} name="myform">
+            <Form onSubmit={submitHandler} name="myform" data-testid="form">
                 <label>이름</label>
-                <Input onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="name" defaultValue={singlememberlist.name} />
+                <Input type="text" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="name" defaultValue={singlememberlist.name} data-testid="add-name"/>
                 <br />
                 <label>카메라 기종</label>
-                <Input onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="camera" defaultValue={singlememberlist.camera} />
+                <Input type="text" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="camera" defaultValue={singlememberlist.camera} data-testid="add-camera"/>
                 <br />
                 <label>나이</label>
-                <Input type="number" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="age" defaultValue={singlememberlist.age} />
+                <Input type="number" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="age" defaultValue={singlememberlist.age} data-testid="add-age"/>
                 <br />
-                <select onChange={onChange} value={form.sex} name="sex">
+                <select onChange={onChange} value={form.sex} name="sex" data-testid="add-sex">
                     <option value="">성별을 선택해주세요</option>
                     {Sex.map((item) => (
-                        <option key={item.key} value={item.key}>
+                        <option key={item.key} value={item.key} data-testid="select-option">
                             {item.value}
                         </option>
                     ))}
                 </select>
-                <Button className="col-md-2 offset-md-10" onClick={submitHandler}>
+                <Button className="col-md-2 offset-md-10" onClick={submitHandler} data-testid="add-submit">
                     확인
                 </Button>
             </Form>
@@ -134,4 +134,4 @@ const EditMember = (props) => {
     );
 };
 
-export default EditMember;
+export default EditMemberPage;

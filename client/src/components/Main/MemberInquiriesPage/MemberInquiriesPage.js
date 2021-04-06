@@ -82,11 +82,11 @@ const MemberInquiries = () => {
                         inquiriesdata.map((inquiries, index) => (
                             <tbody key={index}>
                                 <tr>
-                                    <th style={{ width: '10%', fontWeight: 'bold', textAlign: 'center' }}>{inquiries.name}</th>
-                                    <td style={{ width: '15%', color: 'black', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>{inquiries.email}</td>
-                                    <td style={{ width: '25%' }}>{inquiries.opinion}</td>
+                                    <th style={{ width: '10%', fontWeight: 'bold', textAlign: 'center' }} data-testid="inquiries-name">{inquiries.name}</th>
+                                    <td style={{ width: '15%', color: 'black', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }} data-testid="inquiries-email">{inquiries.email}</td>
+                                    <td style={{ width: '25%' }} data-testid="inquiries-opinion">{inquiries.opinion}</td>
                                     <td style={{ width: '10%', textAlign: 'center' }}>
-                                        <Button onClick={() => removeFromInquiries(inquiries._id)}>삭제</Button>
+                                        <Button onClick={() => removeFromInquiries(inquiries._id)} data-testid="inquiries-button">삭제</Button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -103,7 +103,7 @@ const MemberInquiries = () => {
                     </select>
                 </Col>
                 <Col md={{ offset: 5 }} xs={{ offset: 4 }}>
-                    <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
+                    <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange}/>
                 </Col>
             </Col>
             <Col sm={4}>

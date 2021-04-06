@@ -43,18 +43,18 @@ const WarnCardBlock = (props) => {
     };
 
     const renderItems = () =>
-        props.warnlists &&
-        props.warnlists.map((warnlist, index) => (
+    warnlistDetail &&
+    warnlistDetail.map((warnlist, index) => (
             <tr key={index}>
                 <td>
-                    <img style={{ width: '70px' }} alt="product" src={renderCartImage(warnlist.images)} />
+                    <img style={{ width: '70px' }} alt="product" src={renderCartImage(warnlist.images)} data-testid='warn-image'/>
                 </td>
-                <td>{warnlist.name}</td>
-                <td>{sex[warnlist.sex]}</td>
-                <td>{warnlist.quantity}</td>
-                <td>{warnlist.age}</td>
+                <td  data-testid='warn-name'>{warnlist.name}</td>
+                <td  data-testid='warn-sex'>{sex[warnlist.sex]}</td>
+                <td  data-testid='warn-quantity'>{warnlist.quantity}</td>
+                <td  data-testid='warn-age'>{warnlist.age}</td>
                 <td>
-                    <button onClick={() => removeFromlist(warnlist._id)}>Remove</button>
+                    <button onClick={() => removeFromlist(warnlist._id)} data-testid='warn-button'>Remove</button>
                 </td>
             </tr>
         ));

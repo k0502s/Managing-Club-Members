@@ -127,9 +127,9 @@ const MemberList = (props) => {
                 <ul className="list-group">
                     {memberlist &&
                         memberlist.map((memberlist, index) => (
-                            <li className={'list-group-item ' + (index === currentIndex ? 'active' : '')} onClick={() => setActiveTutorial(memberlist, index)} key={index}>
-                                <h4>{memberlist.name}</h4>
-                                <h8>{memberlist.camera}</h8>
+                            <li className={'list-group-item ' + (index === currentIndex ? 'active' : '')} onClick={() => setActiveTutorial(memberlist, index)} key={index} data-testid="list-data">
+                                <h4 data-testid="list-name">{memberlist.name}</h4>
+                                <h8 data-testid="list-camera">{memberlist.camera}</h8>
                             </li>
                         ))}
                 </ul>
@@ -140,7 +140,7 @@ const MemberList = (props) => {
                     회원 탈퇴
                 </Button>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6" data-testid="member-data">
                 {currentTutorial ? (
                     <div>
                         <h4>MEMBER DATA</h4>

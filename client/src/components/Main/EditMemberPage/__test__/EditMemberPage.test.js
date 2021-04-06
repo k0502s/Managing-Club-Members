@@ -1,11 +1,10 @@
 import React from 'react';
-import AddMemberPage from '../AddMemberPage';
+import EditMemberPage from '../EditMemberPage';
 import { render, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-describe('<AddMemberPage />컴포넌트 테스트', () => {
+describe('<EditMemberPage /> 컴포넌트 테스트', () => {
     const mockStore = configureStore();
     let store = mockStore({
         auth: {
@@ -15,56 +14,57 @@ describe('<AddMemberPage />컴포넌트 테스트', () => {
                 },
             ],
         },
+        member: {
+            singlememberlist: {
+                age: 1,
+                sex: 1,
+                name: '김진석',
+                camera: 'A7S2',
+            },
+            singlememberimage: [['image1']],
+        },
     });
+    const props = {
+        match: {
+            params: {
+                id: '1234Test',
+            },
+        },
+    };
 
     // it('matches snapshot', () => {
     //     const utils = render(
     //         <Provider store={store}>
-    //             <AddMemberPage />
+    //             <EditMemberPage {...props}/>
     //         </Provider>
     //     );
     //     expect(utils.container).toMatchSnapshot();
     // });
 
-    it('Form의 Input과 Select에 입력값이 잘 들어오는지', () => {
+    it('스토어에서 디폴트 값들이 잘 랜더링 되는지', () => {
         const onSubmit = jest.fn();
         const { getByTestId, getAllByTestId } = render(
             <Provider store={store}>
-                <AddMemberPage onSubmit={onSubmit} />
+                <EditMemberPage onSubmit={onSubmit} {...props} />
             </Provider>
         );
         const name = getByTestId('add-name');
         const camera = getByTestId('add-camera');
         const age = getByTestId('add-age');
         const sex = getByTestId('add-sex');
+        const image = getByTestId('add-image');
         const button = getByTestId('add-submit');
         let options = getAllByTestId('select-option');
 
-        fireEvent.change(name, {
-            target: {
-                value: '김진석',
-            },
-        });
-        fireEvent.change(camera, {
-            target: {
-                value: 'a7s2',
-            },
-        });
-        fireEvent.change(age, {
-            target: {
-                value: '25',
-            },
-        });
         fireEvent.change(sex, {
             target: {
                 value: '1',
             },
         });
-        userEvent.click(button);
-
+        expect(image).toHaveAttribute('src', 'image1');
         expect(name).toHaveAttribute('value', '김진석');
-        expect(camera).toHaveAttribute('value', 'a7s2');
-        expect(age).toHaveAttribute('value', '25');
+        expect(camera).toHaveAttribute('value', 'A7S2');
+        expect(age).toHaveAttribute('value', '1');
         expect(options[0]).toHaveAttribute('value', '1');
         expect(options[1]).toHaveAttribute('value', '2');
         expect(onSubmit).toHaveBeenCalledTimes(0);
