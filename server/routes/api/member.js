@@ -4,10 +4,6 @@ import Member from '../../models/member.js';
 
 const router = express.Router();
 
-//=================================
-//             Member
-//=================================
-
 import multerS3 from 'multer-s3';
 import path from 'path';
 import AWS from 'aws-sdk';
@@ -46,7 +42,7 @@ router.post('/', async (req, res) => {
         });
     } catch (e) {
         console.log(e);
-        return res.status(400).send(err);
+        res.status(400).json({ success: false });
     }
 });
 
@@ -75,7 +71,7 @@ router.get('/', async (req, res) => {
         });
     } catch (e) {
         console.log(e);
-        return res.status(400).send(err);
+        res.status(400).json({ success: false });
     }
 });
 
@@ -89,7 +85,7 @@ router.delete('/:id', async (req, res) => {
         });
     } catch (e) {
         console.log(e);
-        return res.status(400).send(err);
+        res.status(400).json({ success: false });
     }
 });
 
@@ -103,7 +99,7 @@ router.get('/:id', async (req, res) => {
         });
     } catch (e) {
         console.log(e);
-        return res.status(400).send(err);
+        res.status(400).json({ success: false });
     }
 });
 
@@ -117,7 +113,7 @@ router.put('/:id', async (req, res) => {
         });
     } catch (e) {
         console.log(e);
-        return res.status(400).send(err);
+        res.status(400).json({ success: false });
     }
 });
 

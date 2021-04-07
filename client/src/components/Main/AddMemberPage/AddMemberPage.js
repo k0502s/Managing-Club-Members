@@ -30,25 +30,25 @@ const AddMemberPage = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        // const nameinput = document.myform.name.value;
-        // const camerainput = document.myform.camera.value;
-        // const ageinput = document.myform.age.value;
-        // const sexinput = document.myform.sex.value;
-        // if (nameinput === '') {
-        //     return alert('이름 정보를 입력해야 합니다.');
-        // }
-        // if (camerainput === '') {
-        //     return alert('카메라 기종 정보를 입력해야 합니다.');
-        // }
-        // if (ageinput === '') {
-        //     return alert('나이 정보를 입력해야 합니다.');
-        // }
-        // if (sexinput === '') {
-        //     return alert('성별 정보를 입력해야 합니다.');
-        // }
-        // if (Images.length === 0) {
-        //     return alert('프로필 사진을 입력해야 합니다.');
-        // }
+        const nameinput = document.myform.name.value;
+        const camerainput = document.myform.camera.value;
+        const ageinput = document.myform.age.value;
+        const sexinput = document.myform.sex.value;
+        if (nameinput === '') {
+            return alert('이름 정보를 입력해야 합니다.');
+        }
+        if (camerainput === '') {
+            return alert('카메라 기종 정보를 입력해야 합니다.');
+        }
+        if (ageinput === '') {
+            return alert('나이 정보를 입력해야 합니다.');
+        }
+        if (sexinput === '') {
+            return alert('성별 정보를 입력해야 합니다.');
+        }
+        if (Images.length === 0) {
+            return alert('프로필 사진을 입력해야 합니다.');
+        }
 
         const { name, camera, age, sex } = form;
 

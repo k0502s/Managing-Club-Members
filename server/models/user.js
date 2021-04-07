@@ -25,10 +25,6 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
-    history: {
-        type: Array,
-        default: [],
-    },
     register_date: {
         type: Date,
         default: moment().format('YYYY-MM-DD hh:mm:ss'),

@@ -1,7 +1,6 @@
 import React from 'react';
 import AddMemberPage from '../AddMemberPage';
 import { render, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
@@ -26,11 +25,10 @@ describe('<AddMemberPage />컴포넌트 테스트', () => {
     //     expect(utils.container).toMatchSnapshot();
     // });
 
-    it('Form의 Input과 Select에 입력값이 잘 들어오는지', () => {
-        const onSubmit = jest.fn();
+    it('Form의 Input과 Select에 입력값이 들어오고 state값에 잘 들어가는지', () => {
         const { getByTestId, getAllByTestId } = render(
             <Provider store={store}>
-                <AddMemberPage onSubmit={onSubmit} />
+                <AddMemberPage />
             </Provider>
         );
         const name = getByTestId('add-name');
@@ -60,13 +58,13 @@ describe('<AddMemberPage />컴포넌트 테스트', () => {
                 value: '1',
             },
         });
-        userEvent.click(button);
+        fireEvent.click(button);
 
         expect(name).toHaveAttribute('value', '김진석');
         expect(camera).toHaveAttribute('value', 'a7s2');
         expect(age).toHaveAttribute('value', '25');
         expect(options[0]).toHaveAttribute('value', '1');
         expect(options[1]).toHaveAttribute('value', '2');
-        expect(onSubmit).toHaveBeenCalledTimes(0);
+        expect(button).toBeEnabled();
     });
 });

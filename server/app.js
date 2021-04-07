@@ -5,7 +5,6 @@ import hpp from 'hpp';
 import helmet from 'helmet';
 import cors from 'cors';
 
-//Routes
 import userRoutes from './routes/api/user.js';
 import authRoutes from './routes/api/auth.js';
 import memberRoutes from './routes/api/member.js';
@@ -33,7 +32,6 @@ mongoose
     .then(() => console.log('MongoDB connection Success'))
     .catch((e) => console.log(e));
 
-// Use routes
 app.get('/');
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);

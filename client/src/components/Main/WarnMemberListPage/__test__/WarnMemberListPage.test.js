@@ -32,7 +32,7 @@ describe('<WarnMemberListPage /> 컴포넌트 테스트', () => {
     //     expect(utils.container).toMatchSnapshot();
     // });
 
-    it('스토어의 경고 회원 데이터 잘 랜더링 되는지', () => {
+    it('스토어의 경고 회원 데이터가 잘 랜더링 되는지', () => {
         const onSubmit = jest.fn();
         const { getByTestId, getAllByTestId } = render(
             <Provider store={store}>

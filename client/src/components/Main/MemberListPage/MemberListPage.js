@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '@material-ui/lab/Pagination';
 import { useSelector, useDispatch } from 'react-redux';
 import WarnButton from './Section/WarnButton';
+import LocationDisplay from '../../../utils/LocationDisplay';
 import { MEMBER_DELETE_REQUEST, MEMBER_LIST_REQUEST } from '../../../redux/types';
 
 const sex = {
@@ -13,7 +14,7 @@ const sex = {
 
 const MemberList = (props) => {
     const dispatch = useDispatch();
-    const [currentTutorial, setCurrentTutorial] = useState(null);
+    const [currentMemberData, setCurrentMemberData] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(-1);
     const [searchName, setSearchName] = useState([]);
 
@@ -42,7 +43,7 @@ const MemberList = (props) => {
         return params;
     };
 
-    const retrieveTutorials = () => {
+    const retrieveMemberDatas = () => {
         const params = getRequestParams(searchName, page, pageSize);
 
         dispatch({
@@ -51,7 +52,10 @@ const MemberList = (props) => {
         });
     };
 
-    useEffect(retrieveTutorials, [page, pageSize]);
+    useEffect(retrieveMemberDatas, [page, pageSize]);
+    // useEffect(() => {
+    //     setCurrentMemberData(memberlist[0])
+    // }, [memberlist])
 
     const handlePageChange = (event, value) => {
         setPage(value);
@@ -70,27 +74,27 @@ const MemberList = (props) => {
     };
 
     const refreshList = () => {
-        retrieveTutorials();
-        setCurrentTutorial(null);
+        retrieveMemberDatas();
+        setCurrentMemberData(null);
         setCurrentIndex(-1);
     };
 
     const refreshList2 = () => {
-        retrieveTutorials();
-        setCurrentTutorial();
+        retrieveMemberDatas();
+        setCurrentMemberData();
         setCurrentIndex();
     };
 
-    const setActiveTutorial = (tutorial, index) => {
-        setCurrentTutorial(tutorial);
+    const setActiveMemberData = (memberdata, index) => {
+        setCurrentMemberData(memberdata);
         setCurrentIndex(index);
     };
 
-    const deleteTutorial = () => {
-        if (currentTutorial) {
+    const deleteMemberData = () => {
+        if (currentMemberData) {
             dispatch({
                 type: MEMBER_DELETE_REQUEST,
-                payload: currentTutorial._id,
+                payload: currentMemberData._id,
             });
             refreshList2();
         } else {
@@ -113,9 +117,9 @@ const MemberList = (props) => {
         <div className="list row">
             <div className="col-md-8">
                 <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="회원 이름을 입력해주세요" value={searchName} onChange={onChangeSearchName} />
+                    <input type="text" className="form-control" placeholder="회원 이름을 입력해주세요" value={searchName} onChange={onChangeSearchName} data-testid="list-search" />
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={retrieveTutorials}>
+                        <button className="btn btn-outline-secondary" type="button" onClick={retrieveMemberDatas}>
                             Search
                         </button>
                     </div>
@@ -127,7 +131,7 @@ const MemberList = (props) => {
                 <ul className="list-group">
                     {memberlist &&
                         memberlist.map((memberlist, index) => (
-                            <li className={'list-group-item ' + (index === currentIndex ? 'active' : '')} onClick={() => setActiveTutorial(memberlist, index)} key={index} data-testid="list-data">
+                            <li className={'list-group-item ' + (index === currentIndex ? 'active' : '')} onClick={() => setActiveMemberData(memberlist, index)} key={index} data-testid="list-data">
                                 <h4 data-testid="list-name">{memberlist.name}</h4>
                                 <h8 data-testid="list-camera">{memberlist.camera}</h8>
                             </li>
@@ -136,54 +140,54 @@ const MemberList = (props) => {
                 <Button className="m-3 btn btn-sm btn-success" onClick={AddMember}>
                     회원 추가
                 </Button>
-                <Button className="m-3 btn btn-sm btn-danger" onClick={deleteTutorial}>
+                <Button className="m-3 btn btn-sm btn-danger" onClick={deleteMemberData}>
                     회원 탈퇴
                 </Button>
             </div>
-            <div className="col-md-6" data-testid="member-data">
-                {currentTutorial ? (
+            <div className="col-md-6">
+                {currentMemberData && (
                     <div>
                         <h4>MEMBER DATA</h4>
                         <div>
-                            <img style={{ width: '130px' }} alt="member" oneEror="this.style.display='none'" src={renderImage(currentTutorial.images)} />
+                            <img style={{ width: '130px' }} alt="member" oneEror="this.style.display='none'" src={renderImage(currentMemberData.images)} data-testid="member-image" />
                         </div>
-                        <div>
+                        <div data-testid="member-name">
                             <label>
                                 <strong>이름:</strong>
                             </label>{' '}
-                            {currentTutorial.name}
+                            {currentMemberData.name}
                         </div>
-                        <div>
+                        <div data-testid="member-camera">
                             <label>
                                 <strong>카메라 기종:</strong>
                             </label>{' '}
-                            {currentTutorial.camera}
+                            {currentMemberData.camera}
                         </div>
-                        <div>
+                        <div data-testid="member-age">
                             <label>
                                 <strong>나이 :</strong>
                             </label>{' '}
-                            {currentTutorial.age}
+                            {currentMemberData.age}
                         </div>
-                        <div>
+                        <div data-testid="member-sex">
                             <label>
                                 <strong>성별 :</strong>
                             </label>{' '}
-                            {sex[currentTutorial.sex]}
+                            {sex[currentMemberData.sex]}
                         </div>
                         <div style={{ display: 'flex' }}>
-                            <Link to={'/edit/' + currentTutorial._id} className="m-3 btn-sm btn-success">
+                            <Link to={'/edit/' + currentMemberData._id} className="m-3 btn-sm btn-success" data-testid="member-edit">
                                 EDIT
                             </Link>
                             {/* WarnInfo */}
-                            <WarnButton detail={currentTutorial} />
+                            <WarnButton detail={currentMemberData} />
                         </div>
                     </div>
-                ) : (
-                    <div>
-                        <br />
-                        <p>Please Click on a List...</p>
-                    </div>
+                    // ) : (
+                    //     <div>
+                    //         <br />
+                    //         <p>Please Click on a List...</p>
+                    //     </div>
                 )}
             </div>
             <div className="mt-3">
@@ -198,6 +202,7 @@ const MemberList = (props) => {
 
                 <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
             </div>
+            <LocationDisplay />
         </div>
     );
 };

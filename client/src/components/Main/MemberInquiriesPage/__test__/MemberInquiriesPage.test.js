@@ -30,7 +30,6 @@ describe('<MemberInquiriesPage />컴포넌트 테스트', () => {
     // });
 
     it('문의 사항 데이터가 테이블 표 값에 잘 랜더링 되는지', () => {
-        const onSubmit = jest.fn();
         const { getByTestId } = render(
             <Provider store={store}>
                 <MemberInquiriesPage onSubmit={onSubmit} />

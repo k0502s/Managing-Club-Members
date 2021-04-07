@@ -42,10 +42,9 @@ describe('<EditMemberPage /> 컴포넌트 테스트', () => {
     // });
 
     it('스토어에서 디폴트 값들이 잘 랜더링 되는지', () => {
-        const onSubmit = jest.fn();
         const { getByTestId, getAllByTestId } = render(
             <Provider store={store}>
-                <EditMemberPage onSubmit={onSubmit} {...props} />
+                <EditMemberPage {...props} />
             </Provider>
         );
         const name = getByTestId('add-name');
@@ -61,12 +60,13 @@ describe('<EditMemberPage /> 컴포넌트 테스트', () => {
                 value: '1',
             },
         });
+        fireEvent.click(button);
         expect(image).toHaveAttribute('src', 'image1');
         expect(name).toHaveAttribute('value', '김진석');
         expect(camera).toHaveAttribute('value', 'A7S2');
         expect(age).toHaveAttribute('value', '1');
         expect(options[0]).toHaveAttribute('value', '1');
         expect(options[1]).toHaveAttribute('value', '2');
-        expect(onSubmit).toHaveBeenCalledTimes(0);
+        expect(button).toBeEnabled();
     });
 });

@@ -3,10 +3,6 @@ import Chat from '../../models/Chat.js';
 
 const router = express.Router();
 
-//=================================
-//             inquiries
-//=================================
-
 const getPagination = (page, size) => {
     const limit = size ? +size : 3;
     const offset = page ? page * limit : 0;
@@ -28,12 +24,12 @@ router.get('/', async (req, res) => {
                 inquiriesdata: data.docs,
                 totalPages: data.totalPages,
                 currentPage: data.page - 1,
-                chatalldata: chatalldata
+                chatalldata: chatalldata,
             });
         });
     } catch (e) {
         console.log(e);
-        return res.status(400).send(err);
+        res.status(400).json({ success: false });
     }
 });
 
@@ -47,7 +43,7 @@ router.delete('/:id', async (req, res) => {
         });
     } catch (e) {
         console.log(e);
-        return res.status(400).send(err);
+        res.status(400).json({ success: false });
     }
 });
 
