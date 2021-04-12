@@ -6,11 +6,13 @@ import Router from './components/MyRouter/Router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/custom.scss';
 import './assets/Nav.scss';
+import GlobalStyle from './assets/GlobalStyle'
 
 const App = () => {
     return (
         <Provider store={store}>
             <ConnectedRouter history={history}>
+                <GlobalStyle />
                 <Router />
             </ConnectedRouter>
         </Provider>

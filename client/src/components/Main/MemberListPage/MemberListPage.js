@@ -53,9 +53,7 @@ const MemberList = (props) => {
     };
 
     useEffect(retrieveMemberDatas, [page, pageSize]);
-    // useEffect(() => {
-    //     setCurrentMemberData(memberlist[0])
-    // }, [memberlist])
+  
 
     const handlePageChange = (event, value) => {
         setPage(value);
@@ -145,7 +143,7 @@ const MemberList = (props) => {
                 </Button>
             </div>
             <div className="col-md-6">
-                {currentMemberData && (
+                {currentMemberData ? (
                     <div>
                         <h4>MEMBER DATA</h4>
                         <div>
@@ -183,11 +181,11 @@ const MemberList = (props) => {
                             <WarnButton detail={currentMemberData} />
                         </div>
                     </div>
-                    // ) : (
-                    //     <div>
-                    //         <br />
-                    //         <p>Please Click on a List...</p>
-                    //     </div>
+                    ) : (
+                        <div>
+                            <br />
+                            <p>Please Click on a List...</p>
+                        </div>
                 )}
             </div>
             <div className="mt-3">
@@ -199,7 +197,6 @@ const MemberList = (props) => {
                         </option>
                     ))}
                 </select>
-
                 <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
             </div>
             <LocationDisplay />

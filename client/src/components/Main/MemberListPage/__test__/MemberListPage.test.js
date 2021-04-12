@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
 
-describe('<MemberListPage />', () => {
+describe('<MemberListPage /> 컴포넌트 테스트', () => {
     const mockStore = configureStore();
     let store = mockStore({
         member: {
