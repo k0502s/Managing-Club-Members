@@ -1,6 +1,4 @@
 import React, { Fragment } from 'react';
-import classNames from 'classnames';
-import { Container } from 'reactstrap';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import LandingPage from '../../Main/LandingPage/LandingPage';
 import MenmberListPage from '../../Main/MemberListPage/MemberListPage';
@@ -9,9 +7,10 @@ import AddMemberPage from '../../Main/AddMemberPage/AddMemberPage';
 import MemberInquiriesPage from '../../Main/MemberInquiriesPage/MemberInquiriesPage';
 import EditMemberPage from '../../Main/EditMemberPage/EditMemberPage';
 import Topbar from '../../Nav/Topbar';
+import * as S from './Content.style'
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
-    <Container fluid className={classNames('content', { 'is-open': sidebarIsOpen })}>
+    <S.container fluid isOpen={sidebarIsOpen}>
         <Topbar toggleSidebar={toggleSidebar} />
         <Fragment>
             <Switch>
@@ -24,7 +23,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
                 <Redirect from="*" to="/" />
             </Switch>
         </Fragment>
-    </Container>
+    </S.container>
 );
 
 export default Content;

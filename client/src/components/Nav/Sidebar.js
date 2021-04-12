@@ -1,13 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MEMBER_INQUIRIES_REQUEST } from '../../redux/types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faPaperPlane, faQuestion, faImage } from '@fortawesome/free-solid-svg-icons';
 import { NavItem, NavLink, Nav, Badge } from 'reactstrap';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Login from '../Authentication/Login';
 import LocationDisplay from '../../utils/LocationDisplay';
+import headerImage from '../../assets/img/camera2.png'
+import * as S from './Nav.style';
 
 const SideBar = ({ isOpen, toggle }) => {
     const dispatch = useDispatch();
@@ -25,57 +25,62 @@ const SideBar = ({ isOpen, toggle }) => {
     const authLink = (
         <Fragment>
             <NavItem>
-                <NavLink tag={Link} to={'/'} data-testid='home'>
-                    <FontAwesomeIcon icon={faBriefcase} className="mr-2" />
+                <NavLink tag={Link} to={'/'} data-testid="home">
+                    <S.Icon icon={faBriefcase} />
                     HOME
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={Link} to={'/addmember'} data-testid='addmember'>
-                    <FontAwesomeIcon icon={faImage} className="mr-2" />
+                <NavLink tag={Link} to={'/addmember'} data-testid="addmember">
+                    <S.Icon icon={faImage} />
                     ADD MEMBER
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={Link} to={'/list'} data-testid='list'>
-                    <FontAwesomeIcon icon={faImage} className="mr-2" />
+                <NavLink tag={Link} to={'/list'} data-testid="list">
+                    <S.Icon icon={faImage} />
                     MEMBER LIST
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={Link} to={'/warnlist'} data-testid='warnlist'>
-                    <FontAwesomeIcon icon={faPaperPlane} className="mr-2" />
+                <NavLink tag={Link} to={'/warnlist'} data-testid="warnlist">
+                    <S.Icon icon={faPaperPlane} />
                     WARN MEMBER LIST
                     {/* <Badge color="secondary">{usercart.length}</Badge> */}
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={Link} to={'/inquiries'} data-testid='inquiries'>
-                    <FontAwesomeIcon icon={faQuestion} className="mr-2" />
-                    MEMBER INQIRIES <Badge color="danger" data-testid='inquiries-data'>{chatalldata.length > 0 && chatalldata.length}</Badge>
+                <NavLink tag={Link} to={'/inquiries'} data-testid="inquiries">
+                    <S.Icon icon={faQuestion} />
+                    MEMBER INQIRIES{' '}
+                    <Badge color="danger" data-testid="inquiries-data">
+                        {chatalldata.length > 0 && '+' + chatalldata.length}
+                    </Badge>
                 </NavLink>
             </NavItem>
         </Fragment>
     );
 
     return (
-        <div className={classNames('sidebar', { 'is-open': isOpen })}>
-            <div className="sidebar-header">
-                <span color="info" onClick={toggle} style={{ color: '#fff' }}>
+        <S.Sidebar isOpen={isOpen}>
+            <S.SidbarHeader isOpen={isOpen}>
+                <span onClick={toggle}>
                     &times;
                 </span>
-                <h3>Member Management System</h3>
-            </div>
+                <img src={headerImage} id='page-logo'
+                    />
+                    <h5>ADMIN SYSTEM</h5>
+            </S.SidbarHeader >
             <Nav vertical className="list-unstyled pb-3">
                 <Login />
             </Nav>
-            <div className="side-menu">
+            <S.SideMenu>
                 <Nav vertical className="list-unstyled pb-3">
                     {isAuthenticated ? authLink : guestLink}
                 </Nav>
-            </div>
-            <LocationDisplay/>
-        </div>
+            </S.SideMenu>
+            <LocationDisplay />
+        </S.Sidebar>
     );
 };
 

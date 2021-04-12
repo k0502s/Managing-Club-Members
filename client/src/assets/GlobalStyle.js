@@ -42,6 +42,33 @@ body {
   p,h2 {
     margin: 0;
   }
+  .menu-open {
+     background: #6d7fcc;
+ }
+
+ .items-menu {
+     color: #fff;
+    background: #6d7fcc;
+}
+
+ li a.dropdown-toggle::after {
+    display: inline-flex;
+   position: relative;
+    left: 60%;
+    top: 10%;
+}
+
+@media only screen and (max-width: 500px) {
+    body {
+        overflow: hidden;
+    }
+ 
+    li a.dropdown-toggle::after {
+        display: inline-block;
+        position: relative;
+        left: 68%;
+    }
+}
 `;
 
 export default GlobalStyle;

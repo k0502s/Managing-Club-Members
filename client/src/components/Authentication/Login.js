@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Form, FormGroup, Label, Input, Button, NavLink } from 'reactstrap';
+import { Alert, Form, FormGroup, Col, Label, Input, Button, NavLink } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGIN_REQUEST, LOGOUT_REQUEST } from '../../redux/types';
-
+import * as S from './Authentication.style';
 
 const Login = () => {
     const [localMsg, setLocalMsg] = useState('');
@@ -53,17 +53,15 @@ const Login = () => {
             {localMsg ? <Alert color="danger">{localMsg}</Alert> : null}
             <Form onSubmit={onSubmit}>
                 <FormGroup>
-                    <Label style={{ marginLeft: '1.5rem' }} for="email">
-                        Email
-                    </Label>
-                    <Input style={{ width: '80%', marginLeft: '1.5rem' }} type="email" name="email" value={form.email} id="email" placeholder="Email" onChange={onChange} data-testid='login-email'/>
-                    <Label style={{ marginTop: '0.5rem', marginLeft: '1.5rem' }} for="password">
-                        Password
-                    </Label>
-                    <Input style={{ width: '80%', marginLeft: '1.5rem' }} type="password" name="password" value={form.password} id="password" placeholder="Password" onChange={onChange} data-testid='login-password'/>
-                    <Button color="dark" style={{ marginTop: '1rem', marginLeft: '2rem', width: '70%' }} block data-testid='login-button'>
-                        Login
-                    </Button>
+                    <S.label for="email">Email</S.label>
+                    <S.input type="email" name="email" value={form.email} id="email" placeholder="Email" onChange={onChange} data-testid="login-email" />
+                    <S.label for="password">Password</S.label>
+                    <S.input type="password" name="password" value={form.password} id="password" placeholder="Password" onChange={onChange} data-testid="login-password" />
+                    <Col>
+                        <S.button block data-testid="login-button">
+                            Login
+                        </S.button>
+                    </Col>
                 </FormGroup>
             </Form>
         </Fragment>
@@ -71,22 +69,21 @@ const Login = () => {
 
     const authLink = (
         <Fragment>
-            <Form className="col mt-2">
+            <Col>
+                <S.welcome>안녕하세요.</S.welcome>
                 {user && user.name ? (
-                    <NavLink style={{ marginLeft: '2rem' }}>{user ? `Welcome ${user.name}` : ''}</NavLink>
+                    <S.userName>{user ? `${user.name} 님` : ''}</S.userName>
                 ) : (
-                    <NavLink>
+                    <S.userName>
                         <strong>No User</strong>
-                    </NavLink>
+                    </S.userName>
                 )}
-            </Form>
-            <Form className="col">
+            </Col>
+            <Col>
                 <Link onClick={onLogout} to="/">
-                    <Button color="dark" style={{ marginTop: '1rem', marginLeft: '2rem', width: '70%' }} block>
-                        Logout
-                    </Button>
+                    <S.button>Logout</S.button>
                 </Link>
-            </Form>
+            </Col>
         </Fragment>
     );
 
