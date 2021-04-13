@@ -83,9 +83,9 @@ const AddMemberPage = (props) => {
             </div> */}
             <Row>
                 <Col>
-                    <Card>
+                    <S.card>
                         <CardHeader>참고 사항</CardHeader>
-                        <S.card>
+                        <CardBody>
                             <CardTitle tag="h5">※ 회원 추가 안내</CardTitle>
                             <br />
                             <br />
@@ -95,18 +95,18 @@ const AddMemberPage = (props) => {
                             <br />
                             <CardText>3. 회원분이 동호회에서 탈퇴하거나 경고 누적으로 제명이 되면 회원 리스트 페이지에서 회원 정보를 삭제할 수 있습니다.</CardText>
                             <S.pngImg src={img} />
-                        </S.card>
-                    </Card>
+                        </CardBody>
+                    </S.card>
                 </Col>
                 <Col>
-                    <Card>
+                    <S.card>
                         <CardHeader>회원 정보 추가</CardHeader>
-                        <S.card>
+                        <CardBody>
                             <S.Profile>
                                 {Images.map((image, index) => (
                                     <S.Img key={index} src={`${image}`} />
                                 ))}
-                                {Images.length === 0 ? <S.PersonIcon/> : ''}
+                                {Images.length === 0 ? <S.PersonIcon /> : ''}
                             </S.Profile>
                             <S.FileUpload>
                                 <FileUpload refreshFunction={updateImages} removefile={removefile} />
@@ -133,8 +133,8 @@ const AddMemberPage = (props) => {
                                     확인
                                 </S.button>
                             </Form>
-                        </S.card>
-                    </Card>
+                        </CardBody>
+                    </S.card>
                 </Col>
             </Row>
         </>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Col, CardBody, Button } from 'reactstrap';
+import { Col, CardBody, Card, Button } from 'reactstrap';
 import { BsPersonFill, BsUpload, BsTrash } from 'react-icons/bs';
 
 const PersonIcon = styled(BsPersonFill)`
@@ -63,7 +63,10 @@ const pngImg = styled.img`
     }
 `;
 
-const card = styled(CardBody)`
-    height:  720px;
+const card = styled(Card)`
+    height: 780px;
+    @media only screen and (max-width: 500px) {
+        margin-top: 30px;
+    }
 `;
 export { Profile, Img, FileUpload, pngImg, card, deleteIcon, PersonIcon, uploadIcon, button };

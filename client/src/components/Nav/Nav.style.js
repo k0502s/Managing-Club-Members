@@ -39,7 +39,7 @@ const Sidebar = styled.div`
     min-width: 250px;
     max-width: 250px;
     min-height: 150vh;
-    background: #48877F;
+    background: #48877f;
     color: #fff;
     margin-left: -250px;
     transition: all 0.5s;
@@ -47,6 +47,7 @@ const Sidebar = styled.div`
     transition: ${({ isOpen }) => (isOpen ? '0.5s' : '')};
 
     @media only screen and (max-width: 500px) {
+        min-height: 290vh;
         min-width: ${({ isOpen }) => (isOpen ? '100%' : '')};
         max-width: ${({ isOpen }) => (isOpen ? '100%' : '')};
         margin-left: ${({ isOpen }) => (isOpen ? 0 : '')};

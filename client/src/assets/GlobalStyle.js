@@ -60,9 +60,6 @@ body {
 }
 
 @media only screen and (max-width: 500px) {
-    body {
-        overflow: hidden;
-    }
  
     li a.dropdown-toggle::after {
         display: inline-block;
