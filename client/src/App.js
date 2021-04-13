@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/custom.scss';
 import GlobalStyle from './assets/GlobalStyle'
 
+
 const App = () => {
     return (
         <Provider store={store}>

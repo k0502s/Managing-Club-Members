@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Form, FormGroup, Col, Label, Input, Button, NavLink } from 'reactstrap';
+import { Alert, Form, FormGroup, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGIN_REQUEST, LOGOUT_REQUEST } from '../../redux/types';
 import * as S from './Authentication.style';

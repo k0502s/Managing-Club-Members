@@ -1,12 +1,11 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MEMBER_INQUIRIES_REQUEST } from '../../redux/types';
-import { faBriefcase, faPaperPlane, faQuestion, faImage } from '@fortawesome/free-solid-svg-icons';
 import { NavItem, NavLink, Nav, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Login from '../Authentication/Login';
 import LocationDisplay from '../../utils/LocationDisplay';
-import headerImage from '../../assets/img/camera2.png'
+import headerImage from '../../assets/img/camera2.png';
 import * as S from './Nav.style';
 
 const SideBar = ({ isOpen, toggle }) => {
@@ -26,32 +25,32 @@ const SideBar = ({ isOpen, toggle }) => {
         <Fragment>
             <NavItem>
                 <NavLink tag={Link} to={'/'} data-testid="home">
-                    <S.Icon icon={faBriefcase} />
-                    HOME
+                    <S.HomeIcon />
+                     HOME
                 </NavLink>
             </NavItem>
             <NavItem>
                 <NavLink tag={Link} to={'/addmember'} data-testid="addmember">
-                    <S.Icon icon={faImage} />
+                    <S.AddIcon />
                     ADD MEMBER
                 </NavLink>
             </NavItem>
             <NavItem>
                 <NavLink tag={Link} to={'/list'} data-testid="list">
-                    <S.Icon icon={faImage} />
+                    <S.ListIcon/>
                     MEMBER LIST
                 </NavLink>
             </NavItem>
             <NavItem>
                 <NavLink tag={Link} to={'/warnlist'} data-testid="warnlist">
-                    <S.Icon icon={faPaperPlane} />
+                    <S.WarnIcon/>
                     WARN MEMBER LIST
                     {/* <Badge color="secondary">{usercart.length}</Badge> */}
                 </NavLink>
             </NavItem>
             <NavItem>
                 <NavLink tag={Link} to={'/inquiries'} data-testid="inquiries">
-                    <S.Icon icon={faQuestion} />
+                    <S.QIcon/>
                     MEMBER INQIRIES{' '}
                     <Badge color="danger" data-testid="inquiries-data">
                         {chatalldata.length > 0 && '+' + chatalldata.length}
@@ -64,13 +63,10 @@ const SideBar = ({ isOpen, toggle }) => {
     return (
         <S.Sidebar isOpen={isOpen}>
             <S.SidbarHeader isOpen={isOpen}>
-                <span onClick={toggle}>
-                    &times;
-                </span>
-                <img src={headerImage} id='page-logo'
-                    />
-                    <h5>ADMIN SYSTEM</h5>
-            </S.SidbarHeader >
+                <span onClick={toggle}>&times;</span>
+                <img src={headerImage}/>
+                <h5>ADMIN SYSTEM</h5>
+            </S.SidbarHeader>
             <Nav vertical className="list-unstyled pb-3">
                 <Login />
             </Nav>

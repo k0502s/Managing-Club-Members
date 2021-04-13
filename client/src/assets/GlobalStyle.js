@@ -8,17 +8,18 @@ const GlobalStyle = createGlobalStyle`
 }
 
 @import 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700';
-
+@import 'https://fonts.googleapis.com/css2?family=Staatliches&display=swap';
 body {
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     background: #fafafa;
+    background-color: #4c443c;
 }
 #main-footer {
     background: #343a40;
     color: #ffff;
 }
 #main-body {
-    min-height: 90vh;
+    min-height: 150vh;
 }
 
   *, *:before, *:after {

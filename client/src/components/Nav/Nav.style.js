@@ -1,16 +1,45 @@
 import styled from 'styled-components';
-import { Navbar } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Navbar, Badge } from 'reactstrap';
+import { BsFillPersonPlusFill, BsFillHouseDoorFill, BsFillPersonLinesFill, BsExclamationTriangle, BsFillQuestionDiamondFill, BsJustify } from 'react-icons/bs';
 
-const Icon = styled(FontAwesomeIcon)`
+const HomeIcon = styled(BsFillHouseDoorFill)`
     margin-right: 10px;
+    margin-bottom: 4px;
+    font-size: large;
+`;
+const AddIcon = styled(BsFillPersonPlusFill)`
+    margin-right: 10px;
+    margin-bottom: 3px;
+    font-size: large;
+`;
+const ListIcon = styled(BsFillPersonLinesFill)`
+    margin-right: 10px;
+    margin-bottom: 3px;
+    font-size: large;
+`;
+const WarnIcon = styled(BsExclamationTriangle)`
+    margin-left: -2px;
+    margin-right: 10px;
+    margin-bottom: 3px;
+    font-size: large;
+`;
+const QIcon = styled(BsFillQuestionDiamondFill)`
+    margin-left: -2px;
+    margin-right: 10px;
+    margin-bottom: 3px;
+    font-size: large;
+`;
+
+const toggleIcon = styled(BsJustify)`
+    font-size: 25px;
+    margin-bottom: 2px;
 `;
 
 const Sidebar = styled.div`
     min-width: 250px;
     max-width: 250px;
-    min-height: 950px;
-    background: #7386d5;
+    min-height: 150vh;
+    background: #48877F;
     color: #fff;
     margin-left: -250px;
     transition: all 0.5s;
@@ -37,8 +66,8 @@ const Sidebar = styled.div`
 `;
 
 const SidbarHeader = styled.div`
-    background: #6d7fcc;
-
+    background: #1c685e;
+    text-align: center;
     & h3 {
         color: #fff;
         padding: 1em;
@@ -46,17 +75,15 @@ const SidbarHeader = styled.div`
     & img {
         width: 80x;
         height: 80px;
-        margin-left: 16%;
         margin-top: 10%;
-        
         @media only screen and (max-width: 500px) {
-            margin-left: 92px;
+            margin-left: 50px;
         }
     }
     & h5 {
         text-align: center;
         color: #fff;
-        padding:10px;
+        padding: 10px;
     }
     & > span {
         position: relative;
@@ -93,9 +120,16 @@ const SideMenu = styled.div`
 const Topbar = styled(Navbar)`
     padding: 30px;
     margin-bottom: 50px;
-    background-color: light;
+    background-color: #f4fcfb;
     border-radius: 15px;
     box-shadow: 0 6px 10px 0 rgb(55, 54, 54);
 `;
 
-export { Icon, Sidebar, SidbarHeader, SideMenu, Topbar };
+const badge = styled(Badge)`
+    position: relative;
+    margin-left: -18px;
+    top: 10px;
+    border-radius: 50%;
+`;
+
+export { AddIcon, HomeIcon, ListIcon, WarnIcon, QIcon, toggleIcon, Sidebar, SidbarHeader, SideMenu, Topbar, badge };
