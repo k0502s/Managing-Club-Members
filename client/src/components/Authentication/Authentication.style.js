@@ -17,6 +17,10 @@ const button = styled(Button)`
     color: white;
     background-color: #333;
     border-radius: 18px;
+    border: 1px;
+    &:hover {
+        background-color: lightslategray;
+    }
 `;
 
 const userName = styled(Col)`
