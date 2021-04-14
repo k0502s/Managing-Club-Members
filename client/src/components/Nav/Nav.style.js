@@ -38,35 +38,35 @@ const toggleIcon = styled(BsJustify)`
 const Sidebar = styled.div`
     min-width: 250px;
     max-width: 250px;
-    min-height: 150vh;
     background: #48877f;
     color: #fff;
     margin-left: -250px;
     transition: all 0.5s;
     margin-left: ${({ isOpen }) => (isOpen ? '0' : '')};
     transition: ${({ isOpen }) => (isOpen ? '0.5s' : '')};
-
-    @media only screen and (max-width: 500px) {
-        min-height: 290vh;
-        min-width: ${({ isOpen }) => (isOpen ? '100%' : '')};
-        max-width: ${({ isOpen }) => (isOpen ? '100%' : '')};
-        margin-left: ${({ isOpen }) => (isOpen ? 0 : '')};
-        transition: ${({ isOpen }) => (isOpen ? 'all 0.5s, height 0s' : '')};
-    }
-
-    & ul,
-    p {
+    & ul {
         color: #fff;
-        padding: 10px;
+        padding: 20px 0;
+        border-bottom: 1px solid #fff;
     }
 
     & .nav-item:hover {
         color: #7386d5;
         background: #fff;
     }
+    /* & ul li.active > a,
+    a[aria-expanded='true'] {
+        color: #fff;
+        background: #6d7fcc;
+    } */
+    @media (max-width: 768px) {
+        margin-left: -250px;
+        margin-left: ${({ isOpen }) => (isOpen ? '0' : '')};
+    }
 `;
 
 const SidbarHeader = styled.div`
+    padding: 20px;
     background: #1c685e;
     text-align: center;
     & h3 {
@@ -77,26 +77,11 @@ const SidbarHeader = styled.div`
         width: 80x;
         height: 80px;
         margin-top: 10%;
-        @media only screen and (max-width: 500px) {
-            margin-left: 50px;
-        }
     }
     & h5 {
         text-align: center;
         color: #fff;
         padding: 10px;
-    }
-    & > span {
-        position: relative;
-        float: right;
-        margin: 0.5em;
-        font-size: 2rem;
-        cursor: pointer;
-        display: none;
-        color: #fff;
-        @media only screen and (max-width: 500px) {
-            display: ${({ isOpen }) => (isOpen ? 'unset' : '')};
-        }
     }
 `;
 

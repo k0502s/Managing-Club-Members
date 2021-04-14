@@ -8,7 +8,7 @@ import LocationDisplay from '../../utils/LocationDisplay';
 import headerImage from '../../assets/img/camera2.png';
 import * as S from './Nav.style';
 
-const SideBar = ({ isOpen, toggle }) => {
+const SideBar = ({ isOpen }) => {
     const dispatch = useDispatch();
     const { isAuthenticated, user } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
@@ -63,7 +63,6 @@ const SideBar = ({ isOpen, toggle }) => {
     return (
         <S.Sidebar isOpen={isOpen}>
             <S.SidbarHeader isOpen={isOpen}>
-                <span onClick={toggle}>&times;</span>
                 <img src={headerImage}/>
                 <h5>ADMIN SYSTEM</h5>
             </S.SidbarHeader>

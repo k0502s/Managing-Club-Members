@@ -19,7 +19,7 @@ body {
     color: #ffff;
 }
 #main-body {
-    min-height: 150vh;
+    min-height:220vh;
 }
 
   *, *:before, *:after {
@@ -43,7 +43,7 @@ body {
   p,h2 {
     margin: 0;
   }
-  .menu-open {
+  /* .menu-open {
      background: #6d7fcc;
  }
 
@@ -66,7 +66,7 @@ body {
         position: relative;
         left: 68%;
     }
-}
-`;
+}*/
+`; 
 
 export default GlobalStyle;
