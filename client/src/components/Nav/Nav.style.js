@@ -44,24 +44,19 @@ const Sidebar = styled.div`
     transition: all 0.5s;
     margin-left: ${({ isOpen }) => (isOpen ? '0' : '')};
     transition: ${({ isOpen }) => (isOpen ? '0.5s' : '')};
+
     & ul {
         color: #fff;
-        padding: 20px 0;
-        border-bottom: 1px solid #fff;
+        padding: 22px 18px;
     }
 
     & .nav-item:hover {
         color: #7386d5;
-        background: #fff;
+        /* background: #fff; */
     }
-    /* & ul li.active > a,
-    a[aria-expanded='true'] {
-        color: #fff;
-        background: #6d7fcc;
-    } */
-    @media (max-width: 768px) {
+    @media only screen and (max-width: 500px) {
         margin-left: -250px;
-        margin-left: ${({ isOpen }) => (isOpen ? '0' : '')};
+        margin-left: ${({ isOpen }) => (isOpen ? '' : '0')};
     }
 `;
 
@@ -87,8 +82,11 @@ const SidbarHeader = styled.div`
 
 const SideMenu = styled.div`
     height: calc(100vh - 130px);
-    overflow-y: scroll;
 
+    & a {
+        border-bottom: 1px solid #ededed;
+        padding: 12px 0;
+    }
     &::-webkit-scrollbar {
         width: 10px;
     }

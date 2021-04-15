@@ -26,7 +26,7 @@ const SideBar = ({ isOpen }) => {
             <NavItem>
                 <NavLink tag={Link} to={'/'} data-testid="home">
                     <S.HomeIcon />
-                     HOME
+                    HOME
                 </NavLink>
             </NavItem>
             <NavItem>
@@ -37,20 +37,20 @@ const SideBar = ({ isOpen }) => {
             </NavItem>
             <NavItem>
                 <NavLink tag={Link} to={'/list'} data-testid="list">
-                    <S.ListIcon/>
+                    <S.ListIcon />
                     MEMBER LIST
                 </NavLink>
             </NavItem>
             <NavItem>
                 <NavLink tag={Link} to={'/warnlist'} data-testid="warnlist">
-                    <S.WarnIcon/>
+                    <S.WarnIcon />
                     WARN MEMBER LIST
                     {/* <Badge color="secondary">{usercart.length}</Badge> */}
                 </NavLink>
             </NavItem>
             <NavItem>
                 <NavLink tag={Link} to={'/inquiries'} data-testid="inquiries">
-                    <S.QIcon/>
+                    <S.QIcon />
                     MEMBER INQIRIES{' '}
                     <Badge color="danger" data-testid="inquiries-data">
                         {chatalldata.length > 0 && '+' + chatalldata.length}
@@ -63,12 +63,12 @@ const SideBar = ({ isOpen }) => {
     return (
         <S.Sidebar isOpen={isOpen}>
             <S.SidbarHeader isOpen={isOpen}>
-                <img src={headerImage}/>
+                <img src={headerImage} />
                 <h5>ADMIN SYSTEM</h5>
             </S.SidbarHeader>
-            <Nav vertical className="list-unstyled pb-3">
-                <Login />
-            </Nav>
+
+            <Login />
+
             <S.SideMenu>
                 <Nav vertical className="list-unstyled pb-3">
                     {isAuthenticated ? authLink : guestLink}
