@@ -8,6 +8,7 @@ import { MEMBER_DELETE_REQUEST, MEMBER_LIST_REQUEST } from '../../../redux/types
 import { Button, Col, Row, Input, InputGroup, InputGroupAddon, CardHeader } from 'reactstrap';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Pagination from '@material-ui/lab/Pagination';
+import { Loader } from '../../Loader/Loader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -35,7 +36,7 @@ const MemberList = (props) => {
 
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(3);
-    const { memberlist, totalPages } = useSelector((state) => state.member);
+    const { memberlist, totalPages, isLoading } = useSelector((state) => state.member);
     const pageSizes = [3, 6];
 
     const getRequestParams = (searchTitle, page, pageSize) => {
@@ -134,7 +135,7 @@ const MemberList = (props) => {
         props.history.push('/addmember');
     };
 
-    return (
+    const Body = (
         <Row>
             <Helmet title={`회원 리스트`} />
             <Col>
@@ -198,6 +199,8 @@ const MemberList = (props) => {
             <LocationDisplay />
         </Row>
     );
+
+    return <>{isLoading ? Loader : Body}</>;
 };
 
 export default MemberList;
