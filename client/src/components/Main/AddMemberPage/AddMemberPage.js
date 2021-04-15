@@ -12,7 +12,7 @@ const Sex = [
     { key: 2, value: '여' },
 ];
 
-const AddMemberPage = (props) => {
+const AddMemberPage = () => {
     const dispatch = useDispatch();
     const [form, setValues] = useState({
         name: '',

@@ -8,7 +8,7 @@ const sex = {
     2: '여',
 };
 
-const WarnCardBlock = (props) => {
+const WarnCardBlock = () => {
     const dispatch = useDispatch();
     const [ShowEmpty, setShowEmpty] = useState("");
     const { warnlistDetail } = useSelector((state) => state.auth);

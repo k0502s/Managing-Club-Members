@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import FileUpload from '../../../utils/FileUpload';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +10,7 @@ const Sex = [
     { key: 2, value: '여' },
 ];
 
-const EditMemberPage = (props) => {
+const EditMemberPage = ({ match }) => {
     const [form, setValues] = useState({
         name: '',
         camera: '',
@@ -30,8 +31,8 @@ const EditMemberPage = (props) => {
     };
 
     useEffect(() => {
-        getMemberList(props.match.params.id);
-    }, [props.match.params.id]);
+        getMemberList(match.params.id);
+    }, [match.params.id]);
 
     useEffect(() => {
         setValues({
@@ -99,6 +100,7 @@ const EditMemberPage = (props) => {
 
     return (
         <Col md={{ size: 6, offset: 3 }}>
+            <Helmet title={`회원 정보 수정`} />
             {/* <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
                 <h2>회원 정보 수정</h2>
             </div> */}
