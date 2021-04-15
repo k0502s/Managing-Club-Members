@@ -23,6 +23,9 @@ import {
     MEMBER_REMOVE_INQUIRIES_REQUEST,
     MEMBER_REMOVE_INQUIRIES_SUCCESS,
     MEMBER_REMOVE_INQUIRIES_FAILURE,
+    CLEAR_ERROR_SUCCESS_1,
+    CLEAR_ERROR_FAILURE_1,
+    CLEAR_ERROR_REQUEST_1,
 } from '../types';
 
 
@@ -221,6 +224,25 @@ function* watchDeleteMemberInqiries() {
     yield takeEvery(MEMBER_REMOVE_INQUIRIES_REQUEST, Deletememberinqiries);
 }
 
+// clear Error
+
+function* clearError() {
+    try {
+        yield put({
+            type: CLEAR_ERROR_SUCCESS_1,
+        });
+    } catch (e) {
+        yield put({
+            type: CLEAR_ERROR_FAILURE_1,
+        });
+        console.error(e);
+    }
+}
+
+function* watchclearError() {
+    yield takeEvery(CLEAR_ERROR_REQUEST_1, clearError);
+}
+
 export default function* memberSaga() {
     yield all([
         fork(watchMenberUpload),
@@ -230,6 +252,7 @@ export default function* memberSaga() {
         fork(watchMemberUpdate),
         fork(watchMemberInqiries),
         fork(watchDeleteMemberInqiries),
+        fork(watchclearError),
 
     ]);
 }

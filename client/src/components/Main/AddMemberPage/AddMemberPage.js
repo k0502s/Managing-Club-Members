@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import FileUpload from '../../../utils/FileUpload';
 import { useDispatch, useSelector } from 'react-redux';
-import { MEMBER_UPLOADING_REQUEST } from '../../../redux/types';
+import { MEMBER_UPLOADING_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
 import * as S from './AddMemberPage.style';
 import img from '../../../assets/img/imgbin_photography-logo-photographer-png.png';
 
@@ -23,6 +23,15 @@ const AddMemberPage = () => {
 
     const [Images, setImages] = useState([]);
     const { user } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        dispatch({
+            type: CLEAR_ERROR_REQUEST,
+        });
+        dispatch({
+            type: CLEAR_ERROR_REQUEST_1,
+        });
+    }, [])
 
     const onChange = (e) => {
         setValues({

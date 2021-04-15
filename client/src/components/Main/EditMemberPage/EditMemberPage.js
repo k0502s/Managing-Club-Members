@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import FileUpload from '../../../utils/FileUpload';
 import { useDispatch, useSelector } from 'react-redux';
-import { MEMBER_SINGLELIST_REQUEST, MEMBER_UPDATELIST_REQUEST } from '../../../redux/types';
+import { MEMBER_SINGLELIST_REQUEST, MEMBER_UPDATELIST_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
 import * as S from './EditMamberePage.style';
 const Sex = [
     { key: 1, value: '남' },
@@ -32,6 +32,12 @@ const EditMemberPage = ({ match }) => {
 
     useEffect(() => {
         getMemberList(match.params.id);
+        dispatch({
+            type: CLEAR_ERROR_REQUEST,
+        });
+        dispatch({
+            type: CLEAR_ERROR_REQUEST_1,
+        });
     }, [match.params.id]);
 
     useEffect(() => {

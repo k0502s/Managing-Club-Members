@@ -17,10 +17,14 @@ import {
     MEMBER_INQUIRIES_REQUEST,
     MEMBER_INQUIRIES_SUCCESS,
     MEMBER_INQUIRIES_FAILURE,
+    CLEAR_ERROR_REQUEST_1,
+    CLEAR_ERROR_SUCCESS_1,
+    CLEAR_ERROR_FAILURE_1,
 } from '../types';
 
 const initialState = {
     errorMsg: '',
+     previousMatchMsg:'',
     success: '',
     totalItems: '',
     memberlist: '',
@@ -40,6 +44,7 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: '',
+                memberlist:'',
                 isLoading: true,
             };
         case MEMBER_UPLOADING_SUCCESS:
@@ -61,6 +66,7 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: '',
+                memberlist:'',
                 isLoading: true,
             };
         case MEMBER_LIST_SUCCESS:
@@ -86,6 +92,7 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: '',
+                memberlist:'',
                 isLoading: true,
             };
         case MEMBER_INQUIRIES_SUCCESS:
@@ -154,6 +161,7 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: '',
+                memberlist:'',
                 isLoading: true,
             };
         case MEMBER_UPDATELIST_SUCCESS:
@@ -170,6 +178,24 @@ const memberReducer = (state = initialState, action) => {
                 updatelist: action.payload.message,
                 isLoading: false,
             };
+            case CLEAR_ERROR_REQUEST_1:
+                return {
+                    ...state,
+                };
+            case CLEAR_ERROR_SUCCESS_1:
+                return {
+                    ...state,
+                    inquiriesdata:'',
+                    totalItems: '',
+                    memberlist: '',
+                    totalPages: '',
+                    currentPage: '',
+                    
+                };
+            case CLEAR_ERROR_FAILURE_1:
+                return {
+                    ...state,
+                };
 
         default:
             return state;

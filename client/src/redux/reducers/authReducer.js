@@ -127,6 +127,10 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 errorMsg: '',
                 previousMatchMsg: '',
+                warnlistDetail: '',
+                totalItems: '',
+                totalPages: '',
+                currentPage: '',
             };
         case CLEAR_ERROR_FAILURE:
             return {
@@ -203,7 +207,7 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                warnlistDetail:"",
+                warnlistDetail: '',
                 removeWarnMember: false,
             };
 
