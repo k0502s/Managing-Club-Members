@@ -155,6 +155,7 @@ function* memberDelete(action) {
             type: MEMBER_DELETE_SUCCESS,
             payload: result.data,
         });
+        yield put(push(alert('제명 완료.')));
     } catch (e) {
         yield put({
             type: MEMBER_DELETE_FAILURE,
