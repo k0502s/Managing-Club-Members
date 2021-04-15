@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import Pagination from '@material-ui/lab/Pagination';
 import { useSelector, useDispatch } from 'react-redux';
-import WarnButton from './Section/WarnButton';
+import MemberCard from './Section/MemberCard';
+import * as S from './MemberListPage.style';
 import LocationDisplay from '../../../utils/LocationDisplay';
 import { MEMBER_DELETE_REQUEST, MEMBER_LIST_REQUEST } from '../../../redux/types';
+import { Button, Col, Row, Input, InputGroup, InputGroupAddon, CardHeader } from 'reactstrap';
+import { BsFillTrashFill } from 'react-icons/bs';
+import Pagination from '@material-ui/lab/Pagination';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import IconButton from '@material-ui/core/IconButton';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import Divider from '@material-ui/core/Divider';
+import Avatar from '@material-ui/core/Avatar';
 
 const sex = {
     1: '남',
@@ -15,10 +24,14 @@ const sex = {
 const MemberList = (props) => {
     const dispatch = useDispatch();
     const [currentMemberData, setCurrentMemberData] = useState(null);
-    const [currentIndex, setCurrentIndex] = useState(-1);
     const [searchName, setSearchName] = useState([]);
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
-    ////페이지 번호/////
+    const handleListItemClick = (event, index) => {
+        setSelectedIndex(index);
+    };
+
+    ////페이징/////
 
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(3);
@@ -53,7 +66,6 @@ const MemberList = (props) => {
     };
 
     useEffect(retrieveMemberDatas, [page, pageSize]);
-  
 
     const handlePageChange = (event, value) => {
         setPage(value);
@@ -71,21 +83,27 @@ const MemberList = (props) => {
         setSearchName(searchName);
     };
 
+    const Enter = (e) => {
+        if (e.key === 'Enter') {
+            retrieveMemberDatas();
+        }
+    };
+
     const refreshList = () => {
         retrieveMemberDatas();
         setCurrentMemberData(null);
-        setCurrentIndex(-1);
+        setSelectedIndex(-1);
     };
 
     const refreshList2 = () => {
         retrieveMemberDatas();
-        setCurrentMemberData();
-        setCurrentIndex();
+        setCurrentMemberData(null);
+        setSelectedIndex();
     };
 
     const setActiveMemberData = (memberdata, index) => {
         setCurrentMemberData(memberdata);
-        setCurrentIndex(index);
+        setSelectedIndex(index);
     };
 
     const deleteMemberData = () => {
@@ -100,107 +118,84 @@ const MemberList = (props) => {
         }
     };
 
+    const deleteMemberData2 = (id) => {
+        if (id) {
+            dispatch({
+                type: MEMBER_DELETE_REQUEST,
+                payload: id,
+            });
+            refreshList2();
+        } else {
+            refreshList();
+        }
+    };
+
     const AddMember = () => {
         props.history.push('/addmember');
     };
 
-    const renderImage = (images) => {
-        if (images.length > 0) {
-            let image = images[0];
-            return `${image}`;
-        }
-    };
-
     return (
-        <div className="list row">
-            <div className="col-md-8">
-                <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="회원 이름을 입력해주세요" value={searchName} onChange={onChangeSearchName} data-testid="list-search" />
-                    <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={retrieveMemberDatas}>
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-6">
-                <h4>MEMBER LIST</h4>
-
-                <ul className="list-group">
-                    {memberlist &&
-                        memberlist.map((memberlist, index) => (
-                            <li className={'list-group-item ' + (index === currentIndex ? 'active' : '')} onClick={() => setActiveMemberData(memberlist, index)} key={index} data-testid="list-data">
-                                <h4 data-testid="list-name">{memberlist.name}</h4>
-                                <h8 data-testid="list-camera">{memberlist.camera}</h8>
-                            </li>
+        <Row>
+            <Col>
+                <Col>
+                    <S.card>
+                        <CardHeader>
+                            <InputGroup>
+                                <Input
+                                    type="text"
+                                    id="form-control"
+                                    placeholder="회원 이름을 입력해주세요."
+                                    value={searchName}
+                                    onChange={onChangeSearchName}
+                                    onKeyPress={Enter}
+                                    data-testid="list-search"
+                                />
+                                <InputGroupAddon addonType="prepend">
+                                    <Button onClick={retrieveMemberDatas}>검색</Button>
+                                </InputGroupAddon>
+                            </InputGroup>
+                        </CardHeader>
+                        {memberlist &&
+                            memberlist.map((memberlist, index) => (
+                                <S.link onClick={() => setActiveMemberData(memberlist, index)} key={index}>
+                                    <ListItem button selected={selectedIndex === index} onClick={(event) => handleListItemClick(event, index)}>
+                                        <ListItemAvatar>
+                                            <Avatar>
+                                                <S.Img src={memberlist.images} />
+                                            </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText primary={memberlist.name} secondary={sex[memberlist.sex]} data-testid="list-data" />
+                                        <ListItemSecondaryAction onClick={() => deleteMemberData2(memberlist._id)}>
+                                            <IconButton edge="end" aria-label="delete">
+                                                <BsFillTrashFill />
+                                            </IconButton>
+                                        </ListItemSecondaryAction>
+                                    </ListItem>
+                                    <Divider variant="inset" />
+                                </S.link>
+                            ))}
+                        <S.button color={'#5E5EC1'} margin={'15px'} onClick={AddMember}>
+                            회원 추가
+                        </S.button>
+                    </S.card>
+                </Col>
+                <Col className="mt-3">
+                    <h7 style={{ marginLeft: 250 }}>Page: </h7>
+                    <select onChange={handlePageSizeChange} value={pageSize}>
+                        {pageSizes.map((size) => (
+                            <option key={size} value={size}>
+                                {size}
+                            </option>
                         ))}
-                </ul>
-                <Button className="m-3 btn btn-sm btn-success" onClick={AddMember}>
-                    회원 추가
-                </Button>
-                <Button className="m-3 btn btn-sm btn-danger" onClick={deleteMemberData}>
-                    회원 탈퇴
-                </Button>
-            </div>
-            <div className="col-md-6">
-                {currentMemberData ? (
-                    <div>
-                        <h4>MEMBER DATA</h4>
-                        <div>
-                            <img style={{ width: '130px' }} alt="member" oneEror="this.style.display='none'" src={renderImage(currentMemberData.images)} data-testid="member-image" />
-                        </div>
-                        <div data-testid="member-name">
-                            <label>
-                                <strong>이름:</strong>
-                            </label>{' '}
-                            {currentMemberData.name}
-                        </div>
-                        <div data-testid="member-camera">
-                            <label>
-                                <strong>카메라 기종:</strong>
-                            </label>{' '}
-                            {currentMemberData.camera}
-                        </div>
-                        <div data-testid="member-age">
-                            <label>
-                                <strong>나이 :</strong>
-                            </label>{' '}
-                            {currentMemberData.age}
-                        </div>
-                        <div data-testid="member-sex">
-                            <label>
-                                <strong>성별 :</strong>
-                            </label>{' '}
-                            {sex[currentMemberData.sex]}
-                        </div>
-                        <div style={{ display: 'flex' }}>
-                            <Link to={'/edit/' + currentMemberData._id} className="m-3 btn-sm btn-success" data-testid="member-edit">
-                                EDIT
-                            </Link>
-                            {/* WarnInfo */}
-                            <WarnButton detail={currentMemberData} />
-                        </div>
-                    </div>
-                    ) : (
-                        <div>
-                            <br />
-                            <p>Please Click on a List...</p>
-                        </div>
-                )}
-            </div>
-            <div className="mt-3">
-                <h7 style={{ marginLeft: 250 }}>Page: </h7>
-                <select onChange={handlePageSizeChange} value={pageSize}>
-                    {pageSizes.map((size) => (
-                        <option key={size} value={size}>
-                            {size}
-                        </option>
-                    ))}
-                </select>
-                <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
-            </div>
+                    </select>
+                    <Pagination variant="outlined" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} data-testid="list-page" />
+                </Col>
+            </Col>
+            <Col>
+                <MemberCard currentMemberData={currentMemberData} deleteMemberData={deleteMemberData} />
+            </Col>
             <LocationDisplay />
-        </div>
+        </Row>
     );
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { MEMBER_WARN_REQUEST } from '../../../../redux/types';
+import * as S from '../MemberListPage.style'
 
 const WarnButton = (props) => {
     const dispatch = useDispatch();
@@ -22,9 +23,9 @@ const WarnButton = (props) => {
     return (
         <div>
             <div>
-                <Button className="m-3 btn-sm btn-danger" onClick={clickHandler}>
-                    WARN
-                </Button>
+                <S.button color={'#e2b046'} margin={'0 0 15px 0'} width={'150px'} onClick={clickHandler}>
+                    경고하기
+                </S.button>
             </div>
         </div>
     );

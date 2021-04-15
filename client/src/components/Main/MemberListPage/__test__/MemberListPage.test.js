@@ -19,6 +19,7 @@ describe('<MemberListPage /> 컴포넌트 테스트', () => {
                     images: [['image1']],
                 },
             ],
+            totalPages: 1,
         },
     });
 
@@ -32,6 +33,8 @@ describe('<MemberListPage /> 컴포넌트 테스트', () => {
     // });
 
     it('스토어에서 회원 데이터 값들이 잘 랜더링 되는지', () => {
+        const ref = React.createRef();
+        const text = () => ref.current.textContent;
         const { getByTestId } = render(
             <BrowserRouter>
                 <Provider store={store}>
@@ -40,9 +43,9 @@ describe('<MemberListPage /> 컴포넌트 테스트', () => {
             </BrowserRouter>
         );
 
-        const listname = getByTestId('list-name');
-        const listcamera = getByTestId('list-camera');
+        const listdata = getByTestId('list-data');
         const listsearch = getByTestId('list-search');
+        const listpage = getByTestId('list-page');
 
         fireEvent.change(listsearch, {
             target: {
@@ -51,8 +54,9 @@ describe('<MemberListPage /> 컴포넌트 테스트', () => {
         });
 
         expect(listsearch).toHaveAttribute('value', '검색 테스트');
-        expect(listname).toHaveTextContent('김진석');
-        expect(listcamera).toHaveTextContent('A7S3');
+        expect(listdata).toHaveTextContent('김진석');
+        expect(listdata).toHaveTextContent('1');
+        expect(listpage).toHaveTextContent(1);
     });
 
     it('회원 데이터 값들이 회원 데이터 표에 잘 랜더링 되는지', () => {
@@ -94,7 +98,7 @@ describe('<MemberListPage /> 컴포넌트 테스트', () => {
         fireEvent.click(listdata);
 
         const edit = getByTestId('member-edit');
-        
+
         fireEvent.click(edit);
 
         expect(getByTestId('location-display')).toHaveTextContent('/edit/1234');
