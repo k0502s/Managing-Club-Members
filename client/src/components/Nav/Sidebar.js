@@ -63,8 +63,10 @@ const SideBar = ({ isOpen }) => {
     return (
         <S.Sidebar isOpen={isOpen}>
             <S.SidbarHeader isOpen={isOpen}>
+                <Link to={'/'}>
                 <img src={headerImage} />
                 <h5>ADMIN SYSTEM</h5>
+                </Link>
             </S.SidbarHeader>
 
             <Login />
