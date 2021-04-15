@@ -58,7 +58,7 @@ const Login = () => {
                     <S.label for="password">Password</S.label>
                     <S.input type="password" name="password" value={form.password} id="password" placeholder="Password" onChange={onChange} data-testid="login-password" />
                     <Col>
-                        <S.button block data-testid="login-button">
+                        <S.button data-testid="login-button">
                             Login
                         </S.button>
                     </Col>

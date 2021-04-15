@@ -16,7 +16,6 @@ const button = styled(Button)`
     &:hover {
         color: white;
         background-color: lightslategray;
-
     }
 `;
 const Profile = styled.div`
@@ -28,6 +27,11 @@ const Profile = styled.div`
     display: block;
     margin: 0px auto;
     text-align: center;
+    @media only screen and (max-width: 360px) {
+        margin-left: -8px;
+        width: 260px;
+        height: 200px;
+    }
 `;
 
 const Img = styled.img`
@@ -35,6 +39,10 @@ const Img = styled.img`
     height: 240px;
     border-radius: 55%;
     border: 1px solid lightgray;
+    @media only screen and (max-width: 360px) {
+        width: 260px;
+        height: 200px;
+    }
 `;
 
 const FileUpload = styled.div`
@@ -43,6 +51,6 @@ const FileUpload = styled.div`
 `;
 
 const card = styled(CardBody)`
-    height: 720px;
+    height: 770px;
 `;
 export { Profile, Img, FileUpload, card, PersonIcon, button };

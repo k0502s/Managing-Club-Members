@@ -38,6 +38,9 @@ const Profile = styled.div`
     display: block;
     margin: 0px auto;
     text-align: center;
+    @media only screen and (max-width: 360px) {
+        margin-left: -10px;
+    }
 `;
 
 const Img = styled.img`
@@ -64,9 +67,9 @@ const pngImg = styled.img`
 `;
 
 const card = styled(Card)`
-    height: 780px;
+    height: 790px;
     @media only screen and (max-width: 500px) {
-        margin-top: 30px;
+        margin-top: 10px;
     }
 `;
 export { Profile, Img, FileUpload, pngImg, card, deleteIcon, PersonIcon, uploadIcon, button };
