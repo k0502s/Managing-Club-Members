@@ -47,6 +47,11 @@ const Login = () => {
             payload: user,
         });
     };
+    const Enter = (e) => {
+        if (e.key === 'Enter') {
+            onSubmit(e);
+        }
+    };
 
     const guestLink = (
         <Fragment>
@@ -54,9 +59,9 @@ const Login = () => {
             <Form onSubmit={onSubmit}>
                 <FormGroup>
                     <S.label for="email">Email</S.label>
-                    <S.input type="email" name="email" value={form.email} id="email" placeholder="Email" onChange={onChange} data-testid="login-email" />
+                    <S.input type="email" name="email" value={form.email} id="email" placeholder="Email" onChange={onChange} onKeyPress={Enter} data-testid="login-email" />
                     <S.label for="password">Password</S.label>
-                    <S.input type="password" name="password" value={form.password} id="password" placeholder="Password" onChange={onChange} data-testid="login-password" />
+                    <S.input type="password" name="password" value={form.password} id="password" placeholder="Password" onChange={onChange} onKeyPress={Enter} data-testid="login-password" />
                     <Col>
                         <S.button data-testid="login-button">
                             Login
