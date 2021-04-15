@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import MemberCard from './Section/MemberCard';
 import * as S from './MemberListPage.style';
 import LocationDisplay from '../../../utils/LocationDisplay';
-import { MEMBER_DELETE_REQUEST, MEMBER_LIST_REQUEST } from '../../../redux/types';
+import { MEMBER_DELETE_REQUEST, MEMBER_LIST_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
 import { Button, Col, Row, Input, InputGroup, InputGroupAddon, CardHeader } from 'reactstrap';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Pagination from '@material-ui/lab/Pagination';
@@ -63,6 +63,12 @@ const MemberList = (props) => {
         dispatch({
             type: MEMBER_LIST_REQUEST,
             payload: { params },
+        });
+        dispatch({
+            type: CLEAR_ERROR_REQUEST,
+        });
+        dispatch({
+            type: CLEAR_ERROR_REQUEST_1,
         });
     };
 
