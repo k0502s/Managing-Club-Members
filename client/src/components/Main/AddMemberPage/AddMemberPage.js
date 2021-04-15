@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import FileUpload from '../../../utils/FileUpload';
 import { useDispatch, useSelector } from 'react-redux';
@@ -82,6 +83,7 @@ const AddMemberPage = (props) => {
                 <h2>회원 추가</h2>
             </div> */}
             <Row>
+            <Helmet title={`회원 추가`} />
                 <Col>
                     <S.card>
                         <CardHeader>참고 사항</CardHeader>

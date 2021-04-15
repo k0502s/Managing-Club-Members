@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { MEMBER_WARNLIST_REQUEST } from '../../../redux/types';
 import WarnCardBlock from './Section/WarnCardBlock';
@@ -62,6 +63,7 @@ const WarnMemberList = () => {
 
     return (
         <Row style={{ width: '85%', margin: '3rem auto' }}>
+            <Helmet title={`경고 회원 리스트`} />
             <Col>
                 <h1>WARN MEMBER LIST</h1>
                 <WarnCardBlock />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { useSelector, useDispatch } from 'react-redux';
 import MemberCard from './Section/MemberCard';
 import * as S from './MemberListPage.style';
@@ -7,7 +8,6 @@ import { MEMBER_DELETE_REQUEST, MEMBER_LIST_REQUEST } from '../../../redux/types
 import { Button, Col, Row, Input, InputGroup, InputGroupAddon, CardHeader } from 'reactstrap';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Pagination from '@material-ui/lab/Pagination';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -136,6 +136,7 @@ const MemberList = (props) => {
 
     return (
         <Row>
+            <Helmet title={`회원 리스트`} />
             <Col>
                 <Col>
                     <S.card>

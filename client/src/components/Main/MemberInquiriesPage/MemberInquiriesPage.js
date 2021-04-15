@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { useSelector, useDispatch } from 'react-redux';
 import Pagination from '@material-ui/lab/Pagination';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -62,6 +63,7 @@ const MemberInquiries = () => {
 
     return (
         <Row>
+            <Helmet title={`문의 사항 리스트`} />
             <Col md={8} sm={4}>
                 <h2 style={{ textAlign: 'center' }}>회원 문의 리스트</h2>
                 <Col md={{ offset: 10 }}>
