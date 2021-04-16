@@ -121,6 +121,7 @@ const authReducer = (state = initialState, action) => {
         case CLEAR_ERROR_REQUEST:
             return {
                 ...state,
+                isLoading: true,
             };
         case CLEAR_ERROR_SUCCESS:
             return {
@@ -131,12 +132,14 @@ const authReducer = (state = initialState, action) => {
                 totalItems: '',
                 totalPages: '',
                 currentPage: '',
+                isLoading: false,
             };
         case CLEAR_ERROR_FAILURE:
             return {
                 ...state,
                 errorMsg: 'Clear Error Fail',
                 previousMatchMsg: 'Clear Error Fail',
+                isLoading: false,
             };
 
         case MEMBER_WARN_REQUEST:

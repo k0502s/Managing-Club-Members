@@ -187,7 +187,6 @@ const memberReducer = (state = initialState, action) => {
                 memberlist: '',
                 totalPages: '',
                 currentPage: '',
-                isLoading: false,
             };
         case CLEAR_ERROR_FAILURE_1:
             return {
