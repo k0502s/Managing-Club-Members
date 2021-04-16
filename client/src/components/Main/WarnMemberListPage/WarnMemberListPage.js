@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { MEMBER_WARNLIST_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
 import WarnCardBlock from './Section/WarnCardBlock';
+import WarnImg from '../../../assets/img/Warn.png'
 import Pagination from '@material-ui/lab/Pagination';
 import { Loader } from '../../Loader/Loader';
 import * as S from './WarnMemberListPage.style'
@@ -91,6 +92,7 @@ const WarnMemberList = () => {
                             <br />
                             <CardText>4. 경고 이후 동호회 활동에 더 이상 규정을 어기지 않고 정상적인 활동이 지속되면 일정 기간 이후 경고를 해제 할 수 있습니다.</CardText>
                         </CardBody>
+                        <S.warnImg src={WarnImg}/>
                     </S.card>
                 </Col>
                 <Col md={7}>

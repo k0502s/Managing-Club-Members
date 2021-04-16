@@ -6,10 +6,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Collapse from '@material-ui/core/Collapse';
-import { BsFillTrashFill, BsChevronDown, BsChevronUp, BsReply } from 'react-icons/bs';
+import { BsFillTrashFill, BsChevronDown, BsChevronUp, BsReply, BsInboxFill } from 'react-icons/bs';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
-import { CardBody, Card, CardHeader } from 'reactstrap';
+import { CardBody, CardHeader } from 'reactstrap';
 import { MEMBER_REMOVEWARNMEMBER_REQUEST, MEMBER_DELETE_REQUEST } from '../../../../redux/types';
 import * as S from '../WarnMemberListPage.style';
 
@@ -116,16 +116,19 @@ const WarnCardBlock = () => {
         ));
 
     return (
-        <div>
+        <>
             {ShowEmpty ? (
                 <S.card>
                     <CardHeader>경고 회원 리스트</CardHeader>
                     <CardBody>{renderItems()}</CardBody>
                 </S.card>
             ) : (
-                <div>데이터가 없습니다.</div>
+                <>
+                    <S.emptyIcon />
+                    <S.emptytext>Empty</S.emptytext>
+                </>
             )}
-        </div>
+        </>
     );
 };
 

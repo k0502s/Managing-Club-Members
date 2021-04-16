@@ -54,7 +54,7 @@ const button = styled(Button)`
 const title = styled(Row)`
     text-align: center;
     display: block;
-    margin: -10px 0 22px 0
+    margin: -10px 0 22px 0;
 `;
 
 export { Img, link, card, button, PersonIcon, cardImg, title };
