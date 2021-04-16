@@ -112,7 +112,9 @@ const EditMemberPage = ({ match }) => {
             <Col md={{ size: 6, offset: 3 }}>
                 <Helmet title={`회원 정보 수정`} />
                 <Card>
-                    <CardHeader>회원 정보 수정</CardHeader>
+                    <CardHeader>
+                        <strong>회원 정보 수정</strong>
+                    </CardHeader>
                     <S.card>
                         <S.Profile>
                             {Images.map((image, index) => (

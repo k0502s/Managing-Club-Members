@@ -6,7 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Collapse from '@material-ui/core/Collapse';
-import { BsFillTrashFill, BsChevronDown, BsChevronUp, BsReply, BsInboxFill } from 'react-icons/bs';
+import { BsFillTrashFill, BsChevronDown, BsChevronUp, BsReply } from 'react-icons/bs';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import { CardBody, CardHeader } from 'reactstrap';
@@ -119,7 +119,9 @@ const WarnCardBlock = () => {
         <>
             {ShowEmpty ? (
                 <S.card>
-                    <CardHeader>경고 회원 리스트</CardHeader>
+                    <CardHeader>
+                        <strong>경고 회원 리스트</strong>
+                    </CardHeader>
                     <CardBody>{renderItems()}</CardBody>
                 </S.card>
             ) : (

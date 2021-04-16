@@ -6,7 +6,6 @@ import { CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types
 function LandingPage() {
     const dispatch = useDispatch();
     const { isAuthenticated } = useSelector((state) => state.auth);
-
     useEffect(() => {
         dispatch({
             type: CLEAR_ERROR_REQUEST,

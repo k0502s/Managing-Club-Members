@@ -97,7 +97,9 @@ const AddMemberPage = () => {
                 <Helmet title={`회원 추가`} />
                 <Col>
                     <S.card>
-                        <CardHeader>참고 사항</CardHeader>
+                        <CardHeader>
+                            <strong>참고 사항</strong>
+                        </CardHeader>
                         <CardBody>
                             <CardTitle tag="h5">※ 회원 추가 안내</CardTitle>
                             <br />
@@ -113,7 +115,9 @@ const AddMemberPage = () => {
                 </Col>
                 <Col>
                     <S.card>
-                        <CardHeader>회원 정보 추가</CardHeader>
+                        <CardHeader>
+                            <strong>회원 정보 추가</strong>
+                        </CardHeader>
                         <CardBody>
                             <S.Profile>
                                 {Images.map((image, index) => (

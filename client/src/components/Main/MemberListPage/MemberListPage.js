@@ -105,7 +105,7 @@ const MemberList = (props) => {
     const refreshList2 = () => {
         retrieveMemberDatas();
         setCurrentMemberData(null);
-        setSelectedIndex();
+        setSelectedIndex(0);
     };
 
     const setActiveMemberData = (memberdata, index) => {
@@ -188,7 +188,7 @@ const MemberList = (props) => {
                     </S.card>
                 </Col>
                 <Col className="mt-3">
-                    <h7 style={{ marginLeft: 250 }}>Page: </h7>
+                    <S.span margin={'360px'}>Page: </S.span>
                     <select onChange={handlePageSizeChange} value={pageSize}>
                         {pageSizes.map((size) => (
                             <option key={size} value={size}>

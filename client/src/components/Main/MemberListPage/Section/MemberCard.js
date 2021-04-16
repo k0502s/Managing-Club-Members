@@ -22,7 +22,9 @@ const MemberCard = ({ currentMemberData, deleteMemberData }) => {
             {currentMemberData ? (
                 <>
                     <S.card margin={'30px'}>
-                        <CardHeader>회원 정보</CardHeader>
+                        <CardHeader>
+                            <strong>회원 정보</strong>
+                        </CardHeader>
                         <CardImg top width="100%" src={renderImage(currentMemberData.images)} alt="Card image cap" data-testid="member-image" />
                         <CardBody>
                             <Row>
@@ -74,7 +76,10 @@ const MemberCard = ({ currentMemberData, deleteMemberData }) => {
             ) : (
                 <>
                     <S.card margin={'30px'}>
-                        <CardHeader> 옆에 있는 회원 리스트를 클릭해주세요!</CardHeader>
+                        <CardHeader>
+                            {' '}
+                            <strong>옆에 있는 회원 리스트를 클릭해주세요!</strong>
+                        </CardHeader>
                         <S.cardImg top src={profileImg} alt="Card image cap" />
                         <CardBody>
                             <Row>

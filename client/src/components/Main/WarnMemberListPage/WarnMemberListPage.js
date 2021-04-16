@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
-import { MEMBER_WARNLIST_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
+import { MEMBER_WARNLIST_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
 import WarnCardBlock from './Section/WarnCardBlock';
 import WarnImg from '../../../assets/img/Warn.png'
 import Pagination from '@material-ui/lab/Pagination';
@@ -53,9 +53,6 @@ const WarnMemberList = () => {
                     payload: body,
                 });
                 dispatch({
-                    type: CLEAR_ERROR_REQUEST,
-                });
-                dispatch({
                     type: CLEAR_ERROR_REQUEST_1,
                 });
             }
@@ -80,7 +77,7 @@ const WarnMemberList = () => {
                 <Helmet title={`경고 회원 리스트`} />
                 <Col md={5}>
                     <S.card margin={'30px'}>
-                        <CardHeader>경고 회원 참고 사항</CardHeader>
+                        <CardHeader><strong>경고 회원 참고 사항</strong></CardHeader>
                         <CardBody>
                             <CardTitle tag="h5">※ 경고 회원 관리 안내</CardTitle>
                             <br />
@@ -98,7 +95,7 @@ const WarnMemberList = () => {
                 <Col md={7}>
                     <WarnCardBlock />
                     <Col md={{ offset: 4 }} className="mt-3">
-                        <h7 style={{ marginLeft: 250 }}>Page: </h7>
+                        <S.span margin={'250px'}>Page: </S.span>
                         <select onChange={handlePageSizeChange} value={pageSize}>
                             {pageSizes.map((size) => (
                                 <option key={size} value={size}>
@@ -107,8 +104,8 @@ const WarnMemberList = () => {
                             ))}
                         </select>
                     </Col>
-                    <Col md={{ offset: 5 }} xs={{ offset: 4 }}>
-                        <Pagination className="my-3" color="primary" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
+                    <Col>
+                        <Pagination variant="outlined" count={totalPages} page={page} siblingCount={1} boundaryCount={1} shape="rounded" onChange={handlePageChange} />
                     </Col>
                 </Col>
             </Row>

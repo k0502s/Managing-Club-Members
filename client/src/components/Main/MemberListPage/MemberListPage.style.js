@@ -57,4 +57,11 @@ const title = styled(Row)`
     margin: -10px 0 22px 0;
 `;
 
-export { Img, link, card, button, PersonIcon, cardImg, title };
+const span = styled.span`
+margin-left: ${(props) => props.margin};
+@media only screen and (max-width: 500px) {
+    margin-left: 210px;
+}
+`
+
+export { Img, link, card, button, PersonIcon, cardImg, title, span };

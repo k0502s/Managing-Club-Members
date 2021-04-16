@@ -57,4 +57,11 @@ const card = styled(Card)`
     }
 `;
 
-export { link, Img, listItem, listItems, title, card, emptyIcon, emptytext, warnImg };
+const span = styled.span`
+margin-left: ${(props) => props.margin};
+@media only screen and (max-width: 500px) {
+    margin-left: 210px;
+}
+`
+
+export { link, Img, listItem, listItems, title, card, emptyIcon, emptytext, warnImg, span };
