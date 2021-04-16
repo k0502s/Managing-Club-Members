@@ -24,7 +24,7 @@ import {
 
 const initialState = {
     errorMsg: '',
-     previousMatchMsg:'',
+    previousMatchMsg: '',
     success: '',
     totalItems: '',
     memberlist: '',
@@ -44,7 +44,6 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: '',
-                memberlist:'',
                 isLoading: true,
             };
         case MEMBER_UPLOADING_SUCCESS:
@@ -66,7 +65,6 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: '',
-                memberlist:'',
                 isLoading: true,
             };
         case MEMBER_LIST_SUCCESS:
@@ -92,7 +90,6 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: '',
-                memberlist:'',
                 isLoading: true,
             };
         case MEMBER_INQUIRIES_SUCCESS:
@@ -161,7 +158,6 @@ const memberReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: '',
-                memberlist:'',
                 isLoading: true,
             };
         case MEMBER_UPDATELIST_SUCCESS:
@@ -178,27 +174,26 @@ const memberReducer = (state = initialState, action) => {
                 updatelist: action.payload.message,
                 isLoading: false,
             };
-            case CLEAR_ERROR_REQUEST_1:
-                return {
-                    ...state,
-                    isLoading: true,
-                };
-            case CLEAR_ERROR_SUCCESS_1:
-                return {
-                    ...state,
-                    inquiriesdata:'',
-                    totalItems: '',
-                    memberlist: '',
-                    totalPages: '',
-                    currentPage: '',
-                    isLoading: false,
-                    
-                };
-            case CLEAR_ERROR_FAILURE_1:
-                return {
-                    ...state,
-                    isLoading: false,
-                };
+        case CLEAR_ERROR_REQUEST_1:
+            return {
+                ...state,
+                isLoading: true,
+            };
+        case CLEAR_ERROR_SUCCESS_1:
+            return {
+                ...state,
+                inquiriesdata: '',
+                totalItems: '',
+                memberlist: '',
+                totalPages: '',
+                currentPage: '',
+                isLoading: false,
+            };
+        case CLEAR_ERROR_FAILURE_1:
+            return {
+                ...state,
+                isLoading: false,
+            };
 
         default:
             return state;
