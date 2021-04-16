@@ -206,7 +206,14 @@ const MemberList = (props) => {
         </Row>
     );
 
-    return <>{isLoading ? Loader : Body}</>;
+    return (
+        <>
+            <S.title>
+                <h1>MEMBER LIST</h1>
+            </S.title>
+            {isLoading ? Loader : Body}
+        </>
+    );
 };
 
 export default MemberList;

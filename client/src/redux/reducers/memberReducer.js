@@ -181,6 +181,7 @@ const memberReducer = (state = initialState, action) => {
             case CLEAR_ERROR_REQUEST_1:
                 return {
                     ...state,
+                    isLoading: true,
                 };
             case CLEAR_ERROR_SUCCESS_1:
                 return {
@@ -190,11 +191,13 @@ const memberReducer = (state = initialState, action) => {
                     memberlist: '',
                     totalPages: '',
                     currentPage: '',
+                    isLoading: false,
                     
                 };
             case CLEAR_ERROR_FAILURE_1:
                 return {
                     ...state,
+                    isLoading: false,
                 };
 
         default:

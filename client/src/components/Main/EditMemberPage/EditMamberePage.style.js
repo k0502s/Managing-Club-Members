@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { CardBody, Button } from 'reactstrap';
+import { CardBody, Button, Row } from 'reactstrap';
 import { BsPersonFill } from 'react-icons/bs';
 
 const PersonIcon = styled(BsPersonFill)`
@@ -52,5 +52,13 @@ const FileUpload = styled.div`
 
 const card = styled(CardBody)`
     height: 770px;
+    border-radius: 10px;
 `;
-export { Profile, Img, FileUpload, card, PersonIcon, button };
+
+const title = styled(Row)`
+    text-align: center;
+    display: block;
+    margin: -10px 0 15px 0
+`;
+
+export { Profile, Img, FileUpload, card, PersonIcon, button, title };

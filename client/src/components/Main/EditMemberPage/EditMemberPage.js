@@ -105,48 +105,50 @@ const EditMemberPage = ({ match }) => {
     };
 
     return (
-        <Col md={{ size: 6, offset: 3 }}>
-            <Helmet title={`회원 정보 수정`} />
-            {/* <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-                <h2>회원 정보 수정</h2>
-            </div> */}
-            <Card>
-                <CardHeader>회원 정보 수정</CardHeader>
-                <S.card>
-                    <S.Profile>
-                        {Images.map((image, index) => (
-                            <S.Img key={index} src={`${image}`} />
-                        ))}
-                        {Images.length === 0 ? <S.PersonIcon /> : ''}
-                    </S.Profile>
-                    <S.FileUpload>
-                        <FileUpload refreshFunction={updateImages} removefile={removefile} />
-                    </S.FileUpload>
-                    <Form onSubmit={submitHandler} name="myform" data-testid="form">
-                        <label>이름</label>
-                        <Input type="text" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="name" defaultValue={singlememberlist.name} data-testid="add-name" />
-                        <br />
-                        <label>카메라 기종</label>
-                        <Input type="text" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="camera" defaultValue={singlememberlist.camera} data-testid="add-camera" />
-                        <br />
-                        <label>나이</label>
-                        <Input type="number" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="age" defaultValue={singlememberlist.age} data-testid="add-age" />
-                        <br />
-                        <select onChange={onChange} value={form.sex} name="sex" data-testid="add-sex">
-                            <option value="">성별을 선택해주세요</option>
-                            {Sex.map((item) => (
-                                <option key={item.key} value={item.key} data-testid="select-option">
-                                    {item.value}
-                                </option>
+        <>
+            <S.title style={{ textAlign: 'center', display: 'block' }}>
+                <h1>EDIT MEMBER</h1>
+            </S.title>
+            <Col md={{ size: 6, offset: 3 }}>
+                <Helmet title={`회원 정보 수정`} />
+                <Card>
+                    <CardHeader>회원 정보 수정</CardHeader>
+                    <S.card>
+                        <S.Profile>
+                            {Images.map((image, index) => (
+                                <S.Img key={index} src={`${image}`} />
                             ))}
-                        </select>
-                        <S.button color={'#3DC89B'} className="col-md-2 offset-md-10 mt-1" onClick={submitHandler} data-testid="add-submit">
-                            확인
-                        </S.button>
-                    </Form>
-                </S.card>
-            </Card>
-        </Col>
+                            {Images.length === 0 ? <S.PersonIcon /> : ''}
+                        </S.Profile>
+                        <S.FileUpload>
+                            <FileUpload refreshFunction={updateImages} removefile={removefile} />
+                        </S.FileUpload>
+                        <Form onSubmit={submitHandler} name="myform" data-testid="form">
+                            <label>이름</label>
+                            <Input type="text" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="name" defaultValue={singlememberlist.name} data-testid="add-name" />
+                            <br />
+                            <label>카메라 기종</label>
+                            <Input type="text" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="camera" defaultValue={singlememberlist.camera} data-testid="add-camera" />
+                            <br />
+                            <label>나이</label>
+                            <Input type="number" onChange={onChange} placeholder={'빈 칸에 정보를 입력해주세요.'} name="age" defaultValue={singlememberlist.age} data-testid="add-age" />
+                            <br />
+                            <select onChange={onChange} value={form.sex} name="sex" data-testid="add-sex">
+                                <option value="">성별을 선택해주세요</option>
+                                {Sex.map((item) => (
+                                    <option key={item.key} value={item.key} data-testid="select-option">
+                                        {item.value}
+                                    </option>
+                                ))}
+                            </select>
+                            <S.button color={'#3DC89B'} className="col-md-2 offset-md-10 mt-1" onClick={submitHandler} data-testid="add-submit">
+                                확인
+                            </S.button>
+                        </Form>
+                    </S.card>
+                </Card>
+            </Col>
+        </>
     );
 };
 

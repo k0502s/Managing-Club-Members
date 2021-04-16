@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Col, CardBody, Card, Button } from 'reactstrap';
+import { Row, Col, CardBody, Card, Button } from 'reactstrap';
 import { BsPersonFill, BsUpload, BsTrash } from 'react-icons/bs';
 
 const PersonIcon = styled(BsPersonFill)`
@@ -68,8 +68,15 @@ const pngImg = styled.img`
 
 const card = styled(Card)`
     height: 790px;
+    background-color: #f4fcfb;
+    border-radius: 10px;
     @media only screen and (max-width: 500px) {
         margin-top: 10px;
     }
 `;
-export { Profile, Img, FileUpload, pngImg, card, deleteIcon, PersonIcon, uploadIcon, button };
+const title = styled(Row)`
+    text-align: center;
+    display: block;
+    margin: -10px 0 18px 0
+`;
+export { Profile, Img, FileUpload, pngImg, card, deleteIcon, PersonIcon, uploadIcon, button, title };

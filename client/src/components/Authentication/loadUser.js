@@ -1,5 +1,5 @@
 import store from '../../store';
-import { USER_LOADING_REQUEST } from '../../redux/types';
+import { USER_LOADING_REQUEST, CLEAR_ERROR_REQUEST } from '../../redux/types';
 
 const loadUser = () => {
     try {

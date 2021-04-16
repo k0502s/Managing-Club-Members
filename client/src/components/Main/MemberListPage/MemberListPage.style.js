@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import List from '@material-ui/core/List';
-import { Col, CardBody, Button, Card, CardImg } from 'reactstrap';
+import { Row, Col, CardBody, Button, Card, CardImg } from 'reactstrap';
 import { BsPersonFill } from 'react-icons/bs';
 
 const PersonIcon = styled(BsPersonFill)`
@@ -19,6 +19,7 @@ const link = styled(List)`
 `;
 const card = styled(Card)`
     background-color: #f4fcfb;
+    border-radius: 10px;
     @media only screen and (max-width: 500px) {
         margin-top: ${(props) => props.margin};
     }
@@ -50,4 +51,10 @@ const button = styled(Button)`
     }
 `;
 
-export { Img, link, card, button, PersonIcon, cardImg };
+const title = styled(Row)`
+    text-align: center;
+    display: block;
+    margin: -10px 0 22px 0
+`;
+
+export { Img, link, card, button, PersonIcon, cardImg, title };

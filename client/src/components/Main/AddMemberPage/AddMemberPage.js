@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import FileUpload from '../../../utils/FileUpload';
+import { Loader } from '../../Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { MEMBER_UPLOADING_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
 import * as S from './AddMemberPage.style';
@@ -23,6 +24,7 @@ const AddMemberPage = () => {
 
     const [Images, setImages] = useState([]);
     const { user } = useSelector((state) => state.auth);
+    const { isLoader } = useSelector((state) => state.member);
 
     useEffect(() => {
         dispatch({
@@ -31,7 +33,7 @@ const AddMemberPage = () => {
         dispatch({
             type: CLEAR_ERROR_REQUEST_1,
         });
-    }, [])
+    }, []);
 
     const onChange = (e) => {
         setValues({
@@ -86,13 +88,13 @@ const AddMemberPage = () => {
         setImages([]);
     };
 
-    return (
+    const Body = (
         <>
-            {/* <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-                <h2>회원 추가</h2>
-            </div> */}
+            <S.title>
+                <h1>ADD MEMBER</h1>
+            </S.title>
             <Row>
-            <Helmet title={`회원 추가`} />
+                <Helmet title={`회원 추가`} />
                 <Col>
                     <S.card>
                         <CardHeader>참고 사항</CardHeader>
@@ -150,6 +152,8 @@ const AddMemberPage = () => {
             </Row>
         </>
     );
+
+    return <>{isLoader ? Loader : Body}</>;
 };
 
 export default AddMemberPage;
