@@ -9,7 +9,7 @@ import Collapse from '@material-ui/core/Collapse';
 import { BsFillTrashFill, BsChevronDown, BsChevronUp, BsReply } from 'react-icons/bs';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
-import { CardBody } from 'reactstrap';
+import { CardBody, Card, CardHeader } from 'reactstrap';
 import { MEMBER_REMOVEWARNMEMBER_REQUEST, MEMBER_DELETE_REQUEST } from '../../../../redux/types';
 import * as S from '../WarnMemberListPage.style';
 
@@ -20,7 +20,7 @@ const sex = {
 
 const useStyles = makeStyles((theme) => ({
     nested: {
-        paddingLeft: theme.spacing(4),
+        paddingLeft: theme.spacing(10),
     },
 }));
 
@@ -82,7 +82,7 @@ const WarnCardBlock = () => {
     const renderItems = () =>
         warnlistDetail &&
         warnlistDetail.map((warnlist, index) => (
-            <S.link onClick={() => handleClick(index)} key={index}>
+            <S.link onClick={() => handleClick(index)} key={index} data-testid="warn-drop">
                 <S.listItem button>
                     <ListItemAvatar>
                         <Avatar>
@@ -98,13 +98,13 @@ const WarnCardBlock = () => {
                 <Divider variant="inset" />
                 <Collapse in={selectedIndex === index && open} timeout="auto" unmountOnExit>
                     <S.link component="div" disablePadding>
-                        <ListItem button className={classes.nested} onClick={() => deleteFromlist(warnlist._id)} data-testid="warn-button">
+                        <ListItem button className={classes.nested} onClick={() => deleteFromlist(warnlist._id)} data-testid="warn-button-1">
                             <ListItemIcon>
                                 <BsReply />
                             </ListItemIcon>
                             <ListItemText primary="경고 해제" />
                         </ListItem>
-                        <ListItem button className={classes.nested} onClick={() => deleteMemberData(warnlist._id)} data-testid="warn-button">
+                        <ListItem button className={classes.nested} onClick={() => deleteMemberData(warnlist._id)} data-testid="warn-button-2">
                             <ListItemIcon>
                                 <BsFillTrashFill />
                             </ListItemIcon>
@@ -117,8 +117,14 @@ const WarnCardBlock = () => {
 
     return (
         <div>
-            <br />
-            {ShowEmpty ? <>{renderItems()}</> : <div>데이터가 없습니다.</div>}
+            {ShowEmpty ? (
+                <S.card>
+                    <CardHeader>경고 회원 리스트</CardHeader>
+                    <CardBody>{renderItems()}</CardBody>
+                </S.card>
+            ) : (
+                <div>데이터가 없습니다.</div>
+            )}
         </div>
     );
 };

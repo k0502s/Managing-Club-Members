@@ -5,6 +5,7 @@ import { MEMBER_WARNLIST_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } f
 import WarnCardBlock from './Section/WarnCardBlock';
 import Pagination from '@material-ui/lab/Pagination';
 import { Loader } from '../../Loader/Loader';
+import * as S from './WarnMemberListPage.style'
 import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table, CardHeader, CardBody } from 'reactstrap';
 
 const WarnMemberList = () => {
@@ -71,13 +72,13 @@ const WarnMemberList = () => {
 
     const Body = (
         <>
-            <Row style={{ textAlign: 'center', display: 'block' }}>
+            <S.title>
                 <h1>WARN MEMBER LIST</h1>
-            </Row>
+            </S.title>
             <Row>
                 <Helmet title={`경고 회원 리스트`} />
                 <Col md={5}>
-                    <Card>
+                    <S.card margin={'30px'}>
                         <CardHeader>경고 회원 참고 사항</CardHeader>
                         <CardBody>
                             <CardTitle tag="h5">※ 경고 회원 관리 안내</CardTitle>
@@ -90,7 +91,7 @@ const WarnMemberList = () => {
                             <br />
                             <CardText>4. 경고 이후 동호회 활동에 더 이상 규정을 어기지 않고 정상적인 활동이 지속되면 일정 기간 이후 경고를 해제 할 수 있습니다.</CardText>
                         </CardBody>
-                    </Card>
+                    </S.card>
                 </Col>
                 <Col md={7}>
                     <WarnCardBlock />
