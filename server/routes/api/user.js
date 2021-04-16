@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
                 if (err) throw err;
                 newUser.password = hash;
                 newUser.save().then((user) => {
-                    jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: 3600 }, (err, token) => {
+                    jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '6h' }, (err, token) => {
                         if (err) throw err;
                         res.json({
                             token,
@@ -57,55 +57,6 @@ router.post('/', (req, res) => {
             });
         });
     });
-});
-
-router.post('/:userName/profile', auth, async (req, res) => {
-    try {
-        const { previousPassword, password, rePassword, userId, email, name } = req.body;
-        console.log(req.body, 'userName Profile');
-        const result = await User.findById(userId, 'password');
-        // Check for existing user
-        //  const user = User.findOne({ email })
-        //     if (user)
-        //       return res.status(400).json({ msg: "이미 가입된 유저가 존재합니다" });
-
-        //   if(!user) {
-        //     await User.findByIdAndUpdate(
-        //       userId,
-        //       {
-        //         name,
-        //         email,
-        //       },
-        //       { new: true } //몽고DB 업데이트 조건
-        //     );
-        //   }
-
-        bcrypt.compare(previousPassword, result.password).then((isMatch) => {
-            if (!isMatch) {
-                return res.status(400).json({
-                    match_msg: '기존 비밀번호와 일치하지 않습니다',
-                });
-            } else {
-                if (password === rePassword) {
-                    bcrypt.genSalt(10, (err, salt) => {
-                        bcrypt.hash(password, salt, (err, hash) => {
-                            if (err) throw err;
-                            result.password = hash;
-                            result.name = name;
-                            result.email = email;
-                            result.save();
-                        });
-                    });
-                    res.status(200).json({ success_msg: '비밀번호 업데이트에 성공했습니다' });
-                } else {
-                    res.status(400).json({ fail_msg: '새로운 비밀번호가 일치하지 않습니다' });
-                }
-            }
-        });
-    } catch (e) {
-        console.log(e);
-        res.status(400).json({ success: false });
-    }
 });
 
 router.post('/warn', auth, (req, res) => {
@@ -179,10 +130,10 @@ router.get('/warnlist_by_id', (req, res) => {
             return item;
         });
     }
-    //여러개 상품 id을 이용하여 여러 개 삼품 가져올 수 있게한다.
+    
     const condition = { _id: { $in: warnmemberIds } };
-    //warnmemberIds를 이용해서 DB에서 productId와 같은 상품의 정보를 가져온다. //id값이 여러개 들어 있는 배열을 못넣어서 $in을 사용함.
-    Member.paginate(condition, { offset, limit, sort: { createdAt: -1 } }).then((warnmember) => {
+    //id값이 여러개 들어 있는 배열을 못넣어서 $in을 사용함.
+    Member.paginate(condition, { offset, limit }).then((warnmember) => {
         res.status(200).send({
             totalItems: warnmember.totalDocs,
             warndata: warnmember.docs,
@@ -205,7 +156,7 @@ router.get('/removeWarnMember', auth, (req, res) => {
                 return item.id;
             });
 
-            Member.find({ _id: { $in: array } })
+            Member.find({ _id: { $in: array }})
                 .populate('writer')
                 .exec((err, listInfo) => {
                     return res.status(200).json({
