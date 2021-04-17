@@ -2,8 +2,9 @@ import React, { Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
-import { Button, NavbarToggler, Collapse, Nav, NavItem, NavLink, Badge } from 'reactstrap';
+import { Button, NavbarToggler, Collapse, Nav, NavItem, NavLink, Badge, NavbarBrand } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import headerImage from '../../assets/img/camera2.png';
 import * as S from './Nav.style';
 
 const Topbar = ({ toggleSidebar }) => {
@@ -47,13 +48,13 @@ const Topbar = ({ toggleSidebar }) => {
 
     return (
         <S.Topbar expand="md">
-            <Button color="dark" onClick={toggleSidebar}>
-                <S.toggleIcon />
-            </Button>
-            <NavbarToggler onClick={toggleTopbar} />
-            <Collapse isOpen={false} navbar>
-                {isAuthenticated ? authLink : guestLink}
-            </Collapse>
+            <S.toggleIcon onClick={toggleSidebar} />
+            <NavbarBrand>
+                <img src={headerImage} />
+            </NavbarBrand>
+
+            {/* <NavbarToggler onClick={toggleTopbar} /> */}
+            {isAuthenticated ? authLink : guestLink}
         </S.Topbar>
     );
 };

@@ -31,8 +31,9 @@ const QIcon = styled(BsFillQuestionDiamondFill)`
 `;
 
 const toggleIcon = styled(BsJustify)`
-    font-size: 25px;
+    font-size: 40px;
     margin-bottom: 2px;
+    color: #333;
 `;
 
 const Sidebar = styled.div`
@@ -107,6 +108,25 @@ const Topbar = styled(Navbar)`
     background-color: #f4fcfb;
     border-radius: 15px;
     box-shadow: 0 6px 10px 0 rgb(55, 54, 54);
+    & .navbar-brand {
+        display: none;
+    }
+    @media only screen and (max-width: 500px) {
+        padding: 13px 30px 13px 30px;
+        margin-bottom: 30px;
+        border-radius: 0;
+        & a.nav-link {
+            display: none;
+        }
+        & .navbar-brand {
+            display: block;
+            margin: 0 auto;
+        }
+        & img {
+            width: 130px;
+            margin-left: 15px;
+        }
+    }
 `;
 
 const badge = styled(Badge)`
