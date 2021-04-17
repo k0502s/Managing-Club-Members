@@ -1,49 +1,11 @@
-import React, { Fragment } from "react";
-import { Row, Spinner } from "reactstrap";
+import React, { Fragment } from 'react';
+import { Row } from 'reactstrap';
+import L from 'react-loader-spinner';
 
 export const Loader = (
     <Fragment>
-      <Row className="d-flex justify-content-center m-5">
-        <Spinner
-          style={{ width: "2rem", height: "2rem" }}
-          type="grow"
-          color="primary"
-        />
-        <Spinner
-          style={{ width: "2rem", height: "2rem" }}
-          type="grow"
-          color="secondary"
-        />
-        <Spinner
-          style={{ width: "2rem", height: "2rem" }}
-          type="grow"
-          color="success"
-        />
-        <Spinner
-          style={{ width: "2rem", height: "2rem" }}
-          type="grow"
-          color="danger"
-        />
-        <Spinner
-          style={{ width: "2rem", height: "2rem" }}
-          type="grow"
-          color="warning"
-        />
-        <Spinner
-          style={{ width: "2rem", height: "2rem" }}
-          type="grow"
-          color="info"
-        />
-        <Spinner
-          style={{ width: "2rem", height: "2rem" }}
-          type="grow"
-          color="light"
-        />
-        <Spinner
-          style={{ width: "2rem", height: "2rem" }}
-          type="grow"
-          color="dark"
-        />
-      </Row>
+        <Row className="d-flex justify-content-center m-5">
+            <L type="ThreeDots" color=" #f4fcfb" height={'100px'} width={'100px'} timeout={3000} />
+        </Row>
     </Fragment>
-  );
+);
