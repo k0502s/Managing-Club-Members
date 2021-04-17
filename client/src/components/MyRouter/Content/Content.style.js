@@ -9,19 +9,26 @@ const container = styled(Container)`
     @media only screen and (max-width: 500px) {
         padding: 0;
     }
-
-    /* padding: 20px;
-    margin-left: 0;
-    height: 100vh;
+`;
+const overlay = styled.div`
     @media only screen and (max-width: 500px) {
-        margin-left: ${({ isOpen }) => (isOpen ? '100%' : '')};
-    } */
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        opacity: ${({ isOpen }) => (isOpen ? '1' : '')};
+        display: ${({ isOpen }) => (isOpen ? 'block' : '')};
+    }
 `;
 
-const wrapper = styled.div `
-@media only screen and (max-width: 500px) {
-padding: 20px;
-}
-`
+const wrapper = styled.div`
+    @media only screen and (max-width: 500px) {
+        padding: 20px;
+    }
+`;
 
-export { container, wrapper };
+export { container, wrapper, overlay };

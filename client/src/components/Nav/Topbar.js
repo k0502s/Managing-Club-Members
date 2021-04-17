@@ -14,11 +14,11 @@ const Topbar = ({ toggleSidebar }) => {
 
     const toggleTopbar = () => setTopbarOpen(!topbarIsOpen);
 
-    const guestLink = <div className="ml-auto">로그인 인증이 필요합니다.</div>;
+    const guestLink = <div></div>;
 
     const authLink = (
         <Fragment>
-            <Nav className="ml-auto" navbar>
+            <Nav>
                 <NavItem>
                     <NavLink tag={Link} to={'/addmember'}>
                         <S.AddIcon style={{ fontSize: 30, color: '#667777' }} />
@@ -52,7 +52,6 @@ const Topbar = ({ toggleSidebar }) => {
             <NavbarBrand>
                 <img src={headerImage} />
             </NavbarBrand>
-
             {/* <NavbarToggler onClick={toggleTopbar} /> */}
             {isAuthenticated ? authLink : guestLink}
         </S.Topbar>

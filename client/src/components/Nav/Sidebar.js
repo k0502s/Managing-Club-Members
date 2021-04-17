@@ -1,14 +1,15 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MEMBER_INQUIRIES_REQUEST } from '../../redux/types';
-import { NavItem, NavLink, Nav, Badge } from 'reactstrap';
+import { NavItem, NavLink, Nav, Badge, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Login from '../Authentication/Login';
 import LocationDisplay from '../../utils/LocationDisplay';
 import headerImage from '../../assets/img/camera2.png';
 import * as S from './Nav.style';
+import { Discovery } from 'aws-sdk';
 
-const SideBar = ({ isOpen }) => {
+const SideBar = ({ isOpen, toggleSidebar }) => {
     const dispatch = useDispatch();
     const { isAuthenticated, user } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
@@ -63,14 +64,18 @@ const SideBar = ({ isOpen }) => {
     return (
         <S.Sidebar isOpen={isOpen}>
             <S.SidbarHeader isOpen={isOpen}>
+                <Row>
+                    <Link to={'/'}>
+                        <S.mobilelogo src={headerImage} />
+                    </Link>
+                    <S.sidetoggleIcon onClick={toggleSidebar} />
+                </Row>
                 <Link to={'/'}>
-                <img src={headerImage} />
-                <h5>ADMIN SYSTEM</h5>
+                    <S.logo src={headerImage} />
                 </Link>
+                <h5>MEMBER ADMIN SYSTEM</h5>
             </S.SidbarHeader>
-
             <Login />
-
             <S.SideMenu>
                 <Nav vertical className="list-unstyled pb-3">
                     {isAuthenticated ? authLink : guestLink}

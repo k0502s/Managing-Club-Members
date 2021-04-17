@@ -11,9 +11,10 @@ import * as S from './Content.style';
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
     <S.container fluid isOpen={sidebarIsOpen}>
+        <S.overlay isOpen={sidebarIsOpen} />
         <Topbar toggleSidebar={toggleSidebar} />
         <Fragment>
-            <S.wrapper >
+            <S.wrapper>
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/list" component={MenmberListPage} />
