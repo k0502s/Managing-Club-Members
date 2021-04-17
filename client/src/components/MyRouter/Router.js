@@ -3,11 +3,11 @@ import SideBar from '../Nav/Sidebar';
 import Content from './Content/Content';
 
 const Router = () => {
-    const [sidebarIsOpen, setSidebarOpen] = useState(false);
+    const [sidebarIsOpen, setSidebarOpen] = useState(true);
     const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
 
     return (
-        <div className="App wrapper">
+        <div className="App">
             <SideBar  toggleSidebar={toggleSidebar} isOpen={sidebarIsOpen} />
             <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
         </div>

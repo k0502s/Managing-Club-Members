@@ -1,18 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
 import { Button, NavbarToggler, Collapse, Nav, NavItem, NavLink, Badge, NavbarBrand } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import headerImage from '../../assets/img/camera2.png';
 import * as S from './Nav.style';
 
 const Topbar = ({ toggleSidebar }) => {
-    const [topbarIsOpen, setTopbarOpen] = useState(true);
     const { isAuthenticated, user, userRole } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
-
-    const toggleTopbar = () => setTopbarOpen(!topbarIsOpen);
 
     const guestLink = <div></div>;
 
@@ -52,7 +47,6 @@ const Topbar = ({ toggleSidebar }) => {
             <NavbarBrand>
                 <img src={headerImage} />
             </NavbarBrand>
-            {/* <NavbarToggler onClick={toggleTopbar} /> */}
             {isAuthenticated ? authLink : guestLink}
         </S.Topbar>
     );

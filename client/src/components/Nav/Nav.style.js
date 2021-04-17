@@ -11,6 +11,10 @@ const AddIcon = styled(BsFillPersonPlusFill)`
     margin-right: 10px;
     margin-bottom: 3px;
     font-size: large;
+    /* transition: 0.4s;
+    &:hover {
+        transform: scale(1.6);
+    } */
 `;
 const ListIcon = styled(BsFillPersonLinesFill)`
     margin-right: 10px;
@@ -62,7 +66,7 @@ const Sidebar = styled.div`
     }
 
     & .nav-item:hover {
-        color: #7386d5;
+        color: #4c443c;
     }
     @media only screen and (max-width: 500px) {
         z-index: 999;
@@ -70,7 +74,6 @@ const Sidebar = styled.div`
         left: -250px;
         left: ${({ isOpen }) => (isOpen ? '0' : '')};
     }
-
 `;
 
 const SidbarHeader = styled.div`
