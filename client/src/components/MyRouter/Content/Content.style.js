@@ -3,8 +3,8 @@ import { Container } from 'reactstrap';
 
 const container = styled(Container)`
     width: 100%;
-    padding: 20px;
-    min-height: 150vh;
+    padding: 20px 20px 0 20px;
+    min-height: 50vh;
     transition: all 0.3s;
     @media only screen and (max-width: 1024px) {
         padding: 0;
@@ -27,7 +27,7 @@ const overlay = styled.div`
 
 const wrapper = styled.div`
     @media only screen and (max-width: 1024px) {
-        padding: 20px;
+        padding: 20px 20px 0 20px;
     }
 `;
 

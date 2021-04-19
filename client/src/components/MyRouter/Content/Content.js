@@ -7,6 +7,7 @@ import AddMemberPage from '../../Main/AddMemberPage/AddMemberPage';
 import MemberInquiriesPage from '../../Main/MemberInquiriesPage/MemberInquiriesPage';
 import EditMemberPage from '../../Main/EditMemberPage/EditMemberPage';
 import Topbar from '../../Nav/Topbar';
+import Footer from '../../Footer/Footer';
 import * as S from './Content.style';
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
@@ -26,6 +27,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
                 </Switch>
             </S.wrapper>
         </Fragment>
+        <Footer />
     </S.container>
 );
 

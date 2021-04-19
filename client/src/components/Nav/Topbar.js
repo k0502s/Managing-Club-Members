@@ -9,7 +9,7 @@ const Topbar = ({ toggleSidebar }) => {
     const { isAuthenticated, user, userRole } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
 
-    const guestLink = <div></div>;
+    const guestLink = <div><strong>로그인이 필요합니다!</strong></div>;
 
     const authLink = (
         <Fragment>

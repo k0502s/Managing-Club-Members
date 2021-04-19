@@ -11,10 +11,7 @@ body {
     background: #fafafa;
     background-color: #4c443c;      
 }
-#main-footer {
-    background: #343a40;
-    color: #ffff;
-}
+
 #main-body {
     min-height:220vh;
 }

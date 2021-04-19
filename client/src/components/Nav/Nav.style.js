@@ -111,7 +111,7 @@ const logo = styled.img`
 `;
 
 const SideMenu = styled.div`
-    height: calc(100vh - 130px);
+    min-height: 55vh;
 
     & a {
         border-bottom: 1px solid #ededed;
@@ -144,6 +144,11 @@ const Topbar = styled(Navbar)`
         width: 100%;
         justify-content: flex-end;
     }
+    & div {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
     @media only screen and (max-width: 1024px) {
         padding: 10px 9px 10px 9px;
         margin-bottom: 30px;
@@ -160,6 +165,9 @@ const Topbar = styled(Navbar)`
         & img {
             width: 130px;
             margin-right: 24px;
+        }
+        & div {
+            display: none;
         }
     }
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
+import * as S from './Footer.style';
 
 const Footer = () => {
     const thisYear = () => {
@@ -7,15 +8,16 @@ const Footer = () => {
         return year;
     };
     return (
-        <div id="main-footer" className="text-center p-2">
+        <S.footer>
             <Row>
                 <Col>
+                    <span>김진석</span>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;<span>이메일 k0502s@naver.com</span>
                     <p>
-                        Copyright &copy; <span>{thisYear()}</span>
+                        Copyright &copy; <span>{thisYear()} Jin Seok Kim All rights reserved.</span>
                     </p>
                 </Col>
             </Row>
-        </div>
+        </S.footer>
     );
 };
 
