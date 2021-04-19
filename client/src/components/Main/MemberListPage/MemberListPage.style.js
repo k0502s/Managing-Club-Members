@@ -20,6 +20,11 @@ const link = styled(List)`
 const card = styled(Card)`
     background-color: #f4fcfb;
     border-radius: 10px;
+    & .card-img-top {
+        width: 100%;
+        height: 20rem;
+        object-fit: cover;
+    }
     @media only screen and (max-width: 767px) {
         margin-top: ${(props) => props.margin};
     }
