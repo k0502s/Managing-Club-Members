@@ -23,11 +23,13 @@ import {
     MEMBER_REMOVE_INQUIRIES_REQUEST,
     MEMBER_REMOVE_INQUIRIES_SUCCESS,
     MEMBER_REMOVE_INQUIRIES_FAILURE,
+    ALL_DATA_REQUEST,
+    ALL_DATA_SUCCESS,
+    ALL_DATA_FAILURE,
     CLEAR_ERROR_SUCCESS_1,
     CLEAR_ERROR_FAILURE_1,
     CLEAR_ERROR_REQUEST_1,
 } from '../types';
-
 
 // uploading
 
@@ -224,6 +226,33 @@ function* watchDeleteMemberInqiries() {
     yield takeEvery(MEMBER_REMOVE_INQUIRIES_REQUEST, Deletememberinqiries);
 }
 
+// All data Get
+
+const alldataAPI = (data) => {
+    console.log('id',data);
+    return axios.get(`api/member/alldata`, data);
+};
+
+function* Alldata(action) {
+    try {
+        const result = yield call(alldataAPI, action.payload);
+        console.log(result);
+        yield put({
+            type: ALL_DATA_SUCCESS,
+            payload: result.data,
+        });
+    } catch (e) {
+        yield put({
+            type: ALL_DATA_FAILURE,
+            payload: e.response,
+        });
+    }
+}
+
+function* watchAllData() {
+    yield takeEvery(ALL_DATA_REQUEST, Alldata);
+}
+
 // clear Error
 
 function* clearError() {
@@ -252,8 +281,7 @@ export default function* memberSaga() {
         fork(watchMemberUpdate),
         fork(watchMemberInqiries),
         fork(watchDeleteMemberInqiries),
+        fork(watchAllData),
         fork(watchclearError),
-
     ]);
 }
-

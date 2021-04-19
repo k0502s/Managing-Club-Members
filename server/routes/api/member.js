@@ -1,6 +1,8 @@
 import express from 'express';
 import multer from 'multer';
 import Member from '../../models/member.js';
+import User from '../../models/user.js';
+
 
 const router = express.Router();
 
@@ -69,6 +71,16 @@ router.get('/', async (req, res) => {
                 currentPage: data.page - 1,
             });
         });
+    } catch (e) {
+        console.log(e);
+        res.status(400).json({ success: false });
+    }
+});
+
+router.get('/alldata', async (req, res) => {
+    try {
+        const memberalldata = await Member.find();
+        res.send(memberalldata);
     } catch (e) {
         console.log(e);
         res.status(400).json({ success: false });

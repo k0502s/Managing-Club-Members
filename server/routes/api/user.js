@@ -130,7 +130,7 @@ router.get('/warnlist_by_id', (req, res) => {
             return item;
         });
     }
-    
+
     const condition = { _id: { $in: warnmemberIds } };
     //id값이 여러개 들어 있는 배열을 못넣어서 $in을 사용함.
     Member.paginate(condition, { offset, limit }).then((warnmember) => {
@@ -156,7 +156,7 @@ router.get('/removeWarnMember', auth, (req, res) => {
                 return item.id;
             });
 
-            Member.find({ _id: { $in: array }})
+            Member.find({ _id: { $in: array } })
                 .populate('writer')
                 .exec((err, listInfo) => {
                     return res.status(200).json({

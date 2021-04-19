@@ -17,6 +17,9 @@ import {
     MEMBER_INQUIRIES_REQUEST,
     MEMBER_INQUIRIES_SUCCESS,
     MEMBER_INQUIRIES_FAILURE,
+    ALL_DATA_REQUEST,
+    ALL_DATA_SUCCESS,
+    ALL_DATA_FAILURE,
     CLEAR_ERROR_REQUEST_1,
     CLEAR_ERROR_SUCCESS_1,
     CLEAR_ERROR_FAILURE_1,
@@ -36,6 +39,7 @@ const initialState = {
     totalPages: '',
     currentPage: '',
     deletesuccess: '',
+    membertoltal: '',
 };
 
 const memberReducer = (state = initialState, action) => {
@@ -172,6 +176,26 @@ const memberReducer = (state = initialState, action) => {
                 ...state,
                 errorMsg: 'error',
                 updatelist: action.payload.message,
+                isLoading: false,
+            };
+        case ALL_DATA_REQUEST:
+            return {
+                ...state,
+                errorMsg: '',
+                isLoading: true,
+            };
+        case ALL_DATA_SUCCESS:
+            return {
+                ...state,
+                singlememberlist: '',
+                membertoltal: action.payload,
+                isLoading: false,
+            };
+        case ALL_DATA_FAILURE:
+            return {
+                ...state,
+                errorMsg: 'error',
+                membertoltal: '',
                 isLoading: false,
             };
         case CLEAR_ERROR_REQUEST_1:
