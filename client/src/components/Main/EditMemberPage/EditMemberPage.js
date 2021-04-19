@@ -106,10 +106,10 @@ const EditMemberPage = ({ match }) => {
 
     return (
         <>
-            <S.title style={{ textAlign: 'center', display: 'block' }}>
+            <S.title>
                 <h1>EDIT MEMBER</h1>
             </S.title>
-            <Col md={{ size: 6, offset: 3 }}>
+            <Col md={{ size: 6, offset: 3}} sm='12' xs='12'>
                 <Helmet title={`회원 정보 수정`} />
                 <Card>
                     <CardHeader>

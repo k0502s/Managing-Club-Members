@@ -144,7 +144,7 @@ const MemberList = (props) => {
     const Body = (
         <Row>
             <Helmet title={`회원 리스트`} />
-            <Col>
+            <Col md={6}>
                 <Col>
                     <S.card>
                         <CardHeader>

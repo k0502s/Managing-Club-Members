@@ -35,7 +35,6 @@ const WarnMemberList = () => {
         const params = getRequestParams(page, pageSize);
         let warnLists = [];
 
-        //리덕스 User state안에 cart 안에 상품이 들어있는지 확인
         if (user && user.cart)
             if (user.cart.length > 0) {
                 user.cart.forEach((item) => {
@@ -75,7 +74,7 @@ const WarnMemberList = () => {
             </S.title>
             <Row>
                 <Helmet title={`경고 회원 리스트`} />
-                <Col md={5}>
+                <Col md={5} sm={12}>
                     <S.card margin={'30px'}>
                         <CardHeader><strong>경고 회원 참고 사항</strong></CardHeader>
                         <CardBody>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Row, Col, CardBody, Card, Button } from 'reactstrap';
+import { Row, Card, Button } from 'reactstrap';
 import { BsPersonFill, BsUpload, BsTrash } from 'react-icons/bs';
 
 const PersonIcon = styled(BsPersonFill)`
@@ -60,7 +60,7 @@ const pngImg = styled.img`
     height: 432px;
     display: block;
     margin: 0px auto;
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 767px) {
         width: 300px;
         height: 332px;
     }
@@ -70,7 +70,10 @@ const card = styled(Card)`
     height: 790px;
     background-color: #f4fcfb;
     border-radius: 10px;
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 767px)  {
+        margin-top: 10px;
+    }
+    @media only screen and (min-width:768px) and (max-width:1024px) {
         margin-top: 10px;
     }
 `;

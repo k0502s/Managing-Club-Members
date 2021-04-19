@@ -6,12 +6,12 @@ const container = styled(Container)`
     padding: 20px;
     min-height: 150vh;
     transition: all 0.3s;
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 1024px) {
         padding: 0;
     }
 `;
 const overlay = styled.div`
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 1024px) {
         display: none;
         position: fixed;
         width: 100vw;
@@ -26,7 +26,7 @@ const overlay = styled.div`
 `;
 
 const wrapper = styled.div`
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 1024px) {
         padding: 20px;
     }
 `;

@@ -17,7 +17,10 @@ const title = styled(Row)`
     margin: -10px 0 26px 0;
 `;
 const table = styled(Table)`
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
         display: none;
     }
 `;
@@ -25,21 +28,21 @@ const list = styled(List)`
     display: none;
     width: 100%;
     background-color: #f4fcfb;
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 767px) {
+        display: block;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
         display: block;
     }
 `;
 const btn = styled(Button)`
-    margin-bottom: 10px;
     border-radius: 7px;
     border: 1px;
     background-color: #8bc34a;
-
     & #icon {
         width: 24px;
         height: 24px;
         transition: all 0.4s ease-in-out;
-        margin: 0 5px 2px 0;
     }
     &:hover {
         color: white;
@@ -53,7 +56,8 @@ const btn = styled(Button)`
 const card = styled(Card)`
     background-color: #f4fcfb;
     border-radius: ${(props) => props.radius};
-    @media only screen and (max-width: 500px) {
+    border: 0px;
+    @media only screen and (max-width: 767px) {
         margin-top: 25px;
     }
 `;
@@ -64,7 +68,7 @@ const th = styled.th`
 
 const span = styled.span`
     margin-left: ${(props) => props.margin};
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 767px) {
         margin-left: 230px;
     }
 `;

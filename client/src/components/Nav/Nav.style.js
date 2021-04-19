@@ -41,7 +41,7 @@ const toggleIcon = styled(BsJustify)`
 `;
 const sidetoggleIcon = styled(BsXSquareFill)`
     display: none;
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 1024px) {
         display: block;
         font-size: 30px;
         color: #333;
@@ -68,7 +68,7 @@ const Sidebar = styled.div`
     & .nav-item:hover {
         color: #4c443c;
     }
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 1024px) {
         z-index: 999;
         position: fixed;
         left: -250px;
@@ -93,7 +93,7 @@ const SidbarHeader = styled.div`
 
 const mobilelogo = styled.img`
     display: none;
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 1024px) {
         display: block;
         width: 80x;
         height: 80px;
@@ -105,7 +105,7 @@ const logo = styled.img`
     width: 80x;
     height: 80px;
     margin-top: 10%;
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 1024px) {
         display: none;
     }
 `;
@@ -132,7 +132,7 @@ const SideMenu = styled.div`
 `;
 
 const Topbar = styled(Navbar)`
-    padding: 30px;
+    padding: 15px;
     margin-bottom: 50px;
     background-color: #f4fcfb;
     border-radius: 15px;
@@ -144,13 +144,15 @@ const Topbar = styled(Navbar)`
         width: 100%;
         justify-content: flex-end;
     }
-    @media only screen and (max-width: 500px) {
-        padding: 13px 5px 13px 5px;
+    @media only screen and (max-width: 1024px) {
+        padding: 10px 9px 10px 9px;
         margin-bottom: 30px;
         border-radius: 0;
         & a.nav-link {
             display: none;
         }
+    }
+    @media only screen and (max-width: 767px) {
         & .navbar-brand {
             display: block;
             margin: 0 auto;

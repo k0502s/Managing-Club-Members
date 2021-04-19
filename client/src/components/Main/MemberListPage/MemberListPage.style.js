@@ -20,7 +20,7 @@ const link = styled(List)`
 const card = styled(Card)`
     background-color: #f4fcfb;
     border-radius: 10px;
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 767px) {
         margin-top: ${(props) => props.margin};
     }
 `;
@@ -42,7 +42,7 @@ const button = styled(Button)`
         color: white;
         background-color: lightslategray;
     }
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 767px) {
         display: block;
         margin: 0 auto;
         margin-top: 10px;
@@ -58,10 +58,10 @@ const title = styled(Row)`
 `;
 
 const span = styled.span`
-margin-left: ${(props) => props.margin};
-@media only screen and (max-width: 500px) {
-    margin-left: 210px;
-}
-`
+    margin-left: ${(props) => props.margin};
+    @media only screen and (max-width: 767px) {
+        margin-left: 210px;
+    }
+`;
 
 export { Img, link, card, button, PersonIcon, cardImg, title, span };
