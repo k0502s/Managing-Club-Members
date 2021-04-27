@@ -25,16 +25,6 @@ describe('<Sidebar /> 컴포넌트 테스트', () => {
             chatalldata: ['1', '2', '3'],
         },
     });
-
-    // it('matches snapshot', () => {
-    //     const utils = render(
-    //         <Provider store={store}>
-    //             <Sidebar />
-    //         </Provider>
-    //     );
-    //     expect(utils.container).toMatchSnapshot();
-    // });
-
     it('홈 링크가 잘 작동하는지', () => {
         const { getByTestId } = render(
             <BrowserRouter>

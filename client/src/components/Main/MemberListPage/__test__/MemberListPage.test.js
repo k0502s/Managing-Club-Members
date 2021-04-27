@@ -23,15 +23,6 @@ describe('<MemberListPage /> 컴포넌트 테스트', () => {
         },
     });
 
-    // it('matches snapshot', () => {
-    //     const utils = render(
-    //         <Provider store={store}>
-    //             <MemberListPage />
-    //         </Provider>
-    //     );
-    //     expect(utils.container).toMatchSnapshot();
-    // });
-
     it('스토어에서 회원 데이터 값들이 잘 랜더링 되는지', () => {
         const ref = React.createRef();
         const text = () => ref.current.textContent;
@@ -54,8 +45,7 @@ describe('<MemberListPage /> 컴포넌트 테스트', () => {
         });
 
         expect(listsearch).toHaveAttribute('value', '검색 테스트');
-        expect(listdata).toHaveTextContent('김진석');
-        expect(listdata).toHaveTextContent('1');
+        expect(listdata).toHaveTextContent('김진석남');
         expect(listpage).toHaveTextContent(1);
     });
 

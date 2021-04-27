@@ -20,19 +20,10 @@ describe('<MemberInquiriesPage />컴포넌트 테스트', () => {
         },
     });
 
-    // it('matches snapshot', () => {
-    //     const utils = render(
-    //         <Provider store={store}>
-    //             <MemberInquiriesPage />
-    //         </Provider>
-    //     );
-    //     expect(utils.container).toMatchSnapshot();
-    // });
-
     it('문의 사항 데이터가 테이블 표 값에 잘 랜더링 되는지', () => {
         const { getByTestId } = render(
             <Provider store={store}>
-                <MemberInquiriesPage onSubmit={onSubmit} />
+                <MemberInquiriesPage />
             </Provider>
         );
         const name = getByTestId('inquiries-name');

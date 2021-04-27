@@ -14,17 +14,10 @@ describe('<AddMemberPage />컴포넌트 테스트', () => {
                 },
             ],
         },
+        member: {
+            isLoading: false
+        }
     });
-
-    // it('matches snapshot', () => {
-    //     const utils = render(
-    //         <Provider store={store}>
-    //             <AddMemberPage />
-    //         </Provider>
-    //     );
-    //     expect(utils.container).toMatchSnapshot();
-    // });
-
     it('Form의 Input과 Select에 입력값이 들어오고 state값에 잘 들어가는지', () => {
         const { getByTestId, getAllByTestId } = render(
             <Provider store={store}>

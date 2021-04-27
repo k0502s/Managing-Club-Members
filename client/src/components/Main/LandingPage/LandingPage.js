@@ -100,7 +100,7 @@ const LandingPage = () => {
                                                 <S.ListIcon />
                                             </div>
                                             <p>회원 수</p>
-                                            <span>{membertoltal.length}명</span>
+                                            <span data-testid='member-count'>{membertoltal.length}명</span>
                                         </S.DataCircle>
                                     </CardText>
                                 </Col>
@@ -111,7 +111,7 @@ const LandingPage = () => {
                                                 <S.WarnIcon />
                                             </div>
                                             <p>경고 회원 수</p>
-                                            <span>{warnlisttoltal}명</span>
+                                            <span data-testid='warnmember-count'>{warnlisttoltal}명</span>
                                         </S.DataCircle>
                                     </CardText>
                                 </Col>
@@ -122,7 +122,7 @@ const LandingPage = () => {
                                                 <S.QIcon />
                                             </div>
                                             <p>문의 사항</p>
-                                            <span>{chatalldata.length}건</span>
+                                            <span data-testid='Qmember-count'>{chatalldata.length}건</span>
                                         </S.DataCircle>
                                     </CardText>
                                 </Col>

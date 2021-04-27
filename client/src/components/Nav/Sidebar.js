@@ -63,12 +63,12 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
         <S.Sidebar isOpen={isOpen}>
             <S.SidbarHeader isOpen={isOpen}>
                 <Row>
-                    <Link to={'/'}>
+                    <Link to={'/'} data-testid="Home">
                         <S.MobileLogo src={headerImage} />
                     </Link>
                     <S.SideToggleIcon onClick={toggleSidebar} />
                 </Row>
-                <Link to={'/'}>
+                <Link to={'/'} data-testid="Home">
                     <S.Logo src={headerImage} />
                 </Link>
                 <h5>MEMBER ADMIN SYSTEM</h5>

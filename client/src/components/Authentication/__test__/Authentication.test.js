@@ -25,16 +25,6 @@ describe('<Login /> 컴포넌트 테스트', () => {
             ],
         },
     });
-
-    // it('matches snapshot', () => {
-    //     const utils = render(
-    //         <Provider store={store}>
-    //             <Login />
-    //         </Provider>
-    //     );
-    //     expect(utils.container).toMatchSnapshot();
-    // });
-
     it('로그인을 위한 값들이 Input 값에 잘 들어오고 state 값에 잘 들어가는지', () => {
         const { getByTestId } = render(
             <BrowserRouter>

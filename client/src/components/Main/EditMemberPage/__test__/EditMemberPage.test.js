@@ -32,27 +32,18 @@ describe('<EditMemberPage /> 컴포넌트 테스트', () => {
         },
     };
 
-    // it('matches snapshot', () => {
-    //     const utils = render(
-    //         <Provider store={store}>
-    //             <EditMemberPage {...props}/>
-    //         </Provider>
-    //     );
-    //     expect(utils.container).toMatchSnapshot();
-    // });
-
     it('스토어에서 디폴트 값들이 잘 랜더링 되는지', () => {
         const { getByTestId, getAllByTestId } = render(
             <Provider store={store}>
                 <EditMemberPage {...props} />
             </Provider>
         );
-        const name = getByTestId('add-name');
-        const camera = getByTestId('add-camera');
-        const age = getByTestId('add-age');
-        const sex = getByTestId('add-sex');
-        const image = getByTestId('add-image');
-        const button = getByTestId('add-submit');
+        const name = getByTestId('edit-name');
+        const camera = getByTestId('edit-camera');
+        const age = getByTestId('edit-age');
+        const sex = getByTestId('edit-sex');
+        const image = getByTestId('edit-image');
+        const button = getByTestId('edit-submit');
         let options = getAllByTestId('select-option');
 
         fireEvent.change(sex, {

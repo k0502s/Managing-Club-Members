@@ -9,7 +9,11 @@ const Topbar = ({ toggleSidebar }) => {
     const { isAuthenticated } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
 
-    const guestLink = <div><strong>로그인이 필요합니다!</strong></div>;
+    const guestLink = (
+        <div>
+            <strong>로그인이 필요합니다!</strong>
+        </div>
+    );
 
     const authLink = (
         <>
@@ -45,7 +49,9 @@ const Topbar = ({ toggleSidebar }) => {
         <S.Topbar expand="md">
             <S.ToggleIcon onClick={toggleSidebar} />
             <NavbarBrand>
-                <img src={headerImage} />
+                <Link to={'/'} data-testid="Home">
+                    <img src={headerImage} />
+                </Link>
             </NavbarBrand>
             {isAuthenticated ? authLink : guestLink}
         </S.Topbar>

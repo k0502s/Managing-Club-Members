@@ -24,7 +24,7 @@ const AddMemberPage = () => {
 
     const [Images, setImages] = useState([]);
     const { user } = useSelector((state) => state.auth);
-    const { isLoader } = useSelector((state) => state.member);
+    const { isLoading } = useSelector((state) => state.member);
 
     useEffect(() => {
         dispatch({
@@ -157,7 +157,7 @@ const AddMemberPage = () => {
         </>
     );
 
-    return <>{isLoader ? Loader : Body}</>;
+    return <>{isLoading ? Loader : Body}</>;
 };
 
 export default AddMemberPage;
