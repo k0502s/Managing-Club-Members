@@ -36,7 +36,7 @@ const MemberList = (props) => {
 
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(3);
-    const { memberlist, totalPages, isLoading } = useSelector((state) => state.member);
+    const { memberlist, totalPages, isLoading, deletesuccess } = useSelector((state) => state.member);
     const pageSizes = [3, 6];
 
     const getRequestParams = (searchTitle, page, pageSize) => {
@@ -99,13 +99,11 @@ const MemberList = (props) => {
     const refreshList = () => {
         retrieveMemberDatas();
         setCurrentMemberData(null);
-        setSelectedIndex(-1);
     };
 
     const refreshList2 = () => {
         retrieveMemberDatas();
         setCurrentMemberData(null);
-        setSelectedIndex(0);
     };
 
     const setActiveMemberData = (memberdata, index) => {
@@ -131,6 +129,7 @@ const MemberList = (props) => {
                 type: MEMBER_DELETE_REQUEST,
                 payload: id,
             });
+
             refreshList2();
         } else {
             refreshList();
