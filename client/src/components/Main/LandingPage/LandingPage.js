@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { Row, Col, Card, CardHeader, CardBody, Button, CardText } from 'reactstrap';
+import { Row, Col, Card, CardHeader, CardBody, CardText } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Register from '../../Authentication/RegisterModal';
-import * as S from './LandingPage.style';
 import systemImg from '../../../assets/img/system.png';
 import statisticsImg from '../../../assets/img/통계.png';
 import { ALL_DATA_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1, MEMBER_WARNLIST_REQUEST } from '../../../redux/types';
+import * as S from './LandingPage.style';
 
 const LandingPage = () => {
     const dispatch = useDispatch();
@@ -44,12 +44,12 @@ const LandingPage = () => {
         <>
             <Col>
                 <Card>
-                    <S.header>
+                    <S.Header>
                         <div>
-                            <S.bellIcon />
+                            <S.BellIcon />
                             안녕하세요. MEMBER ADMIN SYSTEM 프로젝트 입니다.
                         </div>
-                    </S.header>
+                    </S.Header>
                     <CardBody>
                         <Row>
                             <Col>
@@ -64,7 +64,7 @@ const LandingPage = () => {
                                 {/* <Register /> */}
                             </Col>
                             <Col>
-                                <S.img src={systemImg} />
+                                <S.Img src={systemImg} />
                             </Col>
                         </Row>
                     </CardBody>
@@ -75,11 +75,15 @@ const LandingPage = () => {
 
     const authLink = (
         <>
-            <S.title>
+            <S.Title>
                 <h1>HOME</h1>
-            </S.title>
+            </S.Title>
             <Row>
                 <Col sm={6}>
+                    <S.HomeCard margin={'20px'}>
+                        <CardHeader>동호회 사이트</CardHeader>
+                        <CardBody>ㅇㅇㅇㅇㅇㅇㅇ</CardBody>
+                    </S.HomeCard>
                     <Card>
                         <CardHeader>
                             <div>
@@ -91,48 +95,44 @@ const LandingPage = () => {
                             <Row>
                                 <Col>
                                     <CardText>
-                                        <S.circle color={'#8bc34a'}>
+                                        <S.DataCircle color={'#8bc34a'}>
                                             <div>
                                                 <S.ListIcon />
                                             </div>
                                             <p>회원 수</p>
                                             <span>{membertoltal.length}명</span>
-                                        </S.circle>
+                                        </S.DataCircle>
                                     </CardText>
                                 </Col>
                                 <Col>
                                     <CardText>
-                                        <S.circle color={'#e2b046'}>
+                                        <S.DataCircle color={'#e2b046'}>
                                             <div>
                                                 <S.WarnIcon />
                                             </div>
                                             <p>경고 회원 수</p>
                                             <span>{warnlisttoltal}명</span>
-                                        </S.circle>
+                                        </S.DataCircle>
                                     </CardText>
                                 </Col>
                                 <Col>
                                     <CardText>
-                                        <S.circle color={'#F05232'}>
+                                        <S.DataCircle color={'#F05232'}>
                                             <div>
                                                 <S.QIcon />
                                             </div>
                                             <p>문의 사항</p>
                                             <span>{chatalldata.length}건</span>
-                                        </S.circle>
+                                        </S.DataCircle>
                                     </CardText>
                                 </Col>
                             </Row>
-                            <S.img2 src={statisticsImg} />
+                            <S.Img2 src={statisticsImg} />
                         </CardBody>
                     </Card>
-                    <S.card margin={'20px'}>
-                        <CardHeader>메모장</CardHeader>
-                        <CardBody>dㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</CardBody>
-                    </S.card>
                 </Col>
                 <Col>
-                    <S.card>
+                    <S.HomeCard height={'660px'}>
                         <CardHeader>
                             <div>
                                 <S.MapIcon />
@@ -140,7 +140,7 @@ const LandingPage = () => {
                             </div>
                         </CardHeader>
                         <CardBody>
-                            {' '}
+                            <br />
                             <CardText>
                                 <S.AddIcon />
                                 <strong>ADD MEMBER </strong>: 동호의 회원의 정보를 데이터에 추가할 수 있는 페이지 입니다.
@@ -164,7 +164,7 @@ const LandingPage = () => {
                             </CardText>
                             <br />
                         </CardBody>
-                    </S.card>
+                    </S.HomeCard>
                 </Col>
             </Row>
         </>

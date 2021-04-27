@@ -212,7 +212,7 @@ const memberWarnListAPI = (data) => {
     const size = data.size;
     // const params = data.params
 
-    return axios.get(`/api/user/warnlist_by_id?id=${warnListsId}&type=array&page=${page}&size=${size}`).then((response) => {
+    return axios.get(`/api/user/warnlist?id=${warnListsId}&type=array&page=${page}&size=${size}`).then((response) => {
         //CartItem 들에 해당하는 정보들을 product Collection에서 가져온 후에
         console.log(response.data);
         //Quantity 정보를 넣어 준다. 즉 product 정보와, cart 정보의 Quantity의 조합이다.

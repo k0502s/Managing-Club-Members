@@ -6,9 +6,9 @@ import Pagination from '@material-ui/lab/Pagination';
 import { BsArrowRepeat } from 'react-icons/bs';
 import Contact from './Section/Contact';
 import MobileCard from './Section/MobileCard';
-import * as S from './MemberInquiriesPage.style';
+import { CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import { MEMBER_INQUIRIES_REQUEST, MEMBER_REMOVE_INQUIRIES_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
-import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table, CardHeader, CardBody } from 'reactstrap';
+import * as S from './MemberInquiriesPage.style';
 
 const MemberInquiries = () => {
     const dispatch = useDispatch();
@@ -71,63 +71,63 @@ const MemberInquiries = () => {
 
     const Body = (
         <>
-            <S.title>
+            <S.Title>
                 <h1>MEMBER INQUIRIES LIST</h1>
-            </S.title>
+            </S.Title>
             <Row>
                 <Helmet title={`문의 사항 리스트`} />
                 <Col md={7} sm={12}>
-                    <S.card radius={'5px'}>
+                    <S.QCard radius={'5px'}>
                         <CardHeader>
                             <Row>
                                 <Col>
                                     <strong>문의 사항 리스트</strong>
                                 </Col>
                                 <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                    <S.btn onClick={retrieveDB}>
+                                    <S.Qbtn onClick={retrieveDB}>
                                         <BsArrowRepeat id="icon" />
-                                    </S.btn>
+                                    </S.Qbtn>
                                 </Col>
                             </Row>
                         </CardHeader>
                         <CardBody>
-                            <S.table size="sm">
+                            <S.QTable size="sm">
                                 <thead>
                                     <tr>
-                                        <S.th>회원 이름</S.th>
-                                        <S.th>연락 이메일</S.th>
-                                        <S.th>문의 내용</S.th>
-                                        <S.th>삭제</S.th>
+                                        <S.Th>회원 이름</S.Th>
+                                        <S.Th>연락 이메일</S.Th>
+                                        <S.Th>문의 내용</S.Th>
+                                        <S.Th>삭제</S.Th>
                                     </tr>
                                 </thead>
                                 {inquiriesdata &&
                                     inquiriesdata.map((inquiries, index) => (
                                         <tbody key={index}>
                                             <tr>
-                                                <S.th width={'10%'} data-testid="inquiries-name">
+                                                <S.Th width={'10%'} data-testid="inquiries-name">
                                                     {inquiries.name}
-                                                </S.th>
-                                                <S.th width={'15%'} data-testid="inquiries-email">
+                                                </S.Th>
+                                                <S.Th width={'15%'} data-testid="inquiries-email">
                                                     {inquiries.email}
-                                                </S.th>
-                                                <S.th width={'25%'} data-testid="inquiries-opinion">
+                                                </S.Th>
+                                                <S.Th width={'25%'} data-testid="inquiries-opinion">
                                                     {inquiries.opinion}
-                                                </S.th>
-                                                <S.th width={'10%'}>
-                                                    <S.deleteIcon onClick={() => removeFromInquiries(inquiries._id)} data-testid="inquiries-button" />
-                                                </S.th>
+                                                </S.Th>
+                                                <S.Th width={'10%'}>
+                                                    <S.DeleteIcon onClick={() => removeFromInquiries(inquiries._id)} data-testid="inquiries-button" />
+                                                </S.Th>
                                             </tr>
                                         </tbody>
                                     ))}
-                            </S.table>
+                            </S.QTable>
                             <Col sm={12}>
                                 <MobileCard removeFromInquiries={removeFromInquiries} />
                             </Col>
                         </CardBody>
-                    </S.card>
+                    </S.QCard>
 
                     <Col md={{ offset: 4 }} className="mt-3">
-                        <S.span margin={'280px'}>Page: </S.span>
+                        <S.Span margin={'280px'}>Page: </S.Span>
                         <select onChange={handlePageSizeChange} value={pageSize}>
                             {pageSizes.map((size) => (
                                 <option key={size} value={size}>
@@ -141,20 +141,20 @@ const MemberInquiries = () => {
                     </Col>
                 </Col>
                 <Col md={5} sm={12}>
-                    <S.card>
+                    <S.QCard>
                         <CardHeader>
                             <strong>이메일 전송</strong>
                         </CardHeader>
-                        <S.card body>
+                        <S.QCard body>
                             <CardText>※ 회원 문의 사항 관리 안내</CardText>
                             <CardText>1. 또 다른 개인 프로젝트인 동호회 사이트의 챗봇 시스템을 통해 접수한 회원분들의 문의 사항 데이터를 받아 옵니다.</CardText>
                             <br />
                             <CardText>2. 문의 사항에 대한 답은 아래 이메일 발송 기능을 통해 바로 답장 이메일을 보낼 수 있습니다.</CardText>
-                        </S.card>
+                        </S.QCard>
                         <CardBody>
                             <Contact />
                         </CardBody>
-                    </S.card>
+                    </S.QCard>
                 </Col>
             </Row>
         </>

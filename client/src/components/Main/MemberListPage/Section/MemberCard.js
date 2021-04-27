@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import WarnButton from './WarnButton';
-import * as S from '../MemberListPage.style';
 import profileImg from '../../../../assets/img/Profile.png';
 import { Col, Row, CardHeader, CardBody, CardTitle, CardImg, Label } from 'reactstrap';
+import * as S from '../MemberListPage.style';
 
 const sex = {
     1: '남',
@@ -21,7 +21,7 @@ const MemberCard = ({ currentMemberData, deleteMemberData }) => {
         <>
             {currentMemberData ? (
                 <>
-                    <S.card margin={'30px'}>
+                    <S.MemberCard margin={'30px'}>
                         <CardHeader>
                             <strong>회원 정보</strong>
                         </CardHeader>
@@ -60,27 +60,27 @@ const MemberCard = ({ currentMemberData, deleteMemberData }) => {
                                 </Col>
                                 <Col md={5}>
                                     <Link to={'/edit/' + currentMemberData._id} data-testid="member-edit">
-                                        <S.button color={'#8bc34a'} margin={'16px 0 15px 0'} width={'150px'}>
+                                        <S.Memberbtn color={'#8bc34a'} margin={'16px 0 15px 0'} width={'150px'}>
                                             수정하기
-                                        </S.button>
+                                        </S.Memberbtn>
                                     </Link>
                                     <WarnButton detail={currentMemberData} />
-                                    <S.button color={'#F05232'} margin={'0 0 15px 0'} width={'150px'} onClick={deleteMemberData}>
+                                    <S.Memberbtn color={'#F05232'} margin={'0 0 15px 0'} width={'150px'} onClick={deleteMemberData}>
                                         제명하기
-                                    </S.button>
+                                    </S.Memberbtn>
                                 </Col>
                             </Row>
                         </CardBody>
-                    </S.card>
+                    </S.MemberCard>
                 </>
             ) : (
                 <>
-                    <S.card margin={'30px'}>
+                    <S.MemberCard margin={'30px'}>
                         <CardHeader>
                             {' '}
                             <strong>옆에 있는 회원 리스트를 클릭해주세요!</strong>
                         </CardHeader>
-                        <S.cardImg top src={profileImg} alt="Card image cap" />
+                        <S.MemberCardImg top src={profileImg} alt="Card image cap" />
                         <CardBody>
                             <Row>
                                 <Col md={7}>
@@ -110,19 +110,19 @@ const MemberCard = ({ currentMemberData, deleteMemberData }) => {
                                     </CardTitle>
                                 </Col>
                                 <Col md={5}>
-                                    <S.button color={'#8bc34a'} margin={'16px 0 15px 0'} width={'150px'}>
+                                    <S.Memberbtn color={'#8bc34a'} margin={'16px 0 15px 0'} width={'150px'}>
                                         수정하기
-                                    </S.button>
-                                    <S.button color={'#e2b046'} margin={'0 0 15px 0'} width={'150px'}>
+                                    </S.Memberbtn>
+                                    <S.Memberbtn color={'#e2b046'} margin={'0 0 15px 0'} width={'150px'}>
                                         경고하기
-                                    </S.button>
-                                    <S.button color={'#F05232'} margin={'0 0 15px 0'} width={'150px'}>
+                                    </S.Memberbtn>
+                                    <S.Memberbtn color={'#F05232'} margin={'0 0 15px 0'} width={'150px'}>
                                         제명하기
-                                    </S.button>
+                                    </S.Memberbtn>
                                 </Col>
                             </Row>
                         </CardBody>
-                    </S.card>
+                    </S.MemberCard>
                 </>
             )}
         </>

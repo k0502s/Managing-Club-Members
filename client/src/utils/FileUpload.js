@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Form, Input, Col, Row } from 'reactstrap';
+import React from 'react';
 import Dropzone from 'react-dropzone';
 import Axios from 'axios';
 import * as S from '../components/Main/AddMemberPage/AddMemberPage.style';
@@ -28,15 +27,15 @@ function FileUpload(props) {
         <Dropzone onDrop={dropHandler} multiple>
             {({ getRootProps, getInputProps }) => (
                 <section>
-                    <S.button color={'#333'} {...getRootProps()}>
+                    <S.Addbtn color={'#333'} {...getRootProps()}>
                         <input {...getInputProps()} />
-                        <S.uploadIcon />
+                        <S.UploadIcon />
                         프로필 업로드
-                    </S.button>
-                    <S.button color={'#F05232'} onClick={() => props.removefile()}>
-                        <S.deleteIcon />
+                    </S.Addbtn>
+                    <S.Addbtn color={'#F05232'} onClick={() => props.removefile()}>
+                        <S.DeleteIcon />
                         프로필 제거
-                    </S.button>
+                    </S.Addbtn>
                 </section>
             )}
         </Dropzone>

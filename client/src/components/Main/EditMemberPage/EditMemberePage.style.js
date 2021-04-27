@@ -2,12 +2,15 @@ import styled from 'styled-components';
 import { CardBody, Button, Row } from 'reactstrap';
 import { BsPersonFill } from 'react-icons/bs';
 
+// Icon CSS
 const PersonIcon = styled(BsPersonFill)`
     width: 300px;
     height: 240px;
     color: lightgrey;
 `;
-const button = styled(Button)`
+
+// Edit Page CSS
+const Editbtn = styled(Button)`
     margin-right: 10px;
     font-weight: bold;
     color: white;
@@ -50,15 +53,15 @@ const FileUpload = styled.div`
     margin-bottom: 30px;
 `;
 
-const card = styled(CardBody)`
+const EditCard = styled(CardBody)`
     height: 770px;
     border-radius: 10px;
 `;
 
-const title = styled(Row)`
+const Title = styled(Row)`
     text-align: center;
     display: block;
-    margin: -10px 0 15px 0
+    margin: -10px 0 15px 0;
 `;
 
-export { Profile, Img, FileUpload, card, PersonIcon, button, title };
+export { Profile, Img, FileUpload, EditCard, PersonIcon, Editbtn, Title };

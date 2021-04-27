@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Navbar, Badge } from 'reactstrap';
 import { BsFillPersonPlusFill, BsXSquareFill, BsFillHouseDoorFill, BsFillPersonLinesFill, BsExclamationTriangle, BsFillQuestionDiamondFill, BsJustify } from 'react-icons/bs';
 
+// Nav Icon CSS
 const HomeIcon = styled(BsFillHouseDoorFill)`
     margin-right: 10px;
     margin-bottom: 4px;
@@ -11,10 +12,6 @@ const AddIcon = styled(BsFillPersonPlusFill)`
     margin-right: 10px;
     margin-bottom: 3px;
     font-size: large;
-    /* transition: 0.4s;
-    &:hover {
-        transform: scale(1.6);
-    } */
 `;
 const ListIcon = styled(BsFillPersonLinesFill)`
     margin-right: 10px;
@@ -34,14 +31,14 @@ const QIcon = styled(BsFillQuestionDiamondFill)`
     font-size: large;
 `;
 
-const toggleIcon = styled(BsJustify)`
+const ToggleIcon = styled(BsJustify)`
     font-size: 40px;
     margin-bottom: 2px;
     color: #333;
 `;
-const sidetoggleIcon = styled(BsXSquareFill)`
+const SideToggleIcon = styled(BsXSquareFill)`
     display: none;
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1023px) {
         display: block;
         font-size: 30px;
         color: #333;
@@ -50,6 +47,7 @@ const sidetoggleIcon = styled(BsXSquareFill)`
     }
 `;
 
+// Nav CSS
 const Sidebar = styled.div`
     min-width: 250px;
     max-width: 250px;
@@ -68,7 +66,7 @@ const Sidebar = styled.div`
     & .nav-item:hover {
         color: #4c443c;
     }
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1023px) {
         z-index: 999;
         position: fixed;
         left: -250px;
@@ -91,9 +89,9 @@ const SidbarHeader = styled.div`
     }
 `;
 
-const mobilelogo = styled.img`
+const MobileLogo = styled.img`
     display: none;
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1023px) {
         display: block;
         width: 80x;
         height: 80px;
@@ -101,17 +99,17 @@ const mobilelogo = styled.img`
         margin-left: 5px;
     }
 `;
-const logo = styled.img`
+const Logo = styled.img`
     width: 80x;
     height: 80px;
     margin-top: 10%;
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1023px) {
         display: none;
     }
 `;
 
 const SideMenu = styled.div`
-    min-height: 55vh;
+    height: 90vh;
 
     & a {
         border-bottom: 1px solid #ededed;
@@ -140,7 +138,7 @@ const Topbar = styled(Navbar)`
     & .navbar-brand {
         display: none;
     }
-    & ul.nav {
+    & .nav {
         width: 100%;
         justify-content: flex-end;
     }
@@ -149,7 +147,7 @@ const Topbar = styled(Navbar)`
         display: flex;
         justify-content: flex-end;
     }
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1023px) {
         padding: 10px 9px 10px 9px;
         margin-bottom: 30px;
         border-radius: 0;
@@ -164,7 +162,7 @@ const Topbar = styled(Navbar)`
         }
         & img {
             width: 130px;
-            margin-right: 24px;
+            margin-right: 40px;
         }
         & div {
             display: none;
@@ -172,11 +170,11 @@ const Topbar = styled(Navbar)`
     }
 `;
 
-const badge = styled(Badge)`
+const CountbBadge = styled(Badge)`
     position: relative;
     margin-left: -18px;
     top: 10px;
     border-radius: 50%;
 `;
 
-export { AddIcon, HomeIcon, ListIcon, WarnIcon, QIcon, toggleIcon, Sidebar, SidbarHeader, SideMenu, Topbar, badge, sidetoggleIcon, mobilelogo, logo };
+export { AddIcon, HomeIcon, ListIcon, WarnIcon, QIcon, ToggleIcon, Sidebar, SidbarHeader, SideMenu, Topbar, CountbBadge, SideToggleIcon, MobileLogo, Logo };

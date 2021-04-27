@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import List from '@material-ui/core/List';
-import { Row, Col, CardBody, Button, Card, CardImg } from 'reactstrap';
+import { Row, Button, Card, CardImg } from 'reactstrap';
 import { BsPersonFill } from 'react-icons/bs';
+
+// Icon CSS
 
 const PersonIcon = styled(BsPersonFill)`
     width: 300px;
@@ -9,15 +11,16 @@ const PersonIcon = styled(BsPersonFill)`
     color: lightgrey;
 `;
 
+// List Page CSS
 const Img = styled.img`
     width: 80px;
 `;
 
-const link = styled(List)`
+const MemberList = styled(List)`
     width: 100%;
     background-color: #f4fcfb;
 `;
-const card = styled(Card)`
+const MemberCard = styled(Card)`
     background-color: #f4fcfb;
     border-radius: 10px;
     & .card-img-top {
@@ -30,12 +33,12 @@ const card = styled(Card)`
     }
 `;
 
-const cardImg = styled(CardImg)`
+const MemberCardImg = styled(CardImg)`
     width: 78%;
     margin: 0 auto;
 `;
 
-const button = styled(Button)`
+const Memberbtn = styled(Button)`
     font-weight: bold;
     color: white;
     border: 1px;
@@ -56,17 +59,17 @@ const button = styled(Button)`
     }
 `;
 
-const title = styled(Row)`
+const Title = styled(Row)`
     text-align: center;
     display: block;
     margin: -10px 0 22px 0;
 `;
 
-const span = styled.span`
+const Span = styled.span`
     margin-left: ${(props) => props.margin};
     @media only screen and (max-width: 767px) {
         margin-left: 210px;
     }
 `;
 
-export { Img, link, card, button, PersonIcon, cardImg, title, span };
+export { Img, MemberList, MemberCard, Memberbtn, PersonIcon, MemberCardImg, Title, Span };

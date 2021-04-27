@@ -1,17 +1,16 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MEMBER_INQUIRIES_REQUEST } from '../../redux/types';
-import { NavItem, NavLink, Nav, Badge, Row, Col } from 'reactstrap';
+import { NavItem, NavLink, Nav, Badge, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Login from '../Authentication/Login';
 import LocationDisplay from '../../utils/LocationDisplay';
 import headerImage from '../../assets/img/camera2.png';
 import * as S from './Nav.style';
-import { Discovery } from 'aws-sdk';
 
 const SideBar = ({ isOpen, toggleSidebar }) => {
     const dispatch = useDispatch();
-    const { isAuthenticated, user } = useSelector((state) => state.auth);
+    const { isAuthenticated } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
 
     useEffect(() => {
@@ -23,7 +22,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
     const guestLink = <div></div>;
 
     const authLink = (
-        <Fragment>
+        <>
             <NavItem>
                 <NavLink tag={Link} to={'/'} data-testid="home">
                     <S.HomeIcon />
@@ -46,7 +45,6 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
                 <NavLink tag={Link} to={'/warnlist'} data-testid="warnlist">
                     <S.WarnIcon />
                     WARN MEMBER LIST
-                    {/* <Badge color="secondary">{usercart.length}</Badge> */}
                 </NavLink>
             </NavItem>
             <NavItem>
@@ -58,7 +56,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
                     </Badge>
                 </NavLink>
             </NavItem>
-        </Fragment>
+        </>
     );
 
     return (
@@ -66,12 +64,12 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
             <S.SidbarHeader isOpen={isOpen}>
                 <Row>
                     <Link to={'/'}>
-                        <S.mobilelogo src={headerImage} />
+                        <S.MobileLogo src={headerImage} />
                     </Link>
-                    <S.sidetoggleIcon onClick={toggleSidebar} />
+                    <S.SideToggleIcon onClick={toggleSidebar} />
                 </Row>
                 <Link to={'/'}>
-                    <S.logo src={headerImage} />
+                    <S.Logo src={headerImage} />
                 </Link>
                 <h5>MEMBER ADMIN SYSTEM</h5>
             </S.SidbarHeader>

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
-import { MEMBER_WARNLIST_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
-import WarnCardBlock from './Section/WarnCardBlock';
-import WarnImg from '../../../assets/img/Warn.png'
+import WarnCard from './Section/WarnCard';
+import WarnImg from '../../../assets/img/Warn.png';
 import Pagination from '@material-ui/lab/Pagination';
 import { Loader } from '../../Loader/Loader';
-import * as S from './WarnMemberListPage.style'
-import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Table, CardHeader, CardBody } from 'reactstrap';
+import { MEMBER_WARNLIST_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
+import { CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
+import * as S from './WarnMemberListPage.style';
 
 const WarnMemberList = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(5);
-    const { warnlistDetail, totalPages, isLoading } = useSelector((state) => state.auth);
+    const { totalPages, isLoading } = useSelector((state) => state.auth);
     const pageSizes = [5, 10];
 
     const getRequestParams = (page, pageSize) => {
@@ -57,7 +57,6 @@ const WarnMemberList = () => {
             }
     }, [user, page, pageSize]);
 
-
     const handlePageChange = (event, value) => {
         setPage(value);
     };
@@ -69,14 +68,16 @@ const WarnMemberList = () => {
 
     const Body = (
         <>
-            <S.title>
+            <S.Title>
                 <h1>WARN MEMBER LIST</h1>
-            </S.title>
+            </S.Title>
             <Row>
                 <Helmet title={`경고 회원 리스트`} />
                 <Col md={5} sm={12}>
-                    <S.card margin={'30px'}>
-                        <CardHeader><strong>경고 회원 참고 사항</strong></CardHeader>
+                    <S.WarnCard margin={'30px'}>
+                        <CardHeader>
+                            <strong>경고 회원 참고 사항</strong>
+                        </CardHeader>
                         <CardBody>
                             <CardTitle tag="h5">※ 경고 회원 관리 안내</CardTitle>
                             <br />
@@ -88,13 +89,13 @@ const WarnMemberList = () => {
                             <br />
                             <CardText>4. 경고 이후 동호회 활동에 더 이상 규정을 어기지 않고 정상적인 활동이 지속되면 일정 기간 이후 경고를 해제 할 수 있습니다.</CardText>
                         </CardBody>
-                        <S.warnImg src={WarnImg}/>
-                    </S.card>
+                        <S.WarnImg src={WarnImg} />
+                    </S.WarnCard>
                 </Col>
                 <Col md={7}>
-                    <WarnCardBlock />
+                    <WarnCard />
                     <Col md={{ offset: 4 }} className="mt-3">
-                        <S.span margin={'250px'}>Page: </S.span>
+                        <S.Span margin={'250px'}>Page: </S.Span>
                         <select onChange={handlePageSizeChange} value={pageSize}>
                             {pageSizes.map((size) => (
                                 <option key={size} value={size}>

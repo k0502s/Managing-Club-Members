@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import { Label, Input, Button, Col } from 'reactstrap';
 
-const label = styled(Label)`
+const LoginLabel = styled(Label)`
     margin-left: 1.5rem;
     margin-top: 0.7rem;
 `;
 
-const input = styled(Input)`
+const LoginInput = styled(Input)`
     width: 80%;
     margin-left: 1.5rem;
 
 `;
 
-const button = styled(Button)`
+const LoginButton = styled(Button)`
     width: 100%;
     margin-top: 1.5rem;
     color: white;
@@ -24,15 +24,15 @@ const button = styled(Button)`
     }
 `;
 
-const userName = styled(Col)`
+const UserName = styled(Col)`
     text-align: center;
     margin-top: 10px;
 `;
 
-const welcome = styled(Col)`
+const Welcome = styled(Col)`
     text-align: center;
     margin-top: 30px;
     font-weight: bold;
 `;
 
-export { label, input, button, userName, welcome };
+export { LoginLabel, LoginInput, LoginButton, UserName, Welcome };

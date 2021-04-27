@@ -1,41 +1,42 @@
 import styled from 'styled-components';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import { BsFillTrashFill } from 'react-icons/bs';
-import { Label, Input, Button, Col, Row, Card, Table } from 'reactstrap';
+import { Button, Row, Card, Table } from 'reactstrap';
 
-const deleteIcon = styled(BsFillTrashFill)`
+
+// Icon cSS
+const DeleteIcon = styled(BsFillTrashFill)`
     transition: 0.4s;
     &:hover {
         transform: scale(1.4);
     }
 `;
 
-const title = styled(Row)`
+const Title = styled(Row)`
     text-align: center;
     display: block;
     margin: -10px 0 26px 0;
 `;
-const table = styled(Table)`
+const QTable = styled(Table)`
     @media only screen and (max-width: 767px) {
         display: none;
     }
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
         display: none;
     }
 `;
-const list = styled(List)`
+const QList = styled(List)`
     display: none;
     width: 100%;
     background-color: #f4fcfb;
     @media only screen and (max-width: 767px) {
         display: block;
     }
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
         display: block;
     }
 `;
-const btn = styled(Button)`
+const Qbtn = styled(Button)`
     border-radius: 7px;
     border: 1px;
     background-color: #8bc34a;
@@ -53,7 +54,7 @@ const btn = styled(Button)`
     }
 `;
 
-const card = styled(Card)`
+const QCard = styled(Card)`
     background-color: #f4fcfb;
     border-radius: ${(props) => props.radius};
     border: 0px;
@@ -61,16 +62,16 @@ const card = styled(Card)`
         margin-top: 25px;
     }
 `;
-const th = styled.th`
+const Th = styled.th`
     text-align: center;
     width: ${(props) => props.width};
 `;
 
-const span = styled.span`
+const Span = styled.span`
     margin-left: ${(props) => props.margin};
     @media only screen and (max-width: 767px) {
         margin-left: 230px;
     }
 `;
 
-export { title, card, table, list, btn, deleteIcon, th, span };
+export { Title, QCard, QTable, QList, Qbtn, DeleteIcon, Th, Span };

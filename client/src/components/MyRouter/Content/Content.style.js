@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 import { Container } from 'reactstrap';
 
-const container = styled(Container)`
+const MainContainer = styled(Container)`
     width: 100%;
     padding: 20px 20px 0 20px;
-    min-height: 50vh;
+    min-height: 100vh;
     transition: all 0.3s;
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1023px) {
         padding: 0;
     }
 `;
-const overlay = styled.div`
-    @media only screen and (max-width: 1024px) {
+const Overlay = styled.div`
+    @media only screen and (max-width: 1023px) {
         display: none;
         position: fixed;
         width: 100vw;
@@ -25,10 +25,10 @@ const overlay = styled.div`
     }
 `;
 
-const wrapper = styled.div`
-    @media only screen and (max-width: 1024px) {
+const MainWrap = styled.div`
+    @media only screen and (max-width: 1023px) {
         padding: 20px 20px 0 20px;
     }
 `;
 
-export { container, wrapper, overlay };
+export { MainContainer, MainWrap, Overlay };

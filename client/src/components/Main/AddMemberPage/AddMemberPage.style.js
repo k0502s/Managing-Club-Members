@@ -2,23 +2,27 @@ import styled from 'styled-components';
 import { Row, Card, Button } from 'reactstrap';
 import { BsPersonFill, BsUpload, BsTrash } from 'react-icons/bs';
 
+// Icon CSS
+
 const PersonIcon = styled(BsPersonFill)`
     width: 300px;
     height: 240px;
     color: lightgrey;
 `;
-const uploadIcon = styled(BsUpload)`
+const UploadIcon = styled(BsUpload)`
     color: white;
     margin-bottom: 5px;
     margin-right: 5px;
 `;
-const deleteIcon = styled(BsTrash)`
+const DeleteIcon = styled(BsTrash)`
     color: white;
     margin-bottom: 5px;
     margin-right: 5px;
 `;
 
-const button = styled(Button)`
+// Add page CSS
+
+const Addbtn = styled(Button)`
     margin-right: 10px;
     font-weight: bold;
     color: white;
@@ -55,7 +59,7 @@ const FileUpload = styled.div`
     margin-bottom: 30px;
 `;
 
-const pngImg = styled.img`
+const PngImg = styled.img`
     width: 400px;
     height: 432px;
     display: block;
@@ -66,20 +70,20 @@ const pngImg = styled.img`
     }
 `;
 
-const card = styled(Card)`
+const AddCard = styled(Card)`
     height: 790px;
     background-color: #f4fcfb;
     border-radius: 10px;
-    @media only screen and (max-width: 767px)  {
+    @media only screen and (max-width: 767px) {
         margin-top: 10px;
     }
-    @media only screen and (min-width:768px) and (max-width:1024px) {
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
         margin-top: 10px;
     }
 `;
-const title = styled(Row)`
+const Title = styled(Row)`
     text-align: center;
     display: block;
-    margin: -10px 0 18px 0
+    margin: -10px 0 18px 0;
 `;
-export { Profile, Img, FileUpload, pngImg, card, deleteIcon, PersonIcon, uploadIcon, button, title };
+export { Profile, Img, FileUpload, PngImg, AddCard, DeleteIcon, PersonIcon, UploadIcon, Addbtn, Title };

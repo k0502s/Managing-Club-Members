@@ -19,7 +19,7 @@ app.use(hpp());
 app.use(helmet());
 
 app.use(cors({ origin: true, credentials: true }));
-app.use(morgan('dev')); //개발 log을 보여줌
+app.use(morgan('dev'));
 
 app.use(express.json());
 

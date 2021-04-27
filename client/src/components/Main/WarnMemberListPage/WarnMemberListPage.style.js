@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import { BsInboxFill } from 'react-icons/bs';
 import { Row, Card } from 'reactstrap';
 
-const emptyIcon = styled(BsInboxFill)`
+const EmptyIcon = styled(BsInboxFill)`
     display: block;
     margin: 0 auto;
     width: 300px;
@@ -12,28 +12,28 @@ const emptyIcon = styled(BsInboxFill)`
     color: lightgrey;
 `;
 
-const emptytext = styled.div`
+const Emptytext = styled.div`
     text-align: center;
     font-size: 60px;
 `;
 
-const link = styled(List)`
+const WarnList = styled(List)`
     width: 100%;
     background-color: #f4fcfb;
 `;
-const listItem = styled(ListItem)`
+const WarnListItem = styled(ListItem)`
     .MuiListItemText-root {
         width: 25%;
     }
 `;
-const listItems = styled(ListItem)`
+const WarnListItems = styled(ListItem)`
     padding-left: 50px;
 `;
 
 const Img = styled.img`
     width: 80px;
 `;
-const warnImg = styled.img`
+const WarnImg = styled.img`
     width: 200px;
     margin-left: 215px;
     margin-bottom: 20px;
@@ -47,13 +47,13 @@ const warnImg = styled.img`
     }
 `;
 
-const title = styled(Row)`
+const Title = styled(Row)`
     text-align: center;
     display: block;
     margin: -10px 0 18px 0;
 `;
 
-const card = styled(Card)`
+const WarnCard = styled(Card)`
     background-color: #f4fcfb;
     border-radius: 10px;
     @media only screen and (max-width: 767px) {
@@ -64,7 +64,7 @@ const card = styled(Card)`
     }
 `;
 
-const span = styled.span`
+const Span = styled.span`
     margin-left: ${(props) => props.margin};
     @media only screen and (max-width: 767px) {
         margin-left: 230px;
@@ -74,4 +74,4 @@ const span = styled.span`
     }
 `;
 
-export { link, Img, listItem, listItems, title, card, emptyIcon, emptytext, warnImg, span };
+export { WarnList, Img, WarnListItem, WarnListItems, Title, WarnCard, EmptyIcon, Emptytext, WarnImg, Span };

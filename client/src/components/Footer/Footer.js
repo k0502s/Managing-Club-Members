@@ -8,16 +8,15 @@ const Footer = () => {
         return year;
     };
     return (
-        <S.footer>
-            <Row>
-                <Col>
-                    <span>김진석</span>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;<span>이메일 k0502s@naver.com</span>
-                    <p>
-                        Copyright &copy; <span>{thisYear()} Jin Seok Kim All rights reserved.</span>
-                    </p>
-                </Col>
-            </Row>
-        </S.footer>
+        <S.FooterWrap>
+            <hr />
+            <Col>
+                <span>김진석</span>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;<span>Email k0502s@naver.com</span>&nbsp;&nbsp;<span>KakaoID k0502s</span>
+                <p>
+                    Copyright &copy; <span>{thisYear()} Jin Seok Kim All rights reserved.</span>
+                </p>
+            </Col>
+        </S.FooterWrap>
     );
 };
 

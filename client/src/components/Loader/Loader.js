@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { Row } from 'reactstrap';
+import React from 'react';
 import L from 'react-loader-spinner';
+import * as S from './Loader.style'
 
 export const Loader = (
-    <Fragment>
-        <Row className="d-flex justify-content-center m-5">
-            <L type="ThreeDots" color=" #f4fcfb" height={'100px'} width={'100px'} timeout={3000} />
-        </Row>
-    </Fragment>
+    <>
+        <S.LoaderWrap>
+            <L type="ThreeDots" color="#f4fcfb" height={'100px'} width={'100px'} timeout={3000} />
+        </S.LoaderWrap>
+    </>
 );

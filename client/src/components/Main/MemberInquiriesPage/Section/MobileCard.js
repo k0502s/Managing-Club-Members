@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Collapse from '@material-ui/core/Collapse';
-import { BsFillTrashFill, BsChevronDown, BsChevronUp, BsQuestionCircle, BsQuestionDiamond } from 'react-icons/bs';
+import { BsFillTrashFill, BsChevronDown, BsChevronUp, BsQuestionDiamond } from 'react-icons/bs';
 import * as S from '../MemberInquiriesPage.style';
 
 const MobileCard = ({ removeFromInquiries }) => {
@@ -24,7 +24,7 @@ const MobileCard = ({ removeFromInquiries }) => {
         <>
             {inquiriesdata &&
                 inquiriesdata.map((inquiries, index) => (
-                    <S.list onClick={() => handleClick(index)} key={index}>
+                    <S.QList onClick={() => handleClick(index)} key={index}>
                         <ListItem >
                             <ListItemAvatar>
                                 <Avatar>
@@ -36,7 +36,7 @@ const MobileCard = ({ removeFromInquiries }) => {
                         </ListItem>
                         <Divider variant="inset" />
                         <Collapse in={selectedIndex === index && open} timeout="auto" unmountOnExit>
-                            <S.list >
+                            <S.QList>
                                 <ListItem button>
                                     <ListItemIcon>
                                         <BsQuestionDiamond />
@@ -56,9 +56,9 @@ const MobileCard = ({ removeFromInquiries }) => {
                                     </ListItemIcon>
                                     <ListItemText primary="삭제" />
                                 </ListItem>
-                            </S.list>
+                            </S.QList>
                         </Collapse>
-                    </S.list>
+                    </S.QList>
                 ))}
         </>
     );

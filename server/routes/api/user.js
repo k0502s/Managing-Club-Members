@@ -110,7 +110,7 @@ const getPagination = (page, size) => {
     return { limit, offset };
 };
 
-router.get('/warnlist_by_id', (req, res) => {
+router.get('/warnlist', (req, res) => {
     console.log(req);
     const page = req.query.page;
     const size = req.query.size;

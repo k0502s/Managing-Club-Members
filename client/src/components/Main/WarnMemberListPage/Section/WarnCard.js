@@ -82,8 +82,8 @@ const WarnCardBlock = () => {
     const renderItems = () =>
         warnlistDetail &&
         warnlistDetail.map((warnlist, index) => (
-            <S.link onClick={() => handleClick(index)} key={index} data-testid="warn-drop">
-                <S.listItem button>
+            <S.WarnList onClick={() => handleClick(index)} key={index} data-testid="warn-drop">
+                <S.WarnListItem button>
                     <ListItemAvatar>
                         <Avatar>
                             <S.Img src={renderCartImage(warnlist.images)} data-testid="warn-image" />
@@ -94,10 +94,10 @@ const WarnCardBlock = () => {
                     <ListItemText primary="나이" secondary={warnlist.age} data-testid="warn-age" />
                     <ListItemText primary="경고" secondary={warnlist.quantity} data-testid="warn-quantity" />
                     {open ? <BsChevronUp /> : <BsChevronDown />}
-                </S.listItem>
+                </S.WarnListItem>
                 <Divider variant="inset" />
                 <Collapse in={selectedIndex === index && open} timeout="auto" unmountOnExit>
-                    <S.link component="div" disablePadding>
+                    <S.WarnList component="div" disablePadding>
                         <ListItem button className={classes.nested} onClick={() => deleteFromlist(warnlist._id)} data-testid="warn-button-1">
                             <ListItemIcon>
                                 <BsReply />
@@ -110,24 +110,24 @@ const WarnCardBlock = () => {
                             </ListItemIcon>
                             <ListItemText primary="영구 제명" />
                         </ListItem>
-                    </S.link>
+                    </S.WarnList>
                 </Collapse>
-            </S.link>
+            </S.WarnList>
         ));
 
     return (
         <>
             {ShowEmpty ? (
-                <S.card>
+                <S.WarnCard>
                     <CardHeader>
                         <strong>경고 회원 리스트</strong>
                     </CardHeader>
                     <CardBody>{renderItems()}</CardBody>
-                </S.card>
+                </S.WarnCard>
             ) : (
                 <>
-                    <S.emptyIcon />
-                    <S.emptytext>Empty</S.emptytext>
+                    <S.EmptyIcon />
+                    <S.Emptytext>Empty</S.Emptytext>
                 </>
             )}
         </>

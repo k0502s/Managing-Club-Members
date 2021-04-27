@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
+import { Form, Input, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
 import FileUpload from '../../../utils/FileUpload';
 import { Loader } from '../../Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
+import img from '../../../assets/img/imgbin_photography-logo-photographer-png.png';
 import { MEMBER_UPLOADING_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
 import * as S from './AddMemberPage.style';
-import img from '../../../assets/img/imgbin_photography-logo-photographer-png.png';
 
 const Sex = [
     { key: 1, value: '남' },
@@ -90,13 +90,13 @@ const AddMemberPage = () => {
 
     const Body = (
         <>
-            <S.title>
+            <S.Title>
                 <h1>ADD MEMBER</h1>
-            </S.title>
+            </S.Title>
             <Row>
                 <Helmet title={`회원 추가`} />
                 <Col>
-                    <S.card>
+                    <S.AddCard>
                         <CardHeader>
                             <strong>참고 사항</strong>
                         </CardHeader>
@@ -109,12 +109,12 @@ const AddMemberPage = () => {
                             <CardText>2. 추가하실 때 회원 분의 이름, 성별, 나이, 보유 카메라, 프로필 사진을 꼭 추가해주세요.</CardText>
                             <br />
                             <CardText>3. 회원분이 동호회에서 탈퇴하거나 경고 누적으로 제명이 되면 회원 리스트 페이지에서 회원 정보를 삭제할 수 있습니다.</CardText>
-                            <S.pngImg src={img} />
+                            <S.PngImg src={img} />
                         </CardBody>
-                    </S.card>
+                    </S.AddCard>
                 </Col>
                 <Col>
-                    <S.card>
+                    <S.AddCard>
                         <CardHeader>
                             <strong>회원 정보 추가</strong>
                         </CardHeader>
@@ -146,12 +146,12 @@ const AddMemberPage = () => {
                                         </option>
                                     ))}
                                 </select>
-                                <S.button color={'#54C5A0'} type="submit" className="col-md-2 offset-md-10 mt-1" onClick={submitHandler} data-testid="add-submit">
+                                <S.Addbtn color={'#54C5A0'} type="submit" className="col-md-2 offset-md-10 mt-1" onClick={submitHandler} data-testid="add-submit">
                                     확인
-                                </S.button>
+                                </S.Addbtn>
                             </Form>
                         </CardBody>
-                    </S.card>
+                    </S.AddCard>
                 </Col>
             </Row>
         </>

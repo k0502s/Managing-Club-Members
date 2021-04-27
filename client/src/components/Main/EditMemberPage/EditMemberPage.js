@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Button, Form, Input, Label, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
+import { Form, Input, Card, Col, CardHeader } from 'reactstrap';
 import FileUpload from '../../../utils/FileUpload';
 import { useDispatch, useSelector } from 'react-redux';
 import { MEMBER_SINGLELIST_REQUEST, MEMBER_UPDATELIST_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1 } from '../../../redux/types';
-import * as S from './EditMamberePage.style';
+import * as S from './EditMemberePage.style';
 const Sex = [
     { key: 1, value: '남' },
     { key: 2, value: '여' },
@@ -106,16 +106,16 @@ const EditMemberPage = ({ match }) => {
 
     return (
         <>
-            <S.title>
+            <S.Title>
                 <h1>EDIT MEMBER</h1>
-            </S.title>
-            <Col md={{ size: 6, offset: 3}} sm='12' xs='12'>
+            </S.Title>
+            <Col md={{ size: 6, offset: 3}} sm={12} xs={12}>
                 <Helmet title={`회원 정보 수정`} />
                 <Card>
                     <CardHeader>
                         <strong>회원 정보 수정</strong>
                     </CardHeader>
-                    <S.card>
+                    <S.EditCard>
                         <S.Profile>
                             {Images.map((image, index) => (
                                 <S.Img key={index} src={`${image}`} />
@@ -143,11 +143,11 @@ const EditMemberPage = ({ match }) => {
                                     </option>
                                 ))}
                             </select>
-                            <S.button color={'#3DC89B'} className="col-md-2 offset-md-10 mt-1" onClick={submitHandler} data-testid="add-submit">
+                            <S.Editbtn color={'#3DC89B'} className="col-md-2 offset-md-10 mt-1" onClick={submitHandler} data-testid="add-submit">
                                 확인
-                            </S.button>
+                            </S.Editbtn>
                         </Form>
-                    </S.card>
+                    </S.EditCard>
                 </Card>
             </Col>
         </>

@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Form, FormGroup, Card, CardTitle, CardText, Row, Col, CardHeader, CardBody } from 'reactstrap';
+import { Alert, Form, FormGroup, Col } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGIN_REQUEST, LOGOUT_REQUEST } from '../../redux/types';
 import * as S from './Authentication.style';
@@ -54,42 +54,42 @@ const Login = () => {
     };
 
     const guestLink = (
-        <Fragment>
+        <>
             {localMsg ? <Alert color="danger">{localMsg}</Alert> : null}
             <Form onSubmit={onSubmit}>
                 <FormGroup>
-                    <S.label for="email">Email</S.label>
-                    <S.input type="email" name="email" value={form.email} id="email" placeholder="Email" onChange={onChange} onKeyPress={Enter} data-testid="login-email" />
-                    <S.label for="password">Password</S.label>
-                    <S.input type="password" name="password" value={form.password} id="password" placeholder="Password" onChange={onChange} onKeyPress={Enter} data-testid="login-password" />
+                    <S.LoginLabel for="email">Email</S.LoginLabel>
+                    <S.LoginInput type="email" name="email" value={form.email} id="email" placeholder="Email" onChange={onChange} onKeyPress={Enter} data-testid="login-email" />
+                    <S.LoginLabel for="password">Password</S.LoginLabel>
+                    <S.LoginInput type="password" name="password" value={form.password} id="password" placeholder="Password" onChange={onChange} onKeyPress={Enter} data-testid="login-password" />
                     <Col>
-                        <S.button data-testid="login-button">
+                        <S.LoginButton data-testid="login-button">
                             Login
-                        </S.button>
+                        </S.LoginButton>
                     </Col>
                 </FormGroup>
             </Form>
-        </Fragment>
+        </>
     );
 
     const authLink = (
-        <Fragment>
+        <>
             <Col>
-                <S.welcome>안녕하세요.</S.welcome>
+                <S.Welcome>안녕하세요.</S.Welcome>
                 {user && user.name ? (
-                    <S.userName>{user ? `${user.name} 님` : ''}</S.userName>
+                    <S.UserName>{user ? `${user.name} 님` : ''}</S.UserName>
                 ) : (
-                    <S.userName>
+                    <S.UserName>
                         <strong>No User</strong>
-                    </S.userName>
+                    </S.UserName>
                 )}
             </Col>
             <Col>
                 <Link onClick={onLogout} to="/">
-                    <S.button>Logout</S.button>
+                    <S.LoginButton>Logout</S.LoginButton>
                 </Link>
             </Col>
-        </Fragment>
+        </>
     );
 
     return <div>{isAuthenticated ? authLink : guestLink}</div>;

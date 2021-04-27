@@ -1,18 +1,18 @@
-import React, { Fragment, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Button, NavbarToggler, Collapse, Nav, NavItem, NavLink, Badge, NavbarBrand } from 'reactstrap';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Nav, NavItem, NavLink, NavbarBrand } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import headerImage from '../../assets/img/camera2.png';
 import * as S from './Nav.style';
 
 const Topbar = ({ toggleSidebar }) => {
-    const { isAuthenticated, user, userRole } = useSelector((state) => state.auth);
+    const { isAuthenticated } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
 
     const guestLink = <div><strong>로그인이 필요합니다!</strong></div>;
 
     const authLink = (
-        <Fragment>
+        <>
             <Nav>
                 <NavItem>
                     <NavLink tag={Link} to={'/addmember'}>
@@ -32,18 +32,18 @@ const Topbar = ({ toggleSidebar }) => {
                 <NavItem>
                     <NavLink tag={Link} to={'inquiries'}>
                         <S.QIcon style={{ fontSize: 30, color: '#667777', marginLeft: 20 }} />
-                        <S.badge color="danger" data-testid="inquiries-data">
+                        <S.CountbBadge color="danger" data-testid="inquiries-data">
                             {chatalldata.length > 0 && '+' + chatalldata.length}
-                        </S.badge>
+                        </S.CountbBadge>
                     </NavLink>
                 </NavItem>
             </Nav>
-        </Fragment>
+        </>
     );
 
     return (
         <S.Topbar expand="md">
-            <S.toggleIcon onClick={toggleSidebar} />
+            <S.ToggleIcon onClick={toggleSidebar} />
             <NavbarBrand>
                 <img src={headerImage} />
             </NavbarBrand>

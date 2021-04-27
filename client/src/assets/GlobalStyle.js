@@ -9,11 +9,13 @@ const GlobalStyle = createGlobalStyle`
 }
 body {
     background: #fafafa;
-    background-color: #4c443c;      
+    background-color: #4c443c;
+    font-family: 'Poor Story', cursive;
+    font-size: large;     
 }
 
 #main-body {
-    min-height:220vh;
+    max-height:90vh;
 }
 
   *, *:before, *:after {

@@ -11,11 +11,11 @@ import Footer from '../../Footer/Footer';
 import * as S from './Content.style';
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
-    <S.container fluid isOpen={sidebarIsOpen}>
-        <S.overlay isOpen={sidebarIsOpen} />
+    <S.MainContainer fluid isOpen={sidebarIsOpen}>
+        <S.Overlay isOpen={sidebarIsOpen} />
         <Topbar toggleSidebar={toggleSidebar} />
         <Fragment>
-            <S.wrapper>
+            <S.MainWrap>
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/list" component={MenmberListPage} />
@@ -25,10 +25,10 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
                     <Route exact path="/edit/:id" component={EditMemberPage} />
                     <Redirect from="*" to="/" />
                 </Switch>
-            </S.wrapper>
+            </S.MainWrap>
         </Fragment>
         <Footer />
-    </S.container>
+    </S.MainContainer>
 );
 
 export default Content;

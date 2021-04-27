@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { Row, Card, Button, CardHeader, CardBody } from 'reactstrap';
+import { Row, Card, CardHeader } from 'reactstrap';
 import { BsMap, BsBell, BsBarChart, BsFillPersonPlusFill, BsFillPersonLinesFill, BsExclamationTriangle, BsFillQuestionDiamondFill } from 'react-icons/bs';
 
+// Icon CSS
 const AddIcon = styled(BsFillPersonPlusFill)`
     margin-right: 10px;
     margin-bottom: 3px;
@@ -36,46 +37,47 @@ const MapIcon = styled(BsMap)`
     margin-bottom: 3px;
     font-size: large;
 `;
+const BellIcon = styled(BsBell)`
+    margin: 3px 8px 0 0;
+`;
 
-const title = styled(Row)`
+// Home Page CSS
+
+const Title = styled(Row)`
     text-align: center;
     display: block;
     margin: -10px 0 22px 0;
 `;
 
-const bellIcon = styled(BsBell)`
-    margin: 3px 8px 0 0;
-`;
-
-const img = styled.img`
+const Img = styled.img`
     width: 200px;
     display: block;
     margin: 0 auto;
     margin-right: 30px;
 `;
-const img2 = styled.img`
+const Img2 = styled.img`
     width: 300px;
     display: block;
     margin: 0 auto;
     margin-bottom: -40px;
-   
 `;
-const header = styled(CardHeader)`
+const Header = styled(CardHeader)`
     & div {
         width: 100%;
-        
+
         display: flex;
         justify-content: 'center';
     }
 `;
-const card = styled(Card)`
-margin-top: ${(props) => props.margin};
- @media only screen and (max-width: 767px) {
-     margin-top: 20px;
+const HomeCard = styled(Card)`
+    margin-bottom: ${(props) => props.margin};
+    min-height: ${(props) => props.height};
+    @media only screen and (max-width: 767px) {
+        margin-top: 20px;
     }
-`
+`;
 
-const circle = styled.div`
+const DataCircle = styled.div`
     position: relative;
     width: 100px;
     height: 100px;
@@ -109,4 +111,4 @@ const circle = styled.div`
     }
 `;
 
-export { header, bellIcon, img, img2, AddIcon, ListIcon, WarnIcon, QIcon, MapIcon, ChartIcon,  circle, card, title };
+export { Header, BellIcon, Img, Img2, AddIcon, ListIcon, WarnIcon, QIcon, MapIcon, ChartIcon, DataCircle, HomeCard, Title };
