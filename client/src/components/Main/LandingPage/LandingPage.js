@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Row, Col, Card, CardHeader, CardBody, CardText } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Register from '../../Authentication/RegisterModal';
+import Map from './Section/Map'
 import systemImg from '../../../assets/img/system.png';
 import statisticsImg from '../../../assets/img/통계.png';
 import { ALL_DATA_REQUEST, CLEAR_ERROR_REQUEST, CLEAR_ERROR_REQUEST_1, MEMBER_WARNLIST_REQUEST } from '../../../redux/types';
@@ -82,8 +83,8 @@ const LandingPage = () => {
             <Row>
                 <Col sm={6}>
                     <S.HomeCard margin={'20px'}>
-                        <CardHeader>동호회 사이트</CardHeader>
-                        <CardBody>ㅇㅇㅇㅇㅇㅇㅇ</CardBody>
+                        <CardHeader>다음 모임 장소 설정</CardHeader>
+                        <CardBody><Map /></CardBody>
                     </S.HomeCard>
                     <Card>
                         <CardHeader>
