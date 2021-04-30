@@ -5,7 +5,7 @@ import { NavItem, NavLink, Nav, Badge, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Login from '../Authentication/Login';
 import LocationDisplay from '../../utils/LocationDisplay';
-import headerImage from '../../assets/img/camera2.png';
+import headerImage from '../../assets/img/로고.png';
 import * as S from './Nav.style';
 
 const SideBar = ({ isOpen, toggleSidebar }) => {

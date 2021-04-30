@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Nav, NavItem, NavLink, NavbarBrand } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import headerImage from '../../assets/img/camera2.png';
+import headerImage from '../../assets/img/로고.png';
 import * as S from './Nav.style';
 
 const Topbar = ({ toggleSidebar }) => {
