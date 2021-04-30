@@ -1,10 +1,18 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Row, Col, Button, InputGroup, InputGroupAddon, Input, Label, Form } from 'reactstrap';
+import React, { useState } from 'react';
+import { Input, Label, Form } from 'reactstrap';
 
 const Contact = () => {
-    const { register, handleSubmit, errors } = useForm();
-
+    const [form, setValues] = useState({
+        name: '',
+        comment: '',
+        email: '',
+    });
+    const onChange = (e) => {
+        setValues({
+            ...form,
+            [e.target.name]: e.target.value,
+        });
+    };
     const sendFeedback = (serviceID, templateId, variables) => {
         window.emailjs
             .send(serviceID, templateId, variables)
@@ -14,61 +22,46 @@ const Contact = () => {
             .catch((err) => console.error('이메일 보내기에 오류가 있습니다.', err));
     };
 
-    const onSubmit = (data, r) => {
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const nameinput = document.myform.name.value;
+        const emailinput = document.myform.email.value;
+        const commentinput = document.myform.comment.value;
+
+        if (nameinput === '') {
+            return alert('이름 정보를 입력해야 합니다.');
+        }
+        if (emailinput === '') {
+            return alert('이메일 주소 정보를 입력해야 합니다.');
+        }
+        if (commentinput === '') {
+            return alert('메일 내용을 입력해야 합니다.');
+        }
+        const { name, comment, email } = form;
         alert('이메일을 전송하는데 성공하였습니다!');
         const templateId = 'template_r113e7d';
         const serviceID = 'Project_1';
-        sendFeedback(serviceID, templateId, { from_name: data.name, message_html: data.comment, reply_to: data.email });
-        r.target.reset();
+        sendFeedback(serviceID, templateId, { from_name: name, message_html: comment, reply_to: email });
+        setValues({ name: '', comment: '', email: '' });
     };
 
     return (
         <div className="ContactForm">
-            <Form onSubmit={handleSubmit(onSubmit)}>
-            <Label for="name">이름</Label>
-                <Input
-                    placeholder="회원 이름을 입력해주세요."
-                    name="name"
-                    ref={register({
-                        required: '이메일을 받을 회원 이름을 입력해주세요.',
-                        maxLength: {
-                            value: 20,
-                            message: '이름은 20글자 미만으로 입력해주세요.',
-                        },
-                    })}
-                />
+            <Form onSubmit={onSubmit} name="myform">
+                <Label for="name">이름</Label>
+                <Input placeholder="회원 이름을 입력해주세요." name="name" type="text" onChange={onChange} value={form.name} />
                 <br />
-                {errors.name && errors.name.message}
                 <br />
                 <Label for="email">이메일</Label>
-                <Input
-                    placeholder="연락 이메일을 입력해주세요."
-                    name="email"
-                    ref={register({
-                        required: '이메일을 확인해주세요.',
-                        pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: '이메일이 유효하지 않습니다.',
-                        },
-                    })}
-                />
+                <Input placeholder="연락 이메일을 입력해주세요." name="email" type="text" onChange={onChange} value={form.email} />
                 <br />
-                {errors.email && errors.email.message}
                 <br />
                 <Label for="content">내용</Label>
-                <Input
-                    type="textarea"
-                    placeholder="답글을 입력해주세요."
-                    name="comment"
-                    ref={register({
-                        required: true,
-                    })}
-                />
+                <Input type="textarea" placeholder="답글을 입력해주세요." name="comment" onChange={onChange} value={form.comment} />
                 <br />
-                {errors.comment && '이메일에 적을 메세지를 입력해주세요.'}
                 <br />
 
-                <Input type="submit"/>
+                <Input type="submit" />
             </Form>
         </div>
     );
