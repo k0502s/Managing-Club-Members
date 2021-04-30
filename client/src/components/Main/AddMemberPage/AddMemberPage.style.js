@@ -85,5 +85,6 @@ const Title = styled(Row)`
     text-align: center;
     display: block;
     margin: -10px 0 18px 0;
+    color: #f9e81c;
 `;
 export { Profile, Img, FileUpload, PngImg, AddCard, DeleteIcon, PersonIcon, UploadIcon, Addbtn, Title };

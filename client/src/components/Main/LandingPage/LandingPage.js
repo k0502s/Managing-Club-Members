@@ -78,6 +78,7 @@ const LandingPage = () => {
             <S.Title>
                 <h1>HOME</h1>
             </S.Title>
+            <hr />
             <Row>
                 <Col sm={6}>
                     <S.HomeCard margin={'20px'}>

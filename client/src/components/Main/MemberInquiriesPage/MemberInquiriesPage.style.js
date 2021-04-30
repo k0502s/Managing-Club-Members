@@ -4,18 +4,19 @@ import { BsFillTrashFill } from 'react-icons/bs';
 import { Button, Row, Card, Table } from 'reactstrap';
 
 
-// Icon cSS
+// Icon CSS
 const DeleteIcon = styled(BsFillTrashFill)`
     transition: 0.4s;
     &:hover {
         transform: scale(1.4);
     }
 `;
-
+// Inquiries Page CSS
 const Title = styled(Row)`
     text-align: center;
     display: block;
     margin: -10px 0 26px 0;
+    color: #f9e81c;
 `;
 const QTable = styled(Table)`
     @media only screen and (max-width: 767px) {
@@ -74,4 +75,15 @@ const Span = styled.span`
     }
 `;
 
-export { Title, QCard, QTable, QList, Qbtn, DeleteIcon, Th, Span };
+// Contact Email CSS
+const Input = styled.input`
+    width: 100%;
+`
+const TextArea = styled.textarea`
+    width: 100%;
+`
+const Form = styled.form`
+
+`
+
+export { Title, QCard, QTable, QList, Qbtn, DeleteIcon, Th, Span, Input, TextArea, Form};

@@ -1,8 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
-  .App {
+.App {
     display: flex;
     width: 100%;
     align-items: stretch;
@@ -10,8 +9,7 @@ const GlobalStyle = createGlobalStyle`
 body {
     background: #fafafa;
     background-color: #4c443c;
-    font-family: 'Poor Story', cursive;
-    font-size: large;     
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 #main-body {
@@ -38,6 +36,10 @@ body {
   }
   p,h2 {
     margin: 0;
+  }
+  hr {
+    border: 2px solid;
+    margin-bottom: 35px;
   }
 `;
 

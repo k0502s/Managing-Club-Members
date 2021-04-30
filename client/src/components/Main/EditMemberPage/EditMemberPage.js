@@ -109,6 +109,7 @@ const EditMemberPage = ({ match }) => {
             <S.Title>
                 <h1>EDIT MEMBER</h1>
             </S.Title>
+            <hr />
             <Col md={{ size: 6, offset: 3 }} sm={12} xs={12}>
                 <Helmet title={`회원 정보 수정`} />
                 <Card>

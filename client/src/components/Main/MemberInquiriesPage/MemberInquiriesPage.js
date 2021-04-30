@@ -74,6 +74,7 @@ const MemberInquiries = () => {
             <S.Title>
                 <h1>MEMBER INQUIRIES LIST</h1>
             </S.Title>
+            <hr />
             <Row>
                 <Helmet title={`문의 사항 리스트`} />
                 <Col md={7} sm={12}>

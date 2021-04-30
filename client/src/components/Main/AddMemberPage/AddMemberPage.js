@@ -93,6 +93,7 @@ const AddMemberPage = () => {
             <S.Title>
                 <h1>ADD MEMBER</h1>
             </S.Title>
+            <hr />
             <Row>
                 <Helmet title={`회원 추가`} />
                 <Col>

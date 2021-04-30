@@ -145,6 +145,7 @@ const MemberList = (props) => {
             <S.Title>
                 <h1>MEMBER LIST</h1>
             </S.Title>
+            <hr />
             <Row>
                 <Helmet title={`회원 리스트`} />
                 <Col md={6}>

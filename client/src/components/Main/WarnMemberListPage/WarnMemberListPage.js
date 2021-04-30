@@ -71,6 +71,7 @@ const WarnMemberList = () => {
             <S.Title>
                 <h1>WARN MEMBER LIST</h1>
             </S.Title>
+            <hr />
             <Row>
                 <Helmet title={`경고 회원 리스트`} />
                 <Col md={5} sm={12}>
