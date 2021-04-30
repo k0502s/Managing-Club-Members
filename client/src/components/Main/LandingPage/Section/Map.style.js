@@ -1,5 +1,31 @@
 import styled from 'styled-components';
+import { Form, Input, Label, Button, Col, Row } from 'reactstrap';
 
+// Search Input and button CSS
+
+const SearchWrap = styled(Col)`
+    margin-top: 20px;
+`;
+const BtnhWrap = styled(Col)`
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+`;
+
+const Mapbtn = styled(Button)`
+    border: 1px;
+    margin-right: 10px;
+    width: 100px;
+    color: white;
+    background-color: ${(props) => props.color};
+
+    &:hover {
+        color: white;
+        background-color: lightslategray;
+    }
+`;
+
+// Map CSS
 const MapWrap = styled.div`
     position: relative;
     overflow: hidden;
@@ -89,4 +115,4 @@ const MapWrap = styled.div`
         }
 `;
 
-export { MapWrap };
+export { MapWrap, SearchWrap, Mapbtn, BtnhWrap };

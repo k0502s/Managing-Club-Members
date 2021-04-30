@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
+import { Form, Input, Label, Button, Col, Row } from 'reactstrap';
 import * as S from './Map.style';
 
 /*global kakao */
@@ -14,6 +15,7 @@ const Map = () => {
     }, [Map]);
 
     const onChangeSearchAdress = (e) => {
+        e.preventDefault();
         setSearchAdress(e.target.value);
     };
 
@@ -21,10 +23,11 @@ const Map = () => {
         e.preventDefault();
         Maps(SearchAdress);
     };
-
     const saveAdress = (e) => {
         e.preventDefault();
-        console.log(Coords);
+        if (Coords.length === 0) {
+            return alert('모임 장소 주소 검색이 필요합니다.');
+        }
         const body = {
             La: Coords.La,
             Ma: Coords.Ma,
@@ -34,6 +37,7 @@ const Map = () => {
                 console.log(response.data);
                 alert('주소 저장 성공.');
                 setSearchAdress('');
+                setCoords('');
             } else {
                 alert('주소 저장 실패.');
             }
@@ -43,8 +47,8 @@ const Map = () => {
     const Maps = (address) => {
         const mapContainer = document.getElementById('map'), // 지도를 표시할 div
             mapOption = {
-                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                level: 3, // 지도의 확대 레벨
+                center: new kakao.maps.LatLng(37.5658680501733, 126.97701686683232), // 지도의 중심좌표
+                level: 5, // 지도의 확대 레벨
             };
 
         // 지도를 생성합니다
@@ -83,12 +87,22 @@ const Map = () => {
             <S.MapWrap>
                 <div id="map"></div>
             </S.MapWrap>
-            <form name="myform">
-                <label>모임 장소</label>
-                <input type="text" onChange={onChangeSearchAdress} placeholder={'모임 장소 주소를 입력해주세요...'} value={SearchAdress} name="address" />
-                <button onClick={search}>검색</button>
-                <button onClick={saveAdress}>저장</button>
-            </form>
+            <S.SearchWrap>
+                <Form>
+                    <Label>
+                        모임 장소 검색 <small>(예: 서울특별시 서대문구 증가로 170, 송파구, 연희동, 증가로 200-8... )</small>
+                    </Label>
+                    <Input type="text" onChange={onChangeSearchAdress} placeholder={'모임 장소 주소를 입력해주세요...'} value={SearchAdress} name="address" />
+                </Form>
+            </S.SearchWrap>
+            <S.BtnhWrap>
+                <S.Mapbtn color={'#333'} onClick={search}>
+                    검색
+                </S.Mapbtn>
+                <S.Mapbtn color={'#333'} onClick={saveAdress}>
+                    설정
+                </S.Mapbtn>
+            </S.BtnhWrap>
         </>
     );
 };
