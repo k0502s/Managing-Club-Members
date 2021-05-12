@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import headerImage from '../../assets/img/로고.png';
 import * as S from './Nav.style';
 
-const Topbar = ({ toggleSidebar }) => {
+const Topbar = ({ toggleSidebar, toggleMSidebar }) => {
     const { isAuthenticated } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
 
@@ -48,6 +48,7 @@ const Topbar = ({ toggleSidebar }) => {
     return (
         <S.Topbar expand="md">
             <S.ToggleIcon onClick={toggleSidebar} />
+            <S.MToggleIcon onClick={toggleMSidebar} />
             <NavbarBrand>
                 <Link to={'/'} data-testid="Home">
                     <img src={headerImage} />

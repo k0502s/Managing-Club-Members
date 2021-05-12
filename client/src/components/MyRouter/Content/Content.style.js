@@ -20,8 +20,8 @@ const Overlay = styled.div`
         z-index: 998;
         opacity: 0;
         transition: all 0.5s ease-in-out;
-        opacity: ${({ isOpen }) => (isOpen ? '1' : '')};
-        display: ${({ isOpen }) => (isOpen ? 'block' : '')};
+        opacity: ${({ isMOpen }) => (isMOpen ? '1' : '')};
+        display: ${({ isMOpen }) => (isMOpen ? 'block' : '')};
     }
 `;
 

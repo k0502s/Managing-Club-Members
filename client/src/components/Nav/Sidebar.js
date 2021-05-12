@@ -8,7 +8,7 @@ import LocationDisplay from '../../utils/LocationDisplay';
 import headerImage from '../../assets/img/로고.png';
 import * as S from './Nav.style';
 
-const SideBar = ({ isOpen, toggleSidebar }) => {
+const SideBar = ({ isOpen, toggleSidebar, toggleMSidebar, isMOpen }) => {
     const dispatch = useDispatch();
     const { isAuthenticated } = useSelector((state) => state.auth);
     const { chatalldata } = useSelector((state) => state.member);
@@ -24,31 +24,31 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
     const authLink = (
         <>
             <NavItem>
-                <NavLink tag={Link} to={'/'} data-testid="home">
+                <NavLink tag={Link} to={'/'} data-testid="home" onClick={toggleMSidebar}>
                     <S.HomeIcon />
                     HOME
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={Link} to={'/addmember'} data-testid="addmember">
+                <NavLink tag={Link} to={'/addmember'} data-testid="addmember" onClick={toggleMSidebar}>
                     <S.AddIcon />
                     ADD MEMBER
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={Link} to={'/list'} data-testid="list">
+                <NavLink tag={Link} to={'/list'} data-testid="list" onClick={toggleMSidebar}>
                     <S.ListIcon />
                     MEMBER LIST
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={Link} to={'/warnlist'} data-testid="warnlist">
+                <NavLink tag={Link} to={'/warnlist'} data-testid="warnlist" onClick={toggleMSidebar}>
                     <S.WarnIcon />
                     WARN MEMBER LIST
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={Link} to={'/inquiries'} data-testid="inquiries">
+                <NavLink tag={Link} to={'/inquiries'} data-testid="inquiries" onClick={toggleMSidebar}>
                     <S.QIcon />
                     MEMBER INQIRIES{' '}
                     <Badge color="danger" data-testid="inquiries-data">
@@ -60,13 +60,13 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
     );
 
     return (
-        <S.Sidebar isOpen={isOpen}>
+        <S.Sidebar isOpen={isOpen} isMOpen={isMOpen}>
             <S.SidbarHeader isOpen={isOpen}>
                 <Row>
                     <Link to={'/'} data-testid="Home">
                         <S.MobileLogo src={headerImage} />
                     </Link>
-                    <S.SideToggleIcon onClick={toggleSidebar} />
+                    <S.SideToggleIcon onClick={toggleMSidebar} />
                 </Row>
                 <Link to={'/'} data-testid="Home">
                     <S.Logo src={headerImage} />

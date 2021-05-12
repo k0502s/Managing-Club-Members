@@ -10,10 +10,10 @@ import Topbar from '../../Nav/Topbar';
 import Footer from '../../Footer/Footer';
 import * as S from './Content.style';
 
-const Content = ({ sidebarIsOpen, toggleSidebar }) => (
+const Content = ({ sidebarIsOpen, toggleSidebar, MsidebarIsOpen, toggleMSidebar }) => (
     <S.MainContainer fluid isOpen={sidebarIsOpen}>
-        <S.Overlay isOpen={sidebarIsOpen} />
-        <Topbar toggleSidebar={toggleSidebar} />
+        <S.Overlay isOpen={sidebarIsOpen} isMOpen={MsidebarIsOpen}/>
+        <Topbar toggleSidebar={toggleSidebar} toggleMSidebar={toggleMSidebar}/>
         <Fragment>
             <S.MainWrap>
                 <Switch>

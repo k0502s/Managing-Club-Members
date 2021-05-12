@@ -35,6 +35,18 @@ const ToggleIcon = styled(BsJustify)`
     font-size: 40px;
     margin-bottom: 2px;
     color: #333;
+    @media only screen and (max-width: 1023px) {
+        display: none;
+    }
+`;
+const MToggleIcon = styled(BsJustify)`
+    display: none;
+    @media only screen and (max-width: 1023px) {
+        display: block;
+        font-size: 40px;
+        margin-bottom: 2px;
+        color: #333;
+    }
 `;
 const SideToggleIcon = styled(BsXSquareFill)`
     display: none;
@@ -70,7 +82,7 @@ const Sidebar = styled.div`
         z-index: 999;
         position: fixed;
         left: -250px;
-        left: ${({ isOpen }) => (isOpen ? '0' : '')};
+        left: ${({ isMOpen }) => (isMOpen ? '0' : '')};
     }
 `;
 
@@ -177,4 +189,4 @@ const CountbBadge = styled(Badge)`
     border-radius: 50%;
 `;
 
-export { AddIcon, HomeIcon, ListIcon, WarnIcon, QIcon, ToggleIcon, Sidebar, SidbarHeader, SideMenu, Topbar, CountbBadge, SideToggleIcon, MobileLogo, Logo };
+export { AddIcon, HomeIcon, ListIcon, WarnIcon, QIcon, ToggleIcon, MToggleIcon, Sidebar, SidbarHeader, SideMenu, Topbar, CountbBadge, SideToggleIcon, MobileLogo, Logo };
