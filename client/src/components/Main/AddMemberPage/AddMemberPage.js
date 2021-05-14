@@ -44,20 +44,17 @@ const AddMemberPage = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        const nameinput = document.myform.name.value;
-        const camerainput = document.myform.camera.value;
-        const ageinput = document.myform.age.value;
-        const sexinput = document.myform.sex.value;
-        if (nameinput === '') {
+        
+        if (form.name === '') {
             return alert('이름 정보를 입력해야 합니다.');
         }
-        if (camerainput === '') {
+        if (form.camera === '') {
             return alert('카메라 기종 정보를 입력해야 합니다.');
         }
-        if (ageinput === '') {
+        if (form.age === '') {
             return alert('나이 정보를 입력해야 합니다.');
         }
-        if (sexinput === '') {
+        if (form.sex === '') {
             return alert('성별 정보를 입력해야 합니다.');
         }
         if (Images.length === 0) {
@@ -81,7 +78,7 @@ const AddMemberPage = () => {
         });
     };
     const updateImages = (newImages) => {
-        setImages([...Images, newImages]);
+        setImages(...Images, newImages);
     };
 
     const removefile = () => {

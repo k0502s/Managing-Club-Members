@@ -84,7 +84,7 @@ const LandingPage = () => {
                 <Col sm={6}>
                     <S.HomeCard margin={'20px'}>
                         <CardHeader>다음 모임 장소 설정</CardHeader>
-                        <CardBody><Map /></CardBody>
+                        {/* <CardBody><Map /></CardBody> */}
                     </S.HomeCard>
                     <Card>
                         <CardHeader>

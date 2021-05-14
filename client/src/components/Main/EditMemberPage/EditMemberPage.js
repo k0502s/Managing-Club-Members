@@ -97,7 +97,7 @@ const EditMemberPage = ({ match }) => {
         });
     };
     const updateImages = (newImages) => {
-        setImages([...Images, newImages]);
+        setImages(...Images, newImages);
     };
 
     const removefile = () => {

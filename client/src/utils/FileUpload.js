@@ -14,7 +14,7 @@ function FileUpload(props) {
 
         Axios.post('/api/member/image', formData, config).then((response) => {
             if (response.data.success) {
-                console.log(response.data);
+                console.log('filepath', response.data);
 
                 props.refreshFunction([response.data.filePath]);
             } else {
