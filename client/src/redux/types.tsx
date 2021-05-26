@@ -1,0 +1,84 @@
+// Login
+export const LOGIN_REQUEST = 'LOGIN_REQUEST' as const;
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS' as const;
+export const LOGIN_FAILURE = 'LOGIN_FAILURE' as const;
+
+// Logout
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST' as const;
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS' as const;
+export const LOGOUT_FAILURE = 'LOGOUT_FAILURE' as const;
+
+// User Loading
+export const USER_LOADING_REQUEST = 'USER_LOADING_REQUEST' as const;
+export const USER_LOADING_SUCCESS = 'USER_LOADING_SUCCESS' as const;
+export const USER_LOADING_FAILURE = 'USER_LOADING_FAILURE' as const;
+
+// Clear Error
+export const CLEAR_ERROR_REQUEST = 'CLEAR_ERROR_REQUEST' as const;
+export const CLEAR_ERROR_SUCCESS = 'CLEAR_ERROR_SUCCESS' as const;
+export const CLEAR_ERROR_FAILURE = 'CLEAR_ERROR_FAILURE' as const;
+
+// Clear Error
+export const CLEAR_ERROR_REQUEST_1 = 'CLEAR_ERROR_REQUEST_1' as const;
+export const CLEAR_ERROR_SUCCESS_1 = 'CLEAR_ERROR_SUCCESS_1' as const;
+export const CLEAR_ERROR_FAILURE_1 = 'CLEAR_ERROR_FAILURE_1' as const;
+
+// Member Uploading
+export const MEMBER_UPLOADING_REQUEST = 'MEMBER_UPLOADING_REQUEST' as const;
+export const MEMBER_UPLOADING_SUCCESS = 'MEMBER_UPLOADING_SUCCESS' as const;
+export const MEMBER_UPLOADING_FAILURE = 'MEMBER_UPLOADING_FAILURE' as const;
+
+// Member LIST
+export const MEMBER_LIST_REQUEST = 'MEMBER_LIST_REQUEST' as const;
+export const MEMBER_LIST_SUCCESS = 'MEMBER_LIST_SUCCESS' as const;
+export const MEMBER_LIST_FAILURE = 'MEMBER_LIST_FAILURE' as const;
+
+// Member Inquiries
+export const MEMBER_INQUIRIES_REQUEST = 'MEMBER_INQUIRIES_REQUEST' as const;
+export const MEMBER_INQUIRIES_SUCCESS = 'MEMBER_INQUIRIES_SUCCESS' as const;
+export const MEMBER_INQUIRIES_FAILURE = 'MEMBER_INQUIRIES_FAILURE' as const;
+
+// Member Singlelist
+export const MEMBER_SINGLELIST_REQUEST = 'MEMBER_SINGLELIST_REQUEST' as const;
+export const MEMBER_SINGLELIST_SUCCESS = 'MEMBER_SINGLELIST_SUCCESS' as const;
+export const MEMBER_SINGLELIST_FAILURE = 'MEMBER_SINGLELIST_FAILURE' as const;
+
+// Member Updatelist
+export const MEMBER_UPDATELIST_REQUEST = 'MEMBER_UPDATELIST_REQUEST' as const;
+export const MEMBER_UPDATELIST_SUCCESS = 'MEMBER_UPDATELIST_SUCCESS' as const;
+export const MEMBER_UPDATELIST_FAILURE = 'MEMBER_UPDATELIST_FAILURE' as const;
+
+// Member Delete
+export const MEMBER_DELETE_REQUEST = 'MEMBER_DELETE_REQUEST' as const;
+export const MEMBER_DELETE_SUCCESS = 'MEMBER_DELETE_SUCCESS' as const;
+export const MEMBER_DELETE_FAILURE = 'MEMBER_DELETE_FAILURE' as const;
+
+// Member Warm
+export const MEMBER_WARN_REQUEST = 'MEMBER_WARN_REQUEST' as const;
+export const MEMBER_WARN_SUCCESS = 'MEMBER_WARN_SUCCESS' as const;
+export const MEMBER_WARN_FAILURE = 'MEMBER_WARN_FAILURE' as const;
+
+// Member Warmlist
+export const MEMBER_WARNLIST_REQUEST = 'MEMBER_WARNLIST_REQUEST' as const;
+export const MEMBER_WARNLIST_SUCCESS = 'MEMBER_WARNLIST_SUCCESS' as const;
+export const MEMBER_WARNLIST_FAILURE = 'MEMBER_WARNLIST_FAILURE' as const;
+
+// Member Remove Warnmember
+export const MEMBER_REMOVEWARNMEMBER_REQUEST = 'MEMBER_REMOVEWARNMEMBER_REQUEST' as const;
+export const MEMBER_REMOVEWARNMEMBER_SUCCESS = 'MEMBER_REMOVEWARNMEMBER_SUCCESS' as const;
+export const MEMBER_REMOVEWARNMEMBER_FAILURE = 'MEMBER_REMOVEWARNMEMBER_FAILURE' as const;
+
+// Remove Member Inquiries
+export const MEMBER_REMOVE_INQUIRIES_REQUEST = 'MEMBER_REMOVE_INQUIRIES_REQUEST' as const;
+export const MEMBER_REMOVE_INQUIRIES_SUCCESS = 'MEMBER_REMOVE_INQUIRIES_SUCCESS' as const;
+export const MEMBER_REMOVE_INQUIRIES_FAILURE = 'MEMBER_REMOVE_INQUIRIES_FAILURE' as const;
+
+// Remove Member Inquiries
+export const ALL_DATA_REQUEST = ' ALL_DATA_REQUEST' as const;
+export const ALL_DATA_SUCCESS = ' ALL_DATA_SUCCESS' as const;
+export const ALL_DATA_FAILURE = ' ALL_DATA_FAILURE' as const;
+
+// Register
+export const REGISTER_REQUEST = 'REGISTER_REQUEST' as const;
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS' as const;
+export const REGISTER_FAILURE = 'REGISTER_FAILURE' as const;
