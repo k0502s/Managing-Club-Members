@@ -24,7 +24,7 @@
 
 |             문의 사항 조회              | 
 | :---------------------------: | 
-| <img src="images/InquiriesPage.png"> |
+| <img src="images/InquiriesPage.jpg"> |
 
 <br>
 
@@ -34,12 +34,13 @@
 | :----------------------------------------: | :-----------------------------------------------: | :----------------------------------------: | :---------------------------------------------: |
 | <img src="images/React.png" width="200px"> | <img src="images/redux.png" width="200px"> | <img src="images/redux saga.png" width="200px"> | <img src="images/SC.png" width="200px"> |
 
-|                        서버                        |                        DB                        |                        JS Superset                        |                         DOM 테스팅                        | :----------------------------------------------------: | :---------------------------------------: | :---------------------------------------------------------: | :--------------------------------------------: |
+|                        서버                        |                        DB                        |                        JS Superset                        |                         DOM 테스팅                        | 
+|:----------------------------------------------------: | :---------------------------------------: | :---------------------------------------------------------: | :--------------------------------------------: |
 | <img src="images/node.png" width="200px"> | <img src="images/Mongo.png" width="200px"> | <img src="images/TS.png" width="200px"> | <img src="images/react testing library.jpeg" width="200px"> |
 
 |                오픈 API-1                  |                 오픈 API-2                  |
 | :-----------------------------------------: | :---------------------------------------: |
-| <img src="images/kakomap.png" height="200px"> | <img src="images/emailjs.png" width="200px"> |
+| <img src="images/kakomap.png" height="200px"> | <img src="images/emailjs.png" height="200px"> |
 
 <br>
 
@@ -93,12 +94,3 @@
 * EmailJs는 매우 간단한 오픈 API로 이메일을 이 오픈 API을 통해 곧바로 Form을 통해 보낼 수 있는 기능 활용할 수 있게끔 구현하는데 도움을 받게 되었습니다. 실제 [사진 동호회 사이트](https://photo-club-korea.herokuapp.com)에서 챗봇으로 받은 문의 사항 데이터를 보고 문의 사항을 보낸 해당 회원의 연락 이메일을 보고 효율적으로 문의 사항에 대한 답장을 할 수 있도록 하기 위함이었습니다.
 
 <br>
-
-## 프로젝트를 통해 배운 것들
-
-* Redux를 사용해서 상태관리를 하는 방법
-* Redux-Saga를 사용해서 비동기로 변하는 상태관리를 하는 방법
-* Styeld components를 사용해서 각 컴포넌트를 CSS-in-JS 방식으로 스타일링 하는 방법
-* React testing library를 사용해서 DOM을 테스트하는 방법
-* 오픈 API와 axios를 사용해서 데이터를 가져오는 방법
-* LocalStorage를 사용하는 방법
