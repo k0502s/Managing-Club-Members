@@ -72,11 +72,10 @@ const LandingPage = () => {
                                     <h4>아래 관리자 아이디와 패스워드로 로그인 해주세요!</h4>
                                 </CardText>
                                 <br />
-                                <CardText>ID: Test@test.com</CardText>
+                                <CardText>ID: test@test.com</CardText>
                                 <br />
                                 <CardText>PW: 123</CardText>
                                 <br />
-                                <Register />
                             </Col>
                             <Col>
                                 <S.Img src={systemImg} />
