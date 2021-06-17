@@ -145,11 +145,13 @@ const MemberList: React.FC<MemberListtype> = (props) => {
                     type: MEMBER_DELETE_REQUEST,
                     payload: currentMemberData._id,
                 });
-                refreshList();
+                
             }
             if (deletesuccess) {
                 alert('제명 완료.');
             }
+            setTimeout(() => refreshList(), 500)
+            
         } else {
             alert('취소 완료.');
         }
@@ -162,7 +164,6 @@ const MemberList: React.FC<MemberListtype> = (props) => {
                     type: MEMBER_DELETE_REQUEST,
                     payload: id,
                 });
-                refreshList();
             }
             if (deletesuccess) {
                 alert('제명 완료.');
@@ -170,6 +171,7 @@ const MemberList: React.FC<MemberListtype> = (props) => {
         } else {
             alert('취소 완료.');
         }
+        setTimeout(() => refreshList(), 500)
     };
 
     const AddMember = () => {
