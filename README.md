@@ -103,9 +103,9 @@
 
 <br>
 
-## - 서버와 DB - Node.js + Express와 MongoDB
+## - 서버와 DB - Express와 MongoDB
 
-* 서버는 JS을 통해 서버를 구축할 수 있는 [Node](https://github.com/nodejs/node) + [Express](https://github.com/expressjs/express)을 활용하였습니다. 프론트엔드를 희망하는 저는 JS 위주의 언어를 공부하였기에 JS로만 서버를 구축할 수 있다는 것에 메리트가 있다고 생각하여 프로젝트를 완성하는데 Node + Express을 선택하게 되었습니다. 
+* 서버는 JS을 통해 서버를 구축할 수 있는 [Express](https://github.com/expressjs/express)을 활용하였습니다. 프론트엔드를 희망하는 저는 JS 위주의 언어를 공부하였기에 JS로만 서버를 구축할 수 있다는 것에 메리트가 있다고 생각하여 프로젝트를 완성하는데 Node + Express을 선택하게 되었습니다. 
 
 * 간단한 CRUD Restful API을 작성해보는 경험을 하게되었으며 클라이언트와 연동해보는 경험을 통해 CROS 정책에 관한 이해와 대처 방법 또한 알게 되었고 실제 실무에서 프론트엔드로서 백엔드 개발자분들과 원활한 협업과 소통이 되기 위한 역량을 조금이나마 쌓게 되었다고 생각합니다. 실제 웹의 데이터와 서버가 어떤 사이클로 작동하는지 확실히 이해하게된 뜻 깊은 스킬 경험이었습니다. 특히 JS의 async await, Promise와 같은 비동기 문법이 많이 사용하게 되어 비동기 문법에 대해서도 공부 및 이해 하는데 매우 도움이 되었습니다.
 
