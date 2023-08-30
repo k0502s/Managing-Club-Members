@@ -1,4 +1,4 @@
-# Member-Admin-System
+# Photo Club Admin
 
 ## 프로젝트 소개
 <!--<p align="center">
